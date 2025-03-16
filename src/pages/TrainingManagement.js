@@ -1,420 +1,610 @@
 import React, { useState } from 'react';
-import { Row, Col, Card, Typography, Table, Button, Select, Progress, Tag, Space, Tabs, List, Avatar, Statistic } from 'antd';
-import { PlusOutlined, FileOutlined, VideoCameraOutlined, BookOutlined, CheckCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Typography, Table, Button, Progress, Tag, Space, Tabs, List, Avatar, Statistic, Timeline, Calendar, Modal, Form, Input, Select, DatePicker, Upload, message } from 'antd';
+import { UserOutlined, CheckCircleOutlined, ClockCircleOutlined, FileOutlined, VideoCameraOutlined, ReadOutlined, PlusOutlined, UploadOutlined, SearchOutlined, FilterOutlined, EditOutlined, DeleteOutlined, EyeOutlined, DownloadOutlined, StarOutlined, StarFilled, CalendarOutlined } from '@ant-design/icons';
 
 const { Title, Text, Paragraph } = Typography;
-const { Option } = Select;
 const { TabPane } = Tabs;
+const { Option } = Select;
+const { TextArea } = Input;
 
 const TrainingManagement = () => {
-  const [trainingStatus, setTrainingStatus] = useState('all');
+  const [activeTab, setActiveTab] = useState('1');
+  const [visible, setVisible] = useState(false);
+  const [form] = Form.useForm();
 
-  // 培训课程数据
-  const coursesColumns = [
+  // Training course data
+  const trainingCourses = [
     {
-      title: '课程ID',
+      id: 'TC-001',
+      title: 'Defensive Driving Techniques',
+      type: 'Online Course',
+      duration: '4 hours',
+      completion: 78,
+      enrolled: 156,
+      rating: 4.7,
+      status: 'Active',
+    },
+    {
+      id: 'TC-002',
+      title: 'Hazardous Weather Driving',
+      type: 'Video Training',
+      duration: '2.5 hours',
+      completion: 92,
+      enrolled: 124,
+      rating: 4.5,
+      status: 'Active',
+    },
+    {
+      id: 'TC-003',
+      title: 'Vehicle Safety Inspection',
+      type: 'Practical Workshop',
+      duration: '6 hours',
+      completion: 65,
+      enrolled: 98,
+      rating: 4.8,
+      status: 'Active',
+    },
+    {
+      id: 'TC-004',
+      title: 'Fatigue Management',
+      type: 'Online Course',
+      duration: '3 hours',
+      completion: 85,
+      enrolled: 142,
+      rating: 4.3,
+      status: 'Active',
+    },
+    {
+      id: 'TC-005',
+      title: 'Emergency Response Procedures',
+      type: 'Simulation Training',
+      duration: '5 hours',
+      completion: 72,
+      enrolled: 112,
+      rating: 4.9,
+      status: 'Active',
+    },
+  ];
+
+  // Training course columns
+  const courseColumns = [
+    {
+      title: 'Course ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '课程名称',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Course Title',
+      dataIndex: 'title',
+      key: 'title',
+      render: (text) => <a>{text}</a>,
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'type',
       key: 'type',
       render: (type) => {
-        const icons = {
-          '视频': <VideoCameraOutlined />,
-          '文档': <FileOutlined />,
-          '实操': <BookOutlined />,
-        };
+        let icon;
+        if (type === 'Online Course') {
+          icon = <ReadOutlined />;
+        } else if (type === 'Video Training') {
+          icon = <VideoCameraOutlined />;
+        } else if (type === 'Practical Workshop') {
+          icon = <UserOutlined />;
+        } else {
+          icon = <FileOutlined />;
+        }
         return (
           <Space>
-            {icons[type]}
-            {type}
+            {icon} {type}
           </Space>
         );
       },
     },
     {
-      title: '时长',
+      title: 'Duration',
       dataIndex: 'duration',
       key: 'duration',
     },
     {
-      title: '完成人数',
-      dataIndex: 'completedCount',
-      key: 'completedCount',
-      render: (count, record) => `${count}/${record.totalCount}`,
+      title: 'Completion Rate',
+      dataIndex: 'completion',
+      key: 'completion',
+      render: (completion) => (
+        <Progress percent={completion} size="small" />
+      ),
     },
     {
-      title: '完成率',
-      dataIndex: 'completionRate',
-      key: 'completionRate',
-      render: (rate) => <Progress percent={rate} size="small" />,
+      title: 'Enrolled',
+      dataIndex: 'enrolled',
+      key: 'enrolled',
     },
     {
-      title: '状态',
+      title: 'Rating',
+      dataIndex: 'rating',
+      key: 'rating',
+      render: (rating) => (
+        <Space>
+          <StarFilled style={{ color: '#fadb14' }} />
+          {rating}
+        </Space>
+      ),
+    },
+    {
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (status) => {
-        let color = status === '进行中' ? 'processing' : status === '已完成' ? 'success' : 'default';
-        return <Tag color={color}>{status}</Tag>;
+        let color = status === 'Active' ? 'green' : status === 'Pending' ? 'gold' : 'volcano';
+        return (
+          <Tag color={color}>
+            {status}
+          </Tag>
+        );
       },
     },
     {
-      title: '操作',
+      title: 'Action',
       key: 'action',
       render: () => (
-        <Space>
-          <Button type="link" size="small">详情</Button>
-          <Button type="link" size="small">分配</Button>
+        <Space size="small">
+          <Button type="text" icon={<EyeOutlined />} />
+          <Button type="text" icon={<EditOutlined />} />
+          <Button type="text" icon={<DeleteOutlined />} />
         </Space>
       ),
     },
   ];
 
-  const coursesData = [
-    {
-      key: '1',
-      id: 'T-10045',
-      name: '安全驾驶基础知识',
-      type: '视频',
-      duration: '2小时',
-      completedCount: 42,
-      totalCount: 50,
-      completionRate: 84,
-      status: '进行中',
-    },
-    {
-      key: '2',
-      id: 'T-10046',
-      name: '急刹车与急转弯避免技巧',
-      type: '视频',
-      duration: '1.5小时',
-      completedCount: 38,
-      totalCount: 50,
-      completionRate: 76,
-      status: '进行中',
-    },
-    {
-      key: '3',
-      id: 'T-10047',
-      name: '安全法规解读',
-      type: '文档',
-      duration: '3小时',
-      completedCount: 50,
-      totalCount: 50,
-      completionRate: 100,
-      status: '已完成',
-    },
-    {
-      key: '4',
-      id: 'T-10048',
-      name: '疲劳驾驶识别与预防',
-      type: '视频',
-      duration: '1小时',
-      completedCount: 35,
-      totalCount: 50,
-      completionRate: 70,
-      status: '进行中',
-    },
-    {
-      key: '5',
-      id: 'T-10049',
-      name: '紧急情况处理实操',
-      type: '实操',
-      duration: '4小时',
-      completedCount: 28,
-      totalCount: 50,
-      completionRate: 56,
-      status: '进行中',
-    },
-  ];
-
-  // 驾驶员培训状态数据
-  const driverTrainingColumns = [
-    {
-      title: '驾驶员ID',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: '安全评分',
-      dataIndex: 'safetyScore',
-      key: 'safetyScore',
-      sorter: (a, b) => a.safetyScore - b.safetyScore,
-      render: (score) => {
-        let color = score >= 90 ? '#34c759' : score >= 80 ? '#ff9500' : '#ff3b30';
-        return <Text strong style={{ color }}>{score}</Text>;
-      },
-    },
-    {
-      title: '已完成课程',
-      dataIndex: 'completedCourses',
-      key: 'completedCourses',
-      render: (count, record) => `${count}/${record.totalCourses}`,
-    },
-    {
-      title: '培训进度',
-      dataIndex: 'trainingProgress',
-      key: 'trainingProgress',
-      render: (progress) => <Progress percent={progress} size="small" />,
-    },
-    {
-      title: '培训状态',
-      dataIndex: 'trainingStatus',
-      key: 'trainingStatus',
-      render: (status) => {
-        let color = status === '已完成' ? 'success' : status === '进行中' ? 'processing' : 'warning';
-        return <Tag color={color}>{status}</Tag>;
-      },
-    },
-    {
-      title: '最近培训',
-      dataIndex: 'lastTraining',
-      key: 'lastTraining',
-    },
-    {
-      title: '操作',
-      key: 'action',
-      render: () => (
-        <Space>
-          <Button type="link" size="small">详情</Button>
-          <Button type="link" size="small">分配课程</Button>
-        </Space>
-      ),
-    },
-  ];
-
+  // Driver training status data
   const driverTrainingData = [
     {
       key: '1',
       id: 'D-10045',
-      name: '张明',
-      safetyScore: 94,
-      completedCourses: 5,
-      totalCourses: 5,
-      trainingProgress: 100,
-      trainingStatus: '已完成',
-      lastTraining: '2025-03-10',
+      name: 'John Smith',
+      completed: 5,
+      inProgress: 1,
+      required: 6,
+      lastActivity: '2025-05-15',
+      status: 'Compliant',
     },
     {
       key: '2',
       id: 'D-10078',
-      name: '李强',
-      safetyScore: 87,
-      completedCourses: 4,
-      totalCourses: 5,
-      trainingProgress: 80,
-      trainingStatus: '进行中',
-      lastTraining: '2025-03-12',
+      name: 'Michael Johnson',
+      completed: 4,
+      inProgress: 1,
+      required: 6,
+      lastActivity: '2025-05-12',
+      status: 'In Progress',
     },
     {
       key: '3',
       id: 'D-10023',
-      name: '王伟',
-      safetyScore: 76,
-      completedCourses: 3,
-      totalCourses: 5,
-      trainingProgress: 60,
-      trainingStatus: '进行中',
-      lastTraining: '2025-03-08',
+      name: 'Robert Williams',
+      completed: 3,
+      inProgress: 0,
+      required: 6,
+      lastActivity: '2025-05-08',
+      status: 'Non-Compliant',
     },
     {
       key: '4',
       id: 'D-10089',
-      name: '赵静',
-      safetyScore: 92,
-      completedCourses: 5,
-      totalCourses: 5,
-      trainingProgress: 100,
-      trainingStatus: '已完成',
-      lastTraining: '2025-03-15',
+      name: 'Emily Davis',
+      completed: 6,
+      inProgress: 0,
+      required: 6,
+      lastActivity: '2025-05-18',
+      status: 'Compliant',
     },
     {
       key: '5',
       id: 'D-10056',
-      name: '刘洋',
-      safetyScore: 68,
-      completedCourses: 2,
-      totalCourses: 5,
-      trainingProgress: 40,
-      trainingStatus: '进行中',
-      lastTraining: '2025-03-05',
+      name: 'David Miller',
+      completed: 2,
+      inProgress: 2,
+      required: 6,
+      lastActivity: '2025-05-10',
+      status: 'Non-Compliant',
     },
   ];
 
-  // 培训计划列表数据
-  const trainingPlanData = [
+  // Driver training columns
+  const driverColumns = [
     {
-      title: '新司机入职培训计划',
-      description: '针对新入职司机的安全驾驶基础培训，包含安全法规、基本驾驶技能和紧急情况处理。',
-      courses: 5,
-      duration: '12小时',
-      status: '进行中',
+      title: 'Driver ID',
+      dataIndex: 'id',
+      key: 'id',
     },
     {
-      title: '季度安全复训计划',
-      description: '每季度对所有司机进行安全意识和技能的复训，强化安全驾驶理念。',
-      courses: 3,
-      duration: '6小时',
-      status: '即将开始',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
     },
     {
-      title: '高风险司机专项培训',
-      description: '针对安全评分低于80分的司机进行的专项培训，重点关注其薄弱环节。',
-      courses: 4,
-      duration: '8小时',
-      status: '进行中',
+      title: 'Completed',
+      dataIndex: 'completed',
+      key: 'completed',
     },
     {
-      title: '新技术应用培训',
-      description: '介绍新的安全驾驶辅助技术和系统使用方法，提高驾驶效率和安全性。',
-      courses: 2,
-      duration: '4小时',
-      status: '已完成',
+      title: 'In Progress',
+      dataIndex: 'inProgress',
+      key: 'inProgress',
+    },
+    {
+      title: 'Required',
+      dataIndex: 'required',
+      key: 'required',
+    },
+    {
+      title: 'Completion Rate',
+      key: 'completionRate',
+      render: (_, record) => (
+        <Progress 
+          percent={Math.round((record.completed / record.required) * 100)} 
+          size="small" 
+        />
+      ),
+    },
+    {
+      title: 'Last Activity',
+      dataIndex: 'lastActivity',
+      key: 'lastActivity',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => {
+        let color = status === 'Compliant' ? 'green' : status === 'In Progress' ? 'gold' : 'volcano';
+        return (
+          <Tag color={color}>
+            {status}
+          </Tag>
+        );
+      },
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: () => (
+        <Space size="small">
+          <Button type="text" icon={<EyeOutlined />} />
+          <Button type="text" icon={<EditOutlined />} />
+        </Space>
+      ),
     },
   ];
+
+  // Upcoming training events
+  const upcomingEvents = [
+    {
+      title: 'Advanced Defensive Driving Workshop',
+      date: 'June 15, 2025',
+      location: 'Training Center A',
+      participants: 24,
+      instructor: 'James Wilson',
+    },
+    {
+      title: 'Safety Regulations Update Seminar',
+      date: 'June 22, 2025',
+      location: 'Conference Room B',
+      participants: 45,
+      instructor: 'Sarah Thompson',
+    },
+    {
+      title: 'Emergency Response Simulation',
+      date: 'July 5, 2025',
+      location: 'Simulation Center',
+      participants: 18,
+      instructor: 'Robert Chen',
+    },
+  ];
+
+  const handleAddCourse = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleSubmit = () => {
+    form.validateFields().then(values => {
+      console.log('Form values:', values);
+      message.success('Course added successfully');
+      setVisible(false);
+      form.resetFields();
+    }).catch(errorInfo => {
+      console.log('Validation failed:', errorInfo);
+    });
+  };
 
   return (
     <div className="training-management-container">
-      <Title level={3}>培训管理</Title>
-      <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        管理司机安全培训课程、计划和进度，提升整体安全驾驶水平
-      </Text>
-      
-      {/* 控制面板 */}
-      <Card style={{ marginBottom: '24px' }}>
-        <Row gutter={[16, 16]} align="middle">
-          <Col xs={24} md={8}>
-            <Text strong>培训状态：</Text>
-            <Select 
-              style={{ width: '80%', marginLeft: '10px' }} 
-              defaultValue="all"
-              onChange={(value) => setTrainingStatus(value)}
-            >
-              <Option value="all">所有状态</Option>
-              <Option value="inProgress">进行中</Option>
-              <Option value="completed">已完成</Option>
-              <Option value="notStarted">未开始</Option>
-            </Select>
-          </Col>
-          <Col xs={24} md={8}>
-            <Text strong>课程类型：</Text>
-            <Select style={{ width: '80%', marginLeft: '10px' }} defaultValue="all">
-              <Option value="all">所有类型</Option>
-              <Option value="video">视频课程</Option>
-              <Option value="document">文档课程</Option>
-              <Option value="practical">实操课程</Option>
-            </Select>
-          </Col>
-          <Col xs={24} md={8} style={{ textAlign: 'right' }}>
-            <Button type="primary" icon={<PlusOutlined />}>新增培训课程</Button>
-          </Col>
-        </Row>
-      </Card>
+      <div className="page-header">
+        <Title level={3}>Training Management</Title>
+        <Text type="secondary">Manage driver training programs, courses, and compliance</Text>
+      </div>
 
-      {/* 培训内容标签页 */}
-      <Card style={{ marginBottom: '24px' }}>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="培训课程" key="1">
+      <Tabs activeKey={activeTab} onChange={setActiveTab}>
+        <TabPane tab="Training Courses" key="1">
+          <Card 
+            title="Training Course Catalog" 
+            extra={
+              <Space>
+                <Button icon={<SearchOutlined />}>Search</Button>
+                <Button icon={<FilterOutlined />}>Filter</Button>
+                <Button type="primary" icon={<PlusOutlined />} onClick={handleAddCourse}>Add Course</Button>
+              </Space>
+            }
+          >
             <Table 
-              columns={coursesColumns} 
-              dataSource={coursesData} 
+              columns={courseColumns} 
+              dataSource={trainingCourses} 
               pagination={{ pageSize: 5 }}
             />
-          </TabPane>
-          <TabPane tab="驾驶员培训状态" key="2">
+          </Card>
+
+          <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
+            <Col xs={24} lg={12}>
+              <Card title="Training Completion Statistics">
+                <Row gutter={[24, 24]}>
+                  <Col span={8}>
+                    <Statistic 
+                      title="Total Courses" 
+                      value={12} 
+                      valueStyle={{ color: '#0071e3' }}
+                    />
+                  </Col>
+                  <Col span={8}>
+                    <Statistic 
+                      title="Active Enrollments" 
+                      value={632} 
+                      valueStyle={{ color: '#ff9500' }}
+                    />
+                  </Col>
+                  <Col span={8}>
+                    <Statistic 
+                      title="Avg. Completion" 
+                      value={78.5} 
+                      precision={1}
+                      valueStyle={{ color: '#34c759' }}
+                      suffix="%"
+                    />
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col xs={24} lg={12}>
+              <Card title="Upcoming Training Events">
+                <List
+                  itemLayout="horizontal"
+                  dataSource={upcomingEvents}
+                  renderItem={item => (
+                    <List.Item>
+                      <List.Item.Meta
+                        avatar={<Avatar icon={<CalendarOutlined />} style={{ backgroundColor: '#0071e3' }} />}
+                        title={<a>{item.title}</a>}
+                        description={
+                          <Space direction="vertical" size={0}>
+                            <Text type="secondary">{item.date} at {item.location}</Text>
+                            <Text>Instructor: {item.instructor} | Participants: {item.participants}</Text>
+                          </Space>
+                        }
+                      />
+                      <Button type="link">Details</Button>
+                    </List.Item>
+                  )}
+                />
+              </Card>
+            </Col>
+          </Row>
+        </TabPane>
+
+        <TabPane tab="Driver Training Status" key="2">
+          <Card 
+            title="Driver Training Compliance" 
+            extra={
+              <Space>
+                <Button icon={<SearchOutlined />}>Search</Button>
+                <Button icon={<FilterOutlined />}>Filter</Button>
+                <Button icon={<DownloadOutlined />}>Export</Button>
+              </Space>
+            }
+          >
+            <Row gutter={[24, 24]} style={{ marginBottom: 24 }}>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic 
+                    title="Compliant Drivers" 
+                    value={68} 
+                    suffix="%"
+                    valueStyle={{ color: '#34c759' }}
+                  />
+                  <Progress percent={68} showInfo={false} strokeColor="#34c759" />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic 
+                    title="In Progress" 
+                    value={22} 
+                    suffix="%"
+                    valueStyle={{ color: '#ff9500' }}
+                  />
+                  <Progress percent={22} showInfo={false} strokeColor="#ff9500" />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic 
+                    title="Non-Compliant" 
+                    value={10} 
+                    suffix="%"
+                    valueStyle={{ color: '#ff3b30' }}
+                  />
+                  <Progress percent={10} showInfo={false} strokeColor="#ff3b30" />
+                </Card>
+              </Col>
+            </Row>
+
             <Table 
-              columns={driverTrainingColumns} 
+              columns={driverColumns} 
               dataSource={driverTrainingData} 
               pagination={{ pageSize: 5 }}
             />
-          </TabPane>
-          <TabPane tab="培训计划" key="3">
+          </Card>
+        </TabPane>
+
+        <TabPane tab="Training Schedule" key="3">
+          <Card title="Training Calendar">
+            <Calendar />
+          </Card>
+        </TabPane>
+
+        <TabPane tab="Training Resources" key="4">
+          <Card title="Training Materials and Resources">
             <List
               itemLayout="horizontal"
-              dataSource={trainingPlanData}
+              dataSource={[
+                {
+                  title: 'Defensive Driving Manual',
+                  type: 'PDF Document',
+                  size: '4.2 MB',
+                  updated: 'May 10, 2025',
+                },
+                {
+                  title: 'Safety Regulations Handbook',
+                  type: 'PDF Document',
+                  size: '6.8 MB',
+                  updated: 'April 22, 2025',
+                },
+                {
+                  title: 'Emergency Response Procedures',
+                  type: 'Video Tutorial',
+                  size: '256 MB',
+                  updated: 'May 5, 2025',
+                },
+                {
+                  title: 'Vehicle Inspection Checklist',
+                  type: 'Excel Spreadsheet',
+                  size: '1.2 MB',
+                  updated: 'May 18, 2025',
+                },
+                {
+                  title: 'Fatigue Management Guide',
+                  type: 'PDF Document',
+                  size: '3.5 MB',
+                  updated: 'March 30, 2025',
+                },
+              ]}
               renderItem={item => (
                 <List.Item
                   actions={[
-                    <Button type="link">查看详情</Button>,
-                    <Button type="link">编辑</Button>
+                    <Button type="link" icon={<DownloadOutlined />}>Download</Button>,
+                    <Button type="link" icon={<EyeOutlined />}>Preview</Button>,
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={<Avatar icon={<BookOutlined />} style={{ backgroundColor: '#0071e3' }} />}
-                    title={<Text strong>{item.title}</Text>}
+                    avatar={<Avatar icon={<FileOutlined />} style={{ backgroundColor: '#0071e3' }} />}
+                    title={<a>{item.title}</a>}
                     description={
-                      <>
-                        <Paragraph>{item.description}</Paragraph>
-                        <Space>
-                          <Text type="secondary">课程数: {item.courses}</Text>
-                          <Text type="secondary">总时长: {item.duration}</Text>
-                          <Tag color={item.status === '已完成' ? 'success' : item.status === '进行中' ? 'processing' : 'default'}>
-                            {item.status === '已完成' ? <CheckCircleOutlined /> : <ClockCircleOutlined />} {item.status}
-                          </Tag>
-                        </Space>
-                      </>
+                      <Space direction="vertical" size={0}>
+                        <Text type="secondary">{item.type} • {item.size}</Text>
+                        <Text type="secondary">Last updated: {item.updated}</Text>
+                      </Space>
                     }
                   />
                 </List.Item>
               )}
             />
-          </TabPane>
-        </Tabs>
-      </Card>
+          </Card>
+        </TabPane>
+      </Tabs>
 
-      {/* 培训效果分析 */}
-      <Card title="培训效果分析">
-        <Row gutter={[24, 24]}>
-          <Col xs={24} md={8}>
-            <Card type="inner" title="安全评分提升">
-              <Statistic 
-                title="平均提升" 
-                value={12.5} 
-                precision={1} 
-                valueStyle={{ color: '#34c759' }} 
-                suffix="%" 
-              />
-              <Text type="secondary">完成培训后司机安全评分平均提升幅度</Text>
-            </Card>
-          </Col>
-          <Col xs={24} md={8}>
-            <Card type="inner" title="事故率降低">
-              <Statistic 
-                title="降低比例" 
-                value={18.3} 
-                precision={1} 
-                valueStyle={{ color: '#34c759' }} 
-                suffix="%" 
-              />
-              <Text type="secondary">完成培训后司机事故发生率降低比例</Text>
-            </Card>
-          </Col>
-          <Col xs={24} md={8}>
-            <Card type="inner" title="投诉率降低">
-              <Statistic 
-                title="降低比例" 
-                value={15.7} 
-                precision={1} 
-                valueStyle={{ color: '#34c759' }} 
-                suffix="%" 
-              />
-              <Text type="secondary">完成培训后乘客投诉率降低比例</Text>
-            </Card>
-          </Col>
-        </Row>
-      </Card>
+      <Modal
+        title="Add New Training Course"
+        visible={visible}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>Cancel</Button>,
+          <Button key="submit" type="primary" onClick={handleSubmit}>Add Course</Button>,
+        ]}
+        width={700}
+      >
+        <Form
+          form={form}
+          layout="vertical"
+        >
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                name="title"
+                label="Course Title"
+                rules={[{ required: true, message: 'Please enter course title' }]}
+              >
+                <Input placeholder="Enter course title" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="type"
+                label="Course Type"
+                rules={[{ required: true, message: 'Please select course type' }]}
+              >
+                <Select placeholder="Select course type">
+                  <Option value="Online Course">Online Course</Option>
+                  <Option value="Video Training">Video Training</Option>
+                  <Option value="Practical Workshop">Practical Workshop</Option>
+                  <Option value="Simulation Training">Simulation Training</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                name="duration"
+                label="Duration"
+                rules={[{ required: true, message: 'Please enter duration' }]}
+              >
+                <Input placeholder="e.g. 4 hours" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="status"
+                label="Status"
+                rules={[{ required: true, message: 'Please select status' }]}
+              >
+                <Select placeholder="Select status">
+                  <Option value="Active">Active</Option>
+                  <Option value="Pending">Pending</Option>
+                  <Option value="Inactive">Inactive</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Form.Item
+            name="description"
+            label="Course Description"
+            rules={[{ required: true, message: 'Please enter course description' }]}
+          >
+            <TextArea rows={4} placeholder="Enter course description" />
+          </Form.Item>
+          <Form.Item
+            name="materials"
+            label="Course Materials"
+          >
+            <Upload>
+              <Button icon={<UploadOutlined />}>Upload Files</Button>
+            </Upload>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };

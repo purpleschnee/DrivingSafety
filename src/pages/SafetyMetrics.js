@@ -12,7 +12,7 @@ const SafetyMetrics = () => {
   const [timeRange, setTimeRange] = useState('month');
   const [activeTab, setActiveTab] = useState('1');
 
-  // u5b89u5168u6307u6807u8d8bu52bfu6570u636e
+  // Safety indicator trend data
   const safetyTrendData = [
     { date: '2025-01-01', score: 78, incidents: 42 },
     { date: '2025-01-15', score: 80, incidents: 38 },
@@ -27,7 +27,7 @@ const SafetyMetrics = () => {
     { date: '2025-06-01', score: 92, incidents: 20 },
   ];
 
-  // u5b89u5168u8bc4u5206u8d8bu52bfu56feu8868u914du7f6e
+  // Safety indicator trend chart configuration
   const safetyTrendConfig = {
     data: safetyTrendData,
     height: 300,
@@ -53,7 +53,7 @@ const SafetyMetrics = () => {
     },
   };
 
-  // u4e8bu4ef6u6570u91cfu8d8bu52bfu56feu8868u914du7f6e
+  // Incident trend chart configuration
   const incidentTrendConfig = {
     data: safetyTrendData,
     height: 300,
@@ -75,17 +75,17 @@ const SafetyMetrics = () => {
     },
   };
 
-  // u96f7u8fbeu56feu6570u636e
+  // Radar chart data
   const radarData = [
-    { metric: 'u6025u5239u8f66', value: 85 },
-    { metric: 'u6025u52a0u901f', value: 78 },
-    { metric: 'u6025u8f6cu5f2f', value: 82 },
-    { metric: 'u8d85u901f', value: 90 },
-    { metric: 'u75b2u52b3u9a7eu9a76', value: 95 },
-    { metric: 'u5206u5fc3u9a7eu9a76', value: 88 },
+    { metric: 'Sudden Braking', value: 85 },
+    { metric: 'Rapid Acceleration', value: 78 },
+    { metric: 'Sharp Turning', value: 82 },
+    { metric: 'Speeding', value: 90 },
+    { metric: 'Fatigue Driving', value: 95 },
+    { metric: 'Distracted Driving', value: 88 },
   ];
 
-  // u96f7u8fbeu56feu914du7f6e
+  // Radar chart configuration
   const radarConfig = {
     data: radarData,
     height: 300,
@@ -117,7 +117,7 @@ const SafetyMetrics = () => {
     },
   };
 
-  // u4eeau8868u76d8u914du7f6e
+  // Gauge chart configuration
   const gaugeConfig = {
     percent: 0.85,
     height: 300,
@@ -147,26 +147,26 @@ const SafetyMetrics = () => {
     },
   };
 
-  // u5b89u5168u6307u6807u6570u636e
+  // Safety metrics table columns
   const metricsColumns = [
     {
-      title: 'u6307u6807u540du79f0',
+      title: 'Metric Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'u5f53u524du503c',
+      title: 'Current Value',
       dataIndex: 'current',
       key: 'current',
       sorter: (a, b) => a.current - b.current,
     },
     {
-      title: 'u76eeu6807u503c',
+      title: 'Target Value',
       dataIndex: 'target',
       key: 'target',
     },
     {
-      title: 'u5b8cu6210u7387',
+      title: 'Completion Rate',
       dataIndex: 'completion',
       key: 'completion',
       render: (completion) => (
@@ -178,7 +178,7 @@ const SafetyMetrics = () => {
       ),
     },
     {
-      title: 'u8f83u4e0au6708',
+      title: 'vs Last Month',
       dataIndex: 'change',
       key: 'change',
       render: (change) => {
@@ -202,7 +202,7 @@ const SafetyMetrics = () => {
   const metricsData = [
     {
       key: '1',
-      name: 'u5b89u5168u9a7eu9a76u8bc4u5206',
+      name: 'Safe Driving Score',
       current: 85,
       target: 90,
       completion: 94,
@@ -1971,8 +1971,8 @@ const SafetyMetrics = () => {
         </Tabs>
       </Card>
 
-      {/* u5b89u5168u6307u6807u8868u683c */}
-      <Card title="u5b89u5168u6307u6807u8be6u60c5" style={{ marginBottom: '24px' }}>
+      {/* Safety Metrics Table */}
+      <Card title="Safety Metrics Details" style={{ marginBottom: '24px' }}>
         <Table 
           columns={metricsColumns} 
           dataSource={metricsData} 

@@ -6,7 +6,7 @@ import { Line, Pie, Column } from '@ant-design/charts';
 const { Title, Text } = Typography;
 
 const Dashboard = () => {
-  // 安全评分数据
+  // Safety score data
   const safetyScoreData = [
     { date: '2025-01', score: 78 },
     { date: '2025-02', score: 82 },
@@ -16,7 +16,7 @@ const Dashboard = () => {
     { date: '2025-06', score: 91 },
   ];
 
-  // 安全评分图表配置
+  // Safety score chart configuration
   const safetyScoreConfig = {
     data: safetyScoreData,
     height: 250,
@@ -42,16 +42,16 @@ const Dashboard = () => {
     },
   };
 
-  // 事件类型分布数据
+  // Incident type distribution data
   const incidentTypeData = [
-    { type: '急刹车', value: 38 },
-    { type: '急加速', value: 25 },
-    { type: '急转弯', value: 18 },
-    { type: '超速', value: 15 },
-    { type: '疲劳驾驶', value: 4 },
+    { type: 'Hard Braking', value: 38 },
+    { type: 'Rapid Acceleration', value: 25 },
+    { type: 'Sharp Turning', value: 18 },
+    { type: 'Speeding', value: 15 },
+    { type: 'Fatigue Driving', value: 4 },
   ];
 
-  // 事件类型分布图表配置
+  // Incident type distribution chart configuration
   const incidentTypeConfig = {
     data: incidentTypeData,
     height: 250,
@@ -65,7 +65,7 @@ const Dashboard = () => {
     interactions: [{ type: 'pie-legend-active' }, { type: 'element-active' }],
   };
 
-  // 安全评分分布数据
+  // Safety score distribution data
   const safetyScoreDistributionData = [
     { score: '60-70', count: 12, color: '#ff3b30' },
     { score: '71-80', count: 28, color: '#ff9500' },
@@ -73,7 +73,7 @@ const Dashboard = () => {
     { score: '91-100', count: 15, color: '#34c759' },
   ];
 
-  // 安全评分分布图表配置
+  // Safety score distribution chart configuration
   const safetyScoreDistributionConfig = {
     data: safetyScoreDistributionData,
     xField: 'score',
@@ -90,77 +90,77 @@ const Dashboard = () => {
       },
     },
     meta: {
-      score: { alias: '安全评分范围' },
-      count: { alias: '驾驶员数量' },
+      score: { alias: 'Safety Score Range' },
+      count: { alias: 'Number of Drivers' },
     },
   };
 
-  // 实时安全警报数据
+  // Real-time safety alerts data
   const realtimeAlertsData = [
-    { id: 'A-1023', driver: 'D-10056', name: '刘洋', event: '急刹车', location: '中关村南大街', time: '10分钟前', severity: '中度' },
-    { id: 'A-1022', driver: 'D-10023', name: '王伟', event: '超速', location: '西直门外大街', time: '25分钟前', severity: '严重' },
-    { id: 'A-1021', driver: 'D-10078', name: '李强', event: '急转弯', location: '朝阳路', time: '42分钟前', severity: '轻度' },
-    { id: 'A-1020', driver: 'D-10112', name: '陈晓', event: '急加速', location: '建国门外大街', time: '1小时前', severity: '中度' },
+    { id: 'A-1023', driver: 'D-10056', name: 'Liu Yang', event: 'Hard Braking', location: 'Zhongguancun South Street', time: '10 mins ago', severity: 'Medium' },
+    { id: 'A-1022', driver: 'D-10023', name: 'Wang Wei', event: 'Speeding', location: 'Xizhimen Outer Street', time: '25 mins ago', severity: 'High' },
+    { id: 'A-1021', driver: 'D-10078', name: 'Li Qiang', event: 'Sharp Turning', location: 'Chaoyang Road', time: '42 mins ago', severity: 'Low' },
+    { id: 'A-1020', driver: 'D-10112', name: 'Chen Xiao', event: 'Rapid Acceleration', location: 'Jianguomen Outer Street', time: '1 hour ago', severity: 'Medium' },
   ];
 
-  // 实时安全警报列配置
+  // Real-time safety alerts columns configuration
   const realtimeAlertsColumns = [
     {
-      title: '警报ID',
+      title: 'Alert ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '司机',
+      title: 'Driver',
       dataIndex: 'name',
       key: 'name',
       render: (text, record) => `${text} (${record.driver})`,
     },
     {
-      title: '事件类型',
+      title: 'Event Type',
       dataIndex: 'event',
       key: 'event',
     },
     {
-      title: '位置',
+      title: 'Location',
       dataIndex: 'location',
       key: 'location',
     },
     {
-      title: '时间',
+      title: 'Time',
       dataIndex: 'time',
       key: 'time',
     },
     {
-      title: '严重程度',
+      title: 'Severity',
       dataIndex: 'severity',
       key: 'severity',
       render: (severity) => {
-        let color = severity === '严重' ? '#ff3b30' : severity === '中度' ? '#ff9500' : '#34c759';
+        let color = severity === 'High' ? '#ff3b30' : severity === 'Medium' ? '#ff9500' : '#34c759';
         return <Text strong style={{ color }}>{severity}</Text>;
       },
     },
     {
-      title: '操作',
+      title: 'Action',
       key: 'action',
-      render: () => <Button type="link" size="small">处理</Button>,
+      render: () => <Button type="link" size="small">Process</Button>,
     },
   ];
 
-  // 司机表现数据
+  // Driver performance data
   const driverPerformanceColumns = [
     {
-      title: '司机ID',
+      title: 'Driver ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '安全评分',
+      title: 'Safety Score',
       dataIndex: 'safetyScore',
       key: 'safetyScore',
       sorter: (a, b) => a.safetyScore - b.safetyScore,
@@ -170,19 +170,19 @@ const Dashboard = () => {
       },
     },
     {
-      title: '事件数',
+      title: 'Incidents',
       dataIndex: 'incidents',
       key: 'incidents',
       sorter: (a, b) => a.incidents - b.incidents,
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (status) => {
-        if (status === '优秀') {
+        if (status === 'Excellent') {
           return <Text type="success"><CheckCircleOutlined /> {status}</Text>;
-        } else if (status === '需要关注') {
+        } else if (status === 'Needs Attention') {
           return <Text type="warning"><ExclamationCircleOutlined /> {status}</Text>;
         } else {
           return <Text type="danger"><ExclamationCircleOutlined /> {status}</Text>;
@@ -190,174 +190,144 @@ const Dashboard = () => {
       },
     },
     {
-      title: '操作',
+      title: 'Action',
       key: 'action',
-      render: () => <Button type="link" size="small">查看详情</Button>,
+      render: () => <Button type="link" size="small">View Details</Button>,
     },
   ];
 
   const driverPerformanceData = [
     {
       key: '1',
-      id: 'D-10045',
-      name: '张明',
-      safetyScore: 94,
+      id: 'D-10056',
+      name: 'Liu Yang',
+      safetyScore: 95,
       incidents: 2,
-      status: '优秀',
+      status: 'Excellent',
     },
     {
       key: '2',
-      id: 'D-10078',
-      name: '李强',
-      safetyScore: 87,
-      incidents: 5,
-      status: '良好',
+      id: 'D-10023',
+      name: 'Wang Wei',
+      safetyScore: 72,
+      incidents: 8,
+      status: 'Warning',
     },
     {
       key: '3',
-      id: 'D-10023',
-      name: '王伟',
-      safetyScore: 76,
-      incidents: 12,
-      status: '需要关注',
-    },
-    {
-      key: '4',
-      id: 'D-10089',
-      name: '赵静',
-      safetyScore: 92,
-      incidents: 3,
-      status: '优秀',
-    },
-    {
-      key: '5',
-      id: 'D-10056',
-      name: '刘洋',
-      safetyScore: 68,
-      incidents: 18,
-      status: '需要培训',
+      id: 'D-10078',
+      name: 'Li Qiang',
+      safetyScore: 88,
+      incidents: 4,
+      status: 'Needs Attention',
     },
   ];
 
   return (
     <div className="dashboard-container">
-      <Title level={3}>安全驾驶数据概览</Title>
-      <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        实时监控驾驶员安全表现和关键指标
-      </Text>
+      <Title level={3}>Safety Driving Data Overview</Title>
+      <Text type="secondary">Real-time monitoring of fleet safety performance</Text>
       
-      {/* 统计卡片 */}
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="平均安全评分"
+              title="Average Safety Score"
               value={85.7}
               precision={1}
               valueStyle={{ color: '#0071e3' }}
               prefix={<CarOutlined />}
-              suffix="分"
+              suffix="pts"
             />
-            <div style={{ marginTop: '10px' }}>
-              <Text type="success">
-                <ArrowUpOutlined /> 3.2% 较上月
-              </Text>
-            </div>
+            <Text type="secondary">↑ 3.2% from last month</Text>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="安全事件总数"
+              title="Total Driving Hours"
               value={247}
               valueStyle={{ color: '#ff9500' }}
-              prefix={<ExclamationCircleOutlined />}
             />
-            <div style={{ marginTop: '10px' }}>
-              <Text type="success">
-                <ArrowDownOutlined /> 8.5% 较上月
-              </Text>
-            </div>
+            <Text type="secondary">↑ 6.5% from last month</Text>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="培训完成率"
+              title="Safety Compliance Rate"
               value={92.3}
               precision={1}
               valueStyle={{ color: '#34c759' }}
               suffix="%"
             />
-            <div style={{ marginTop: '10px' }}>
-              <Progress percent={92.3} showInfo={false} strokeColor="#34c759" />
-            </div>
+            <Progress percent={92.3} showInfo={false} strokeColor="#34c759" />
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="需要关注的司机"
+              title="Critical Safety Incidents"
               value={8}
               valueStyle={{ color: '#ff3b30' }}
             />
-            <div style={{ marginTop: '10px' }}>
-              <Text type="danger">
-                <ArrowUpOutlined /> 2 较上月
-              </Text>
-            </div>
+            <Text type="secondary">↓ 2 from last month</Text>
           </Card>
         </Col>
       </Row>
 
-      {/* 安全评分趋势和事件分布 */}
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24} lg={12}>
-          <Card title="安全评分趋势">
+          <Card title="Safety Score Trend">
             <Line {...safetyScoreConfig} />
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="事件类型分布">
+          <Card title="Incident Type Distribution">
             <Pie {...incidentTypeConfig} />
           </Card>
         </Col>
       </Row>
 
-      {/* 安全评分分布 */}
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card title="驾驶员安全评分分布" extra={<Button type="link">查看详情</Button>}>
+          <Card title="Driver Safety Score Distribution">
             <Column {...safetyScoreDistributionConfig} />
           </Card>
         </Col>
       </Row>
 
-      {/* 实时安全警报 */}
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
           <Card 
-            title="实时安全警报" 
-            extra={<Button type="primary" ghost>查看全部警报</Button>}
+            title="Real-time Safety Alerts" 
+            extra={<Button type="link">View All</Button>}
           >
             <Table 
               columns={realtimeAlertsColumns} 
               dataSource={realtimeAlertsData} 
-              pagination={false} 
+              pagination={false}
               size="small"
             />
           </Card>
         </Col>
       </Row>
 
-      {/* 司机表现表格 */}
-      <Card title="司机安全表现排名" style={{ marginBottom: '24px' }}>
-        <Table 
-          columns={driverPerformanceColumns} 
-          dataSource={driverPerformanceData} 
-          pagination={false}
-        />
-      </Card>
+      <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
+        <Col xs={24}>
+          <Card 
+            title="Top Driver Performance" 
+            extra={<Button type="link">View All Drivers</Button>}
+          >
+            <Table 
+              columns={driverPerformanceColumns} 
+              dataSource={driverPerformanceData} 
+              pagination={false}
+              size="small"
+            />
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };

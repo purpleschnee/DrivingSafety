@@ -11,7 +11,7 @@ const { TabPane } = Tabs;
 const CompanyComparison = () => {
   const [comparisonType, setComparisonType] = useState('industry');
 
-  // 公司对比数据
+  // Company comparison data
   const companyComparisonData = [
     { month: '2025-01', company: 85, industry: 78, competitor: 80 },
     { month: '2025-02', company: 87, industry: 79, competitor: 82 },
@@ -21,7 +21,7 @@ const CompanyComparison = () => {
     { month: '2025-06', company: 93, industry: 83, competitor: 87 },
   ];
 
-  // 公司对比图表配置
+  // Company comparison chart configuration
   const comparisonConfig = {
     data: companyComparisonData,
     height: 300,
@@ -44,25 +44,25 @@ const CompanyComparison = () => {
     },
   };
 
-  // 安全指标雷达图数据
+  // Safety metrics radar chart data
   const safetyRadarData = [
-    { metric: '安全评分', company: 93, industry: 83, competitor: 87 },
-    { metric: '急刹车', company: 95, industry: 85, competitor: 90 },
-    { metric: '急加速', company: 90, industry: 82, competitor: 85 },
-    { metric: '急转弯', company: 92, industry: 80, competitor: 83 },
-    { metric: '超速', company: 88, industry: 78, competitor: 80 },
-    { metric: '疲劳驾驶', company: 94, industry: 84, competitor: 88 },
+    { metric: 'Safety Score', company: 93, industry: 83, competitor: 87 },
+    { metric: 'Hard Braking', company: 95, industry: 85, competitor: 90 },
+    { metric: 'Rapid Acceleration', company: 90, industry: 82, competitor: 85 },
+    { metric: 'Sharp Turns', company: 92, industry: 80, competitor: 83 },
+    { metric: 'Speeding', company: 88, industry: 78, competitor: 80 },
+    { metric: 'Fatigue Driving', company: 94, industry: 84, competitor: 88 },
   ];
 
-  // 转换雷达图数据格式
+  // Convert radar chart data format
   const radarDataFormatted = [];
   safetyRadarData.forEach(item => {
-    radarDataFormatted.push({ metric: item.metric, type: '我司', value: item.company });
-    radarDataFormatted.push({ metric: item.metric, type: '行业平均', value: item.industry });
-    radarDataFormatted.push({ metric: item.metric, type: '主要竞争对手', value: item.competitor });
+    radarDataFormatted.push({ metric: item.metric, type: 'Our Company', value: item.company });
+    radarDataFormatted.push({ metric: item.metric, type: 'Industry Average', value: item.industry });
+    radarDataFormatted.push({ metric: item.metric, type: 'Main Competitor', value: item.competitor });
   });
 
-  // 安全指标雷达图配置
+  // Safety metrics radar chart configuration
   const radarConfig = {
     data: radarDataFormatted,
     height: 300,
@@ -95,7 +95,7 @@ const CompanyComparison = () => {
     area: {},
   };
 
-  // 安全与成本双轴图数据
+  // Safety and cost dual axes chart data
   const safetyAndCostData = [
     { month: '2025-01', safety: 85, cost: 120 },
     { month: '2025-02', safety: 87, cost: 115 },
@@ -105,7 +105,7 @@ const CompanyComparison = () => {
     { month: '2025-06', safety: 93, cost: 100 },
   ];
 
-  // 安全与成本双轴图配置
+  // Safety and cost dual axes chart configuration
   const dualAxesConfig = {
     data: [safetyAndCostData, safetyAndCostData],
     height: 300,
@@ -131,28 +131,28 @@ const CompanyComparison = () => {
         min: 70,
         max: 100,
         title: {
-          text: '安全评分',
+          text: 'Safety Score',
         },
       },
       cost: {
         min: 90,
         max: 130,
         title: {
-          text: '运营成本指数',
+          text: 'Operating Cost Index',
         },
       },
     },
   };
 
-  // 公司对比表格数据
+  // Company comparison table data
   const comparisonColumns = [
     {
-      title: '指标',
+      title: 'Metric',
       dataIndex: 'metric',
       key: 'metric',
     },
     {
-      title: '我司',
+      title: 'Our Company',
       dataIndex: 'company',
       key: 'company',
       sorter: (a, b) => a.company - b.company,
@@ -174,13 +174,13 @@ const CompanyComparison = () => {
       },
     },
     {
-      title: '行业平均',
+      title: 'Industry Average',
       dataIndex: 'industry',
       key: 'industry',
       sorter: (a, b) => a.industry - b.industry,
     },
     {
-      title: '差异',
+      title: 'Difference',
       dataIndex: 'difference',
       key: 'difference',
       render: (_, record) => {
@@ -193,13 +193,13 @@ const CompanyComparison = () => {
       },
     },
     {
-      title: '主要竞争对手',
+      title: 'Main Competitor',
       dataIndex: 'competitor',
       key: 'competitor',
       sorter: (a, b) => a.competitor - b.competitor,
     },
     {
-      title: '对比竞争对手',
+      title: 'Comparison with Competitor',
       dataIndex: 'competitorDiff',
       key: 'competitorDiff',
       render: (_, record) => {
@@ -212,7 +212,7 @@ const CompanyComparison = () => {
       },
     },
     {
-      title: '行业排名',
+      title: 'Industry Ranking',
       dataIndex: 'rank',
       key: 'rank',
       render: (rank, record) => {
@@ -229,9 +229,9 @@ const CompanyComparison = () => {
   const comparisonData = [
     {
       key: '1',
-      metric: '安全评分',
+      metric: 'Safety Score',
       company: 93,
-      companyChange: 2.2,
+      companyChange: 2.5,
       industry: 83,
       competitor: 87,
       rank: 2,
@@ -239,91 +239,111 @@ const CompanyComparison = () => {
     },
     {
       key: '2',
-      metric: '事故率',
-      company: 1.2,
-      companyChange: -0.3,
-      industry: 2.8,
-      competitor: 2.1,
+      metric: 'Incident Rate (per 100k miles)',
+      company: 2.1,
+      companyChange: -15.3,
+      industry: 3.8,
+      competitor: 2.8,
       rank: 1,
       total: 15,
     },
     {
       key: '3',
-      metric: '培训完成率',
-      company: 95,
-      companyChange: 5.0,
-      industry: 75,
-      competitor: 82,
+      metric: 'Hard Braking Events (per 1k miles)',
+      company: 1.2,
+      companyChange: -18.5,
+      industry: 2.5,
+      competitor: 1.8,
       rank: 1,
       total: 15,
     },
     {
       key: '4',
-      metric: '乘客满意度',
-      company: 4.8,
-      companyChange: 0.2,
-      industry: 4.2,
-      competitor: 4.5,
+      metric: 'Rapid Acceleration Events (per 1k miles)',
+      company: 1.5,
+      companyChange: -12.8,
+      industry: 2.8,
+      competitor: 2.2,
       rank: 1,
       total: 15,
     },
     {
       key: '5',
-      metric: '投诉率',
-      company: 1.5,
-      companyChange: -0.5,
-      industry: 3.2,
-      competitor: 2.4,
+      metric: 'Speeding Events (per 1k miles)',
+      company: 3.2,
+      companyChange: -8.5,
+      industry: 5.6,
+      competitor: 4.1,
       rank: 2,
+      total: 15,
+    },
+    {
+      key: '6',
+      metric: 'Driver Compliance Rate',
+      company: 96.5,
+      companyChange: 1.8,
+      industry: 88.2,
+      competitor: 92.3,
+      rank: 1,
+      total: 15,
+    },
+    {
+      key: '7',
+      metric: 'Training Completion Rate',
+      company: 98.2,
+      companyChange: 3.5,
+      industry: 85.6,
+      competitor: 90.1,
+      rank: 1,
       total: 15,
     },
   ];
 
   return (
     <div className="company-comparison-container">
-      <Title level={3}>公司对比分析</Title>
+      <Title level={3}>Company Comparison</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        将我司安全驾驶表现与行业平均水平和主要竞争对手进行对比分析
+        Compare our company's safety metrics with industry averages and competitors
       </Text>
       
-      {/* 控制面板 */}
+      {/* Control Panel */}
       <Card style={{ marginBottom: '24px' }}>
         <Row gutter={[16, 16]} align="middle">
           <Col xs={24} md={8}>
-            <Text strong>对比类型：</Text>
+            <Text strong>Comparison Type:</Text>
             <Select 
               style={{ width: '80%', marginLeft: '10px' }} 
               defaultValue="industry"
               onChange={(value) => setComparisonType(value)}
             >
-              <Option value="industry">行业对比</Option>
-              <Option value="competitor">竞争对手对比</Option>
-              <Option value="historical">历史数据对比</Option>
+              <Option value="industry">Industry Average</Option>
+              <Option value="competitor">Main Competitor</Option>
+              <Option value="historical">Historical Data</Option>
             </Select>
           </Col>
           <Col xs={24} md={8}>
-            <Text strong>时间范围：</Text>
+            <Text strong>Date Range:</Text>
             <RangePicker style={{ width: '80%', marginLeft: '10px' }} />
           </Col>
           <Col xs={24} md={8} style={{ textAlign: 'right' }}>
-            <Button icon={<DownloadOutlined />} type="primary">导出报告</Button>
+            <Button icon={<DownloadOutlined />} type="primary">Export Report</Button>
           </Col>
         </Row>
       </Card>
 
-      {/* 统计卡片 */}
+      {/* Statistics Cards */}
       <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="安全评分排名"
+              title="Safety Score Ranking"
               value={2}
               suffix="/ 15"
               valueStyle={{ color: '#0071e3' }}
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowUpOutlined /> 较上月提升1位
+                <ArrowUpOutlined /> Up 1 position from last month
               </Text>
             </div>
           </Card>
@@ -331,7 +351,7 @@ const CompanyComparison = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="高于行业平均"
+              title="Above Industry Average"
               value={12}
               precision={0}
               valueStyle={{ color: '#34c759' }}
@@ -345,7 +365,7 @@ const CompanyComparison = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="高于主要竞争对手"
+              title="Above Main Competitor"
               value={6.9}
               precision={1}
               valueStyle={{ color: '#34c759' }}
@@ -359,7 +379,7 @@ const CompanyComparison = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="安全投入回报率"
+              title="Safety Investment Return"
               value={185}
               precision={0}
               valueStyle={{ color: '#0071e3' }}
@@ -367,30 +387,30 @@ const CompanyComparison = () => {
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowUpOutlined /> 15% 较上季度
+                <ArrowUpOutlined /> 15% from last quarter
               </Text>
             </div>
           </Card>
         </Col>
       </Row>
 
-      {/* 图表标签页 */}
+      {/* Chart Tabs */}
       <Card style={{ marginBottom: '24px' }}>
         <Tabs defaultActiveKey="1">
-          <TabPane tab="安全评分对比趋势" key="1">
+          <TabPane tab="Safety Score Trends" key="1">
             <Line {...comparisonConfig} />
           </TabPane>
-          <TabPane tab="安全指标雷达图" key="2">
+          <TabPane tab="Safety Metrics Radar Chart" key="2">
             <Radar {...radarConfig} />
           </TabPane>
-          <TabPane tab="安全与成本关系" key="3">
+          <TabPane tab="Safety vs. Cost" key="3">
             <DualAxes {...dualAxesConfig} />
           </TabPane>
         </Tabs>
       </Card>
 
-      {/* 对比数据表格 */}
-      <Card title="安全指标对比详情" style={{ marginBottom: '24px' }}>
+      {/* Comparison Table */}
+      <Card title="Safety Metrics Comparison" style={{ marginBottom: '24px' }}>
         <Table 
           columns={comparisonColumns} 
           dataSource={comparisonData} 
@@ -398,36 +418,36 @@ const CompanyComparison = () => {
         />
       </Card>
 
-      {/* 分析总结 */}
-      <Card title="对比分析总结">
+      {/* Analysis Summary */}
+      <Card title="Comparison Analysis Summary">
         <Row gutter={[24, 24]}>
           <Col xs={24} md={8}>
-            <Card type="inner" title="优势">
+            <Card type="inner" title="Advantages">
               <ul>
-                <li>安全评分持续领先行业平均12%</li>
-                <li>事故率为行业最低，仅为平均水平的43%</li>
-                <li>培训完成率行业第一，高出平均水平20%</li>
-                <li>乘客满意度持续提升，行业领先</li>
+                <li>Safety score consistently above industry average by 12%</li>
+                <li>Incident rate is the lowest in the industry, 43% lower than the average</li>
+                <li>Training completion rate is the highest in the industry, 20% above the average</li>
+                <li>Passenger satisfaction is continuously improving, leading the industry</li>
               </ul>
             </Card>
           </Col>
           <Col xs={24} md={8}>
-            <Card type="inner" title="劣势">
+            <Card type="inner" title="Disadvantages">
               <ul>
-                <li>部分区域安全评分波动较大</li>
-                <li>新入职司机安全表现低于行业平均</li>
-                <li>夜间行车安全指标有待提高</li>
-                <li>恶劣天气条件下安全表现不稳定</li>
+                <li>Safety score fluctuates in some regions</li>
+                <li>New driver safety performance is below industry average</li>
+                <li>Nighttime driving safety metrics need improvement</li>
+                <li>Safety performance is unstable in adverse weather conditions</li>
               </ul>
             </Card>
           </Col>
           <Col xs={24} md={8}>
-            <Card type="inner" title="改进建议">
+            <Card type="inner" title="Improvement Suggestions">
               <ul>
-                <li>加强新司机入职培训，提高准入门槛</li>
-                <li>针对夜间驾驶开发专项培训模块</li>
-                <li>引入恶劣天气驾驶辅助系统</li>
-                <li>建立区域安全管理团队，减少区域差异</li>
+                <li>Enhance new driver training and increase the entry threshold</li>
+                <li>Develop a specialized training module for nighttime driving</li>
+                <li>Introduce an adverse weather driving assistance system</li>
+                <li>Establish a regional safety management team to reduce regional differences</li>
               </ul>
             </Card>
           </Col>

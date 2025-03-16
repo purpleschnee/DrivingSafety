@@ -20,32 +20,32 @@ const Sidebar = () => {
     {
       key: '/',
       icon: <DashboardOutlined />,
-      label: <Link to="/">仪表盘</Link>,
+      label: <Link to="/">Dashboard</Link>,
     },
     {
       key: '/driver-analytics',
       icon: <CarOutlined />,
-      label: <Link to="/driver-analytics">驾驶员分析</Link>,
+      label: <Link to="/driver-analytics">Driver Analytics</Link>,
     },
     {
       key: '/safety-metrics',
       icon: <SafetyOutlined />,
-      label: <Link to="/safety-metrics">安全指标</Link>,
+      label: <Link to="/safety-metrics">Safety Metrics</Link>,
     },
     {
       key: '/training',
       icon: <ReadOutlined />,
-      label: <Link to="/training">培训管理</Link>,
+      label: <Link to="/training">Training Management</Link>,
     },
     {
       key: '/company-comparison',
       icon: <BarChartOutlined />,
-      label: <Link to="/company-comparison">公司对比</Link>,
+      label: <Link to="/company-comparison">Company Comparison</Link>,
     },
     {
       key: '/settings',
       icon: <SettingOutlined />,
-      label: <Link to="/settings">设置</Link>,
+      label: <Link to="/settings">Settings</Link>,
     },
   ];
 
@@ -68,7 +68,7 @@ const Sidebar = () => {
         padding: '16px'
       }}>
         {!collapsed ? (
-          <h2 style={{ margin: 0, color: '#0071e3' }}>安全驾驶平台</h2>
+          <h2 style={{ margin: 0, color: '#0071e3' }}>Safe Driving Platform</h2>
         ) : (
           <h2 style={{ margin: 0, color: '#0071e3' }}>SDP</h2>
         )}

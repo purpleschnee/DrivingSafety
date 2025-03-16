@@ -15,7 +15,7 @@ const Header = () => {
       justifyContent: 'space-between',
       boxShadow: '0 1px 4px rgba(0,0,0,0.05)'
     }}>
-      <Title level={4} style={{ margin: 0 }}>安全驾驶管理平台</Title>
+      <Title level={4} style={{ margin: 0 }}>Safe Driving Platform</Title>
       <Space size={24}>
         <Button type="text" icon={<SearchOutlined style={{ fontSize: '18px' }} />} />
         <Badge count={5} dot>

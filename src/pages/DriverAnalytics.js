@@ -12,20 +12,20 @@ const DriverAnalytics = () => {
   const [selectedDriver, setSelectedDriver] = useState('all');
   const [activeTab, setActiveTab] = useState('1');
 
-  // 驾驶员详细数据
+  // Driver detailed data
   const driversColumns = [
     {
-      title: '司机ID',
+      title: 'Driver ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '安全评分',
+      title: 'Safety Score',
       dataIndex: 'safetyScore',
       key: 'safetyScore',
       sorter: (a, b) => a.safetyScore - b.safetyScore,
@@ -35,31 +35,31 @@ const DriverAnalytics = () => {
       },
     },
     {
-      title: '急刹车',
+      title: 'Hard Braking',
       dataIndex: 'hardBraking',
       key: 'hardBraking',
       sorter: (a, b) => a.hardBraking - b.hardBraking,
     },
     {
-      title: '急加速',
+      title: 'Rapid Acceleration',
       dataIndex: 'rapidAcceleration',
       key: 'rapidAcceleration',
       sorter: (a, b) => a.rapidAcceleration - b.rapidAcceleration,
     },
     {
-      title: '急转弯',
+      title: 'Hard Turning',
       dataIndex: 'hardTurning',
       key: 'hardTurning',
       sorter: (a, b) => a.hardTurning - b.hardTurning,
     },
     {
-      title: '超速',
+      title: 'Speeding',
       dataIndex: 'speeding',
       key: 'speeding',
       sorter: (a, b) => a.speeding - b.speeding,
     },
     {
-      title: '乘客评分',
+      title: 'Passenger Rating',
       dataIndex: 'passengerRating',
       key: 'passengerRating',
       sorter: (a, b) => a.passengerRating - b.passengerRating,
@@ -69,21 +69,21 @@ const DriverAnalytics = () => {
       },
     },
     {
-      title: '培训状态',
+      title: 'Training Status',
       dataIndex: 'trainingStatus',
       key: 'trainingStatus',
       render: (status) => {
-        let color = status === '已完成' ? 'success' : status === '进行中' ? 'processing' : 'warning';
+        let color = status === 'Completed' ? 'success' : status === 'In Progress' ? 'processing' : 'warning';
         return <Tag color={color}>{status}</Tag>;
       },
     },
     {
-      title: '操作',
+      title: 'Actions',
       key: 'action',
       render: () => (
         <Space>
-          <Button type="link" size="small">详情</Button>
-          <Button type="link" size="small">培训</Button>
+          <Button type="link" size="small">Details</Button>
+          <Button type="link" size="small">Training</Button>
         </Space>
       ),
     },
@@ -93,106 +93,106 @@ const DriverAnalytics = () => {
     {
       key: '1',
       id: 'D-10045',
-      name: '张明',
+      name: 'Zhang Ming',
       safetyScore: 94,
       hardBraking: 2,
       rapidAcceleration: 1,
       hardTurning: 0,
       speeding: 1,
       passengerRating: 4.8,
-      trainingStatus: '已完成',
+      trainingStatus: 'Completed',
     },
     {
       key: '2',
       id: 'D-10078',
-      name: '李强',
+      name: 'Li Qiang',
       safetyScore: 87,
       hardBraking: 5,
       rapidAcceleration: 3,
       hardTurning: 2,
       speeding: 1,
       passengerRating: 4.5,
-      trainingStatus: '已完成',
+      trainingStatus: 'Completed',
     },
     {
       key: '3',
       id: 'D-10023',
-      name: '王伟',
+      name: 'Wang Wei',
       safetyScore: 76,
       hardBraking: 8,
       rapidAcceleration: 6,
       hardTurning: 4,
       speeding: 3,
       passengerRating: 3.9,
-      trainingStatus: '进行中',
+      trainingStatus: 'In Progress',
     },
     {
       key: '4',
       id: 'D-10089',
-      name: '赵静',
+      name: 'Zhao Jing',
       safetyScore: 92,
       hardBraking: 3,
       rapidAcceleration: 2,
       hardTurning: 1,
       speeding: 0,
       passengerRating: 4.7,
-      trainingStatus: '已完成',
+      trainingStatus: 'Completed',
     },
     {
       key: '5',
       id: 'D-10056',
-      name: '刘洋',
+      name: 'Liu Yang',
       safetyScore: 68,
       hardBraking: 12,
       rapidAcceleration: 8,
       hardTurning: 5,
       speeding: 7,
       passengerRating: 3.6,
-      trainingStatus: '未开始',
+      trainingStatus: 'Not Started',
     },
     {
       key: '6',
       id: 'D-10112',
-      name: '陈晓',
+      name: 'Chen Xiao',
       safetyScore: 89,
       hardBraking: 4,
       rapidAcceleration: 3,
       hardTurning: 2,
       speeding: 1,
       passengerRating: 4.6,
-      trainingStatus: '已完成',
+      trainingStatus: 'Completed',
     },
     {
       key: '7',
       id: 'D-10098',
-      name: '杨华',
+      name: 'Yang Hua',
       safetyScore: 81,
       hardBraking: 6,
       rapidAcceleration: 4,
       hardTurning: 3,
       speeding: 2,
       passengerRating: 4.2,
-      trainingStatus: '进行中',
+      trainingStatus: 'In Progress',
     },
   ];
 
-  // 驾驶行为雷达图数据
+  // Driver behavior radar chart data
   const driverBehaviorData = [
-    { metric: '安全驾驶', driver: '张明', value: 94 },
-    { metric: '平稳行驶', driver: '张明', value: 92 },
-    { metric: '转弯技巧', driver: '张明', value: 90 },
-    { metric: '车距控制', driver: '张明', value: 88 },
-    { metric: '车速控制', driver: '张明', value: 95 },
-    { metric: '路况应对', driver: '张明', value: 91 },
-    { metric: '安全驾驶', driver: '行业平均', value: 82 },
-    { metric: '平稳行驶', driver: '行业平均', value: 78 },
-    { metric: '转弯技巧', driver: '行业平均', value: 80 },
-    { metric: '车距控制', driver: '行业平均', value: 76 },
-    { metric: '车速控制', driver: '行业平均', value: 84 },
-    { metric: '路况应对', driver: '行业平均', value: 79 },
+    { metric: 'Safe Driving', driver: 'Zhang Ming', value: 94 },
+    { metric: 'Smooth Driving', driver: 'Zhang Ming', value: 92 },
+    { metric: 'Turning Technique', driver: 'Zhang Ming', value: 90 },
+    { metric: 'Distance Control', driver: 'Zhang Ming', value: 88 },
+    { metric: 'Speed Control', driver: 'Zhang Ming', value: 95 },
+    { metric: 'Road Condition Response', driver: 'Zhang Ming', value: 91 },
+    { metric: 'Safe Driving', driver: 'Industry Average', value: 82 },
+    { metric: 'Smooth Driving', driver: 'Industry Average', value: 78 },
+    { metric: 'Turning Technique', driver: 'Industry Average', value: 80 },
+    { metric: 'Distance Control', driver: 'Industry Average', value: 76 },
+    { metric: 'Speed Control', driver: 'Industry Average', value: 84 },
+    { metric: 'Road Condition Response', driver: 'Industry Average', value: 79 },
   ];
 
-  // 驾驶行为雷达图配置
+  // Driver behavior radar chart configuration
   const driverBehaviorConfig = {
     data: driverBehaviorData,
     xField: 'metric',
@@ -222,47 +222,47 @@ const DriverAnalytics = () => {
     area: {},
   };
 
-  // 乘客评价数据
+  // Passenger feedback data
   const passengerFeedbackData = [
-    { id: 'F-2025', passenger: '乘客152***890', date: '2025-03-15', rating: 5, comment: '司机驾驶非常平稳，全程感觉很安全，非常满意。' },
-    { id: 'F-2024', passenger: '乘客138***456', date: '2025-03-14', rating: 4, comment: '整体不错，但在拐弯处速度有点快。' },
-    { id: 'F-2023', passenger: '乘客177***234', date: '2025-03-12', rating: 5, comment: '司机技术很好，即使在拥堵路段也能平稳驾驶。' },
-    { id: 'F-2022', passenger: '乘客135***789', date: '2025-03-10', rating: 5, comment: '非常专业的驾驶员，让人感到安心。' },
-    { id: 'F-2021', passenger: '乘客186***567', date: '2025-03-08', rating: 4, comment: '总体满意，但刹车有时候有点急。' },
+    { id: 'F-2025', passenger: 'Passenger 152***890', date: '2025-03-15', rating: 5, comment: 'The driver drove very smoothly, and I felt safe throughout the trip.' },
+    { id: 'F-2024', passenger: 'Passenger 138***456', date: '2025-03-14', rating: 4, comment: 'The driver was good, but there was a bit of a bump during the trip.' },
+    { id: 'F-2023', passenger: 'Passenger 177***234', date: '2025-03-12', rating: 5, comment: 'The driver was very professional and courteous.' },
+    { id: 'F-2022', passenger: 'Passenger 135***789', date: '2025-03-10', rating: 5, comment: 'The driver was excellent, and I would definitely ride with them again.' },
+    { id: 'F-2021', passenger: 'Passenger 186***567', date: '2025-03-08', rating: 4, comment: 'The driver was good, but there was a bit of a delay during the trip.' },
   ];
 
-  // 乘客评价列配置
+  // Passenger feedback columns
   const passengerFeedbackColumns = [
     {
-      title: '反馈ID',
+      title: 'Feedback ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '乘客',
+      title: 'Passenger',
       dataIndex: 'passenger',
       key: 'passenger',
     },
     {
-      title: '日期',
+      title: 'Date',
       dataIndex: 'date',
       key: 'date',
     },
     {
-      title: '评分',
+      title: 'Rating',
       dataIndex: 'rating',
       key: 'rating',
       render: (rating) => <Rate disabled defaultValue={rating} />,
     },
     {
-      title: '评价',
+      title: 'Comment',
       dataIndex: 'comment',
       key: 'comment',
       ellipsis: true,
     },
   ];
 
-  // 安全评分仪表盘配置
+  // Safety score gauge configuration
   const safetyGaugeConfig = {
     percent: 0.94,
     range: {
@@ -292,7 +292,7 @@ const DriverAnalytics = () => {
     },
     statistic: {
       content: {
-        formatter: () => '94分',
+        formatter: () => '94%',
         style: {
           fontSize: '30px',
           lineHeight: '30px',
@@ -303,7 +303,7 @@ const DriverAnalytics = () => {
     },
   };
 
-  // 安全评分趋势配置
+  // Safety score trend configuration
   const safetyTrendConfig = {
     data: [
       { month: '2025-01', score: 88 },
@@ -328,64 +328,64 @@ const DriverAnalytics = () => {
 
   return (
     <div className="driver-analytics-container">
-      <Title level={3}>驾驶员安全分析</Title>
+      <Title level={3}>Driver Analytics</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        深入分析驾驶员安全表现和行为模式
+        Analyze driver behavior and safety performance metrics
       </Text>
-      
-      {/* 搜索和筛选区域 */}
+
+      {/* Search and filter area */}
       <Card style={{ marginBottom: '24px' }}>
         <Row gutter={[16, 16]} align="middle">
           <Col xs={24} sm={8} md={6} lg={4}>
-            <Text strong>驾驶员：</Text>
+            <Text strong>Driver:</Text>
             <Select
               style={{ width: '100%', marginTop: '8px' }}
-              placeholder="选择驾驶员"
+              placeholder="Select Driver"
               value={selectedDriver}
               onChange={setSelectedDriver}
             >
-              <Option value="all">全部驾驶员</Option>
-              <Option value="D-10045">张明 (D-10045)</Option>
-              <Option value="D-10078">李强 (D-10078)</Option>
-              <Option value="D-10023">王伟 (D-10023)</Option>
-              <Option value="D-10089">赵静 (D-10089)</Option>
-              <Option value="D-10056">刘洋 (D-10056)</Option>
+              <Option value="all">All Drivers</Option>
+              <Option value="D-10045">Zhang Ming (D-10045)</Option>
+              <Option value="D-10078">Li Qiang (D-10078)</Option>
+              <Option value="D-10023">Wang Wei (D-10023)</Option>
+              <Option value="D-10089">Zhao Jing (D-10089)</Option>
+              <Option value="D-10056">Liu Yang (D-10056)</Option>
             </Select>
           </Col>
           <Col xs={24} sm={8} md={6} lg={5}>
-            <Text strong>时间范围：</Text>
+            <Text strong>Date Range:</Text>
             <RangePicker style={{ width: '100%', marginTop: '8px' }} />
           </Col>
           <Col xs={24} sm={8} md={6} lg={5}>
-            <Text strong>安全评分：</Text>
+            <Text strong>Safety Score:</Text>
             <Select
               style={{ width: '100%', marginTop: '8px' }}
-              placeholder="安全评分范围"
+              placeholder="Safety Score Range"
               defaultValue="all"
             >
-              <Option value="all">全部</Option>
-              <Option value="90-100">优秀 (90-100)</Option>
-              <Option value="80-89">良好 (80-89)</Option>
-              <Option value="70-79">一般 (70-79)</Option>
-              <Option value="0-69">需改进 (0-69)</Option>
+              <Option value="all">All</Option>
+              <Option value="90-100">Excellent (90-100)</Option>
+              <Option value="80-89">Good (80-89)</Option>
+              <Option value="70-79">Fair (70-79)</Option>
+              <Option value="0-69">Needs Improvement (0-69)</Option>
             </Select>
           </Col>
           <Col xs={24} sm={8} md={6} lg={4}>
-            <Text strong>培训状态：</Text>
+            <Text strong>Training Status:</Text>
             <Select
               style={{ width: '100%', marginTop: '8px' }}
-              placeholder="培训状态"
+              placeholder="Training Status"
               defaultValue="all"
             >
-              <Option value="all">全部</Option>
-              <Option value="completed">已完成</Option>
-              <Option value="in-progress">进行中</Option>
-              <Option value="not-started">未开始</Option>
+              <Option value="all">All</Option>
+              <Option value="completed">Completed</Option>
+              <Option value="in-progress">In Progress</Option>
+              <Option value="not-started">Not Started</Option>
             </Select>
           </Col>
           <Col xs={24} sm={8} md={6} lg={6}>
             <Input.Search
-              placeholder="搜索驾驶员姓名或ID"
+              placeholder="Search Driver Name or ID"
               prefix={<SearchOutlined />}
               style={{ marginTop: '30px' }}
             />
@@ -393,29 +393,29 @@ const DriverAnalytics = () => {
         </Row>
         <Row justify="end" style={{ marginTop: '16px' }}>
           <Space>
-            <Button icon={<FilterOutlined />}>重置筛选</Button>
-            <Button type="primary" icon={<SearchOutlined />}>搜索</Button>
-            <Button icon={<DownloadOutlined />}>导出数据</Button>
+            <Button icon={<FilterOutlined />}>Reset Filter</Button>
+            <Button type="primary" icon={<SearchOutlined />}>Search</Button>
+            <Button icon={<DownloadOutlined />}>Export Data</Button>
           </Space>
         </Row>
       </Card>
 
-      {/* 驾驶员详细信息 - 仅在选择特定驾驶员时显示 */}
+      {/* Driver detailed information - only shown when a specific driver is selected */}
       {selectedDriver !== 'all' && (
         <Card style={{ marginBottom: '24px' }}>
           <Tabs defaultActiveKey="1" onChange={setActiveTab}>
-            <TabPane tab="驾驶员概览" key="1">
+            <TabPane tab="Driver Overview" key="1">
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={6}>
                   <div style={{ textAlign: 'center', padding: '20px' }}>
                     <Avatar size={100} icon={<UserOutlined />} />
-                    <Title level={4} style={{ marginTop: '16px', marginBottom: '4px' }}>张明</Title>
+                    <Title level={4} style={{ marginTop: '16px', marginBottom: '4px' }}>Zhang Ming</Title>
                     <Text type="secondary">ID: D-10045</Text>
                     <div style={{ margin: '16px 0' }}>
-                      <Tag color="green">优秀驾驶员</Tag>
-                      <Tag color="blue">5年经验</Tag>
+                      <Tag color="green">Excellent Driver</Tag>
+                      <Tag color="blue">5 Years of Experience</Tag>
                     </div>
-                    <Button type="primary">查看完整档案</Button>
+                    <Button type="primary">View Full Profile</Button>
                   </div>
                 </Col>
                 <Col xs={24} md={18}>
@@ -423,45 +423,45 @@ const DriverAnalytics = () => {
                     <Col xs={24} sm={8}>
                       <Card bordered={false}>
                         <Statistic
-                          title="安全评分"
+                          title="Safety Score"
                           value={94}
                           suffix="/ 100"
                           valueStyle={{ color: '#34c759' }}
                         />
                         <Text type="success">
-                          <ArrowUpOutlined /> 较上月提升2分
+                          <ArrowUpOutlined /> Increased by 2 points from last month
                         </Text>
                       </Card>
                     </Col>
                     <Col xs={24} sm={8}>
                       <Card bordered={false}>
                         <Statistic
-                          title="乘客评分"
+                          title="Passenger Rating"
                           value={4.8}
                           suffix="/ 5"
                           valueStyle={{ color: '#5ac8fa' }}
                           prefix={<StarOutlined />}
                         />
-                        <Text type="secondary">基于128次评价</Text>
+                        <Text type="secondary">Based on 128 passenger reviews</Text>
                       </Card>
                     </Col>
                     <Col xs={24} sm={8}>
                       <Card bordered={false}>
                         <Statistic
-                          title="安全事件"
+                          title="Safety Events"
                           value={4}
                           valueStyle={{ color: '#ff9500' }}
                           prefix={<ExclamationCircleOutlined />}
                         />
                         <Text type="success">
-                          <ArrowDownOutlined /> 较上月减少3次
+                          <ArrowDownOutlined /> Decreased by 3 events from last month
                         </Text>
                       </Card>
                     </Col>
                   </Row>
                   <Row style={{ marginTop: '24px' }}>
                     <Col span={24}>
-                      <Card bordered={false} title="驾驶行为分析">
+                      <Card bordered={false} title="Driver Behavior Analysis">
                         <Radar {...driverBehaviorConfig} />
                       </Card>
                     </Col>
@@ -469,43 +469,43 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="安全评分详情" key="2">
+            <TabPane tab="Safety Score Details" key="2">
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={8}>
-                  <Card bordered={false} title="安全评分">
+                  <Card bordered={false} title="Safety Score">
                     <div style={{ textAlign: 'center' }}>
                       <Gauge {...safetyGaugeConfig} />
                     </div>
                     <Paragraph style={{ marginTop: '16px' }}>
-                      <Text strong>评分解释：</Text> 该驾驶员的安全评分处于优秀水平，高于行业平均水平12分。
+                      <Text strong>Safety Score Explanation:</Text> This driver's safety score is excellent, 12 points higher than the industry average.
                     </Paragraph>
                   </Card>
                 </Col>
                 <Col xs={24} md={16}>
-                  <Card bordered={false} title="安全评分历史趋势">
+                  <Card bordered={false} title="Safety Score Trend">
                     <Line {...safetyTrendConfig} />
                   </Card>
                 </Col>
                 <Col xs={24}>
-                  <Card bordered={false} title="安全事件明细">
+                  <Card bordered={false} title="Safety Events Details">
                     <Table 
                       columns={[
-                        { title: '日期', dataIndex: 'date', key: 'date' },
-                        { title: '事件类型', dataIndex: 'type', key: 'type' },
-                        { title: '位置', dataIndex: 'location', key: 'location' },
-                        { title: '严重程度', dataIndex: 'severity', key: 'severity',
+                        { title: 'Date', dataIndex: 'date', key: 'date' },
+                        { title: 'Event Type', dataIndex: 'type', key: 'type' },
+                        { title: 'Location', dataIndex: 'location', key: 'location' },
+                        { title: 'Severity', dataIndex: 'severity', key: 'severity',
                           render: (severity) => {
-                            let color = severity === '严重' ? '#ff3b30' : severity === '中度' ? '#ff9500' : '#34c759';
+                            let color = severity === 'Severe' ? '#ff3b30' : severity === 'Moderate' ? '#ff9500' : '#34c759';
                             return <Text strong style={{ color }}>{severity}</Text>;
                           },
                         },
-                        { title: '详情', key: 'action', render: () => <Button type="link" size="small">查看</Button> },
+                        { title: 'Details', key: 'action', render: () => <Button type="link" size="small">View</Button> },
                       ]} 
                       dataSource={[
-                        { key: '1', date: '2025-03-10', type: '急刹车', location: '中关村南大街', severity: '中度' },
-                        { key: '2', date: '2025-03-05', type: '急转弯', location: '西直门外大街', severity: '轻度' },
-                        { key: '3', date: '2025-02-28', type: '急加速', location: '朝阳路', severity: '轻度' },
-                        { key: '4', date: '2025-02-15', type: '超速', location: '建国门外大街', severity: '中度' },
+                        { key: '1', date: '2025-03-10', type: 'Hard Braking', location: 'Zhongguancun South Street', severity: 'Moderate' },
+                        { key: '2', date: '2025-03-05', type: 'Hard Turning', location: 'Xizhimen Outer Street', severity: 'Mild' },
+                        { key: '3', date: '2025-02-28', type: 'Rapid Acceleration', location: 'Chaoyang Road', severity: 'Mild' },
+                        { key: '4', date: '2025-02-15', type: 'Speeding', location: 'Jianguomen Outer Street', severity: 'Moderate' },
                       ]} 
                       pagination={false}
                     />
@@ -513,32 +513,32 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="乘客反馈" key="3">
+            <TabPane tab="Passenger Feedback" key="3">
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={8}>
                   <Card bordered={false}>
                     <div style={{ textAlign: 'center', padding: '20px' }}>
                       <Title level={1} style={{ color: '#34c759' }}>4.8</Title>
                       <Rate disabled defaultValue={4.8} allowHalf />
-                      <Title level={5}>乘客满意度评分</Title>
-                      <Text type="secondary">基于128次乘客评价</Text>
+                      <Title level={5}>Passenger Satisfaction Rating</Title>
+                      <Text type="secondary">Based on 128 passenger reviews</Text>
                     </div>
                     <Row gutter={[8, 8]} style={{ marginTop: '20px' }}>
-                      <Col span={8}>5星: <Text strong>85%</Text></Col>
+                      <Col span={8}>5-star: <Text strong>85%</Text></Col>
                       <Col span={16}><Progress percent={85} showInfo={false} strokeColor="#34c759" /></Col>
-                      <Col span={8}>4星: <Text strong>12%</Text></Col>
+                      <Col span={8}>4-star: <Text strong>12%</Text></Col>
                       <Col span={16}><Progress percent={12} showInfo={false} strokeColor="#5ac8fa" /></Col>
-                      <Col span={8}>3星: <Text strong>3%</Text></Col>
+                      <Col span={8}>3-star: <Text strong>3%</Text></Col>
                       <Col span={16}><Progress percent={3} showInfo={false} strokeColor="#ff9500" /></Col>
-                      <Col span={8}>2星: <Text strong>0%</Text></Col>
+                      <Col span={8}>2-star: <Text strong>0%</Text></Col>
                       <Col span={16}><Progress percent={0} showInfo={false} strokeColor="#ff3b30" /></Col>
-                      <Col span={8}>1星: <Text strong>0%</Text></Col>
+                      <Col span={8}>1-star: <Text strong>0%</Text></Col>
                       <Col span={16}><Progress percent={0} showInfo={false} strokeColor="#ff3b30" /></Col>
                     </Row>
                   </Card>
                 </Col>
                 <Col xs={24} md={16}>
-                  <Card bordered={false} title="最近乘客评价">
+                  <Card bordered={false} title="Recent Passenger Feedback">
                     <Table 
                       columns={passengerFeedbackColumns} 
                       dataSource={passengerFeedbackData} 
@@ -548,28 +548,28 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="培训记录" key="4">
+            <TabPane tab="Training Records" key="4">
               <Row gutter={[24, 24]}>
                 <Col xs={24}>
-                  <Card bordered={false} title="培训完成情况">
+                  <Card bordered={false} title="Training Completion Status">
                     <Table 
                       columns={[
-                        { title: '培训课程', dataIndex: 'course', key: 'course' },
-                        { title: '完成日期', dataIndex: 'completionDate', key: 'completionDate' },
-                        { title: '得分', dataIndex: 'score', key: 'score' },
-                        { title: '状态', dataIndex: 'status', key: 'status',
+                        { title: 'Training Course', dataIndex: 'course', key: 'course' },
+                        { title: 'Completion Date', dataIndex: 'completionDate', key: 'completionDate' },
+                        { title: 'Score', dataIndex: 'score', key: 'score' },
+                        { title: 'Status', dataIndex: 'status', key: 'status',
                           render: (status) => {
-                            let color = status === '已完成' ? 'success' : status === '进行中' ? 'processing' : 'warning';
+                            let color = status === 'Completed' ? 'success' : status === 'In Progress' ? 'processing' : 'warning';
                             return <Tag color={color}>{status}</Tag>;
                           },
                         },
-                        { title: '证书', key: 'certificate', render: (_, record) => record.status === '已完成' ? <Button type="link" size="small">查看证书</Button> : '-' },
+                        { title: 'Certificate', key: 'certificate', render: (_, record) => record.status === 'Completed' ? <Button type="link" size="small">View Certificate</Button> : '-' },
                       ]} 
                       dataSource={[
-                        { key: '1', course: '安全驾驶基础', completionDate: '2025-01-15', score: 95, status: '已完成' },
-                        { key: '2', course: '应急情况处理', completionDate: '2025-02-10', score: 92, status: '已完成' },
-                        { key: '3', course: '乘客服务与沟通', completionDate: '2025-03-05', score: 98, status: '已完成' },
-                        { key: '4', course: '高级安全驾驶技巧', completionDate: '-', score: '-', status: '进行中' },
+                        { key: '1', course: 'Safe Driving Fundamentals', completionDate: '2025-01-15', score: 95, status: 'Completed' },
+                        { key: '2', course: 'Emergency Situation Handling', completionDate: '2025-02-10', score: 92, status: 'Completed' },
+                        { key: '3', course: 'Passenger Service and Communication', completionDate: '2025-03-05', score: 98, status: 'Completed' },
+                        { key: '4', course: 'Advanced Safe Driving Techniques', completionDate: '-', score: '-', status: 'In Progress' },
                       ]} 
                       pagination={false}
                     />
@@ -581,8 +581,8 @@ const DriverAnalytics = () => {
         </Card>
       )}
 
-      {/* 驾驶员列表 */}
-      <Card title="驾驶员安全表现列表">
+      {/* Driver list */}
+      <Card title="Driver Safety Performance List">
         <Table 
           columns={driversColumns} 
           dataSource={driversData} 
