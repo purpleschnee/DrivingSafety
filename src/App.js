@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import './App.css';
-import { LanguageProvider } from './contexts/LanguageContext';
 
 // Components
 import Sidebar from './components/Sidebar';
@@ -20,26 +19,24 @@ const { Content } = Layout;
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <Layout className="app-container">
-          <Sidebar />
-          <Layout className="site-layout">
-            <Header />
-            <Content className="site-content">
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/driver-analytics" element={<DriverAnalytics />} />
-                <Route path="/safety-metrics" element={<SafetyMetrics />} />
-                <Route path="/training" element={<TrainingManagement />} />
-                <Route path="/company-comparison" element={<CompanyComparison />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
-            </Content>
-          </Layout>
+    <Router>
+      <Layout className="app-container">
+        <Sidebar />
+        <Layout className="site-layout">
+          <Header />
+          <Content className="site-content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/driver-analytics" element={<DriverAnalytics />} />
+              <Route path="/safety-metrics" element={<SafetyMetrics />} />
+              <Route path="/training" element={<TrainingManagement />} />
+              <Route path="/company-comparison" element={<CompanyComparison />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </Content>
         </Layout>
-      </Router>
-    </LanguageProvider>
+      </Layout>
+    </Router>
   );
 }
 

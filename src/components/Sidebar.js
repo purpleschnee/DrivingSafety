@@ -9,45 +9,43 @@ import {
   BarChartOutlined,
   SettingOutlined
 } from '@ant-design/icons';
-import { useLanguage } from '../contexts/LanguageContext';
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
-  const { t } = useLanguage();
   
   const menuItems = [
     {
       key: '/',
       icon: <DashboardOutlined />,
-      label: <Link to="/">{t('dashboard')}</Link>,
+      label: <Link to="/">仪表盘</Link>,
     },
     {
       key: '/driver-analytics',
       icon: <CarOutlined />,
-      label: <Link to="/driver-analytics">{t('driverAnalytics')}</Link>,
+      label: <Link to="/driver-analytics">驾驶员分析</Link>,
     },
     {
       key: '/safety-metrics',
       icon: <SafetyOutlined />,
-      label: <Link to="/safety-metrics">{t('safetyMetrics')}</Link>,
+      label: <Link to="/safety-metrics">安全指标</Link>,
     },
     {
       key: '/training',
       icon: <ReadOutlined />,
-      label: <Link to="/training">{t('training')}</Link>,
+      label: <Link to="/training">培训管理</Link>,
     },
     {
       key: '/company-comparison',
       icon: <BarChartOutlined />,
-      label: <Link to="/company-comparison">{t('companyComparison')}</Link>,
+      label: <Link to="/company-comparison">公司对比</Link>,
     },
     {
       key: '/settings',
       icon: <SettingOutlined />,
-      label: <Link to="/settings">{t('settings')}</Link>,
+      label: <Link to="/settings">设置</Link>,
     },
   ];
 
@@ -70,7 +68,7 @@ const Sidebar = () => {
         padding: '16px'
       }}>
         {!collapsed ? (
-          <h2 style={{ margin: 0, color: '#0071e3' }}>{t('platformTitle')}</h2>
+          <h2 style={{ margin: 0, color: '#0071e3' }}>安全驾驶平台</h2>
         ) : (
           <h2 style={{ margin: 0, color: '#0071e3' }}>SDP</h2>
         )}
