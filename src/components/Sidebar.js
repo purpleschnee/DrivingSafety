@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button, Input } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import {
   DashboardOutlined,
@@ -9,7 +9,8 @@ import {
   TeamOutlined,
   SettingOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
+  SearchOutlined
 } from '@ant-design/icons';
 import './Sidebar.css';
 
@@ -71,7 +72,16 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           onClick={() => setCollapsed(!collapsed)}
           className="sidebar-toggle app-icon-btn"
         />
+        
+        {!collapsed && (
+          <Input
+            placeholder="Search..."
+            prefix={<SearchOutlined className="app-icon app-icon-md" />}
+            className="search-input"
+          />
+        )}
       </div>
+      
       <Menu
         mode="inline"
         selectedKeys={[currentPath]}

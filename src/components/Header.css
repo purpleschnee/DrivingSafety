@@ -33,20 +33,6 @@
   font-weight: 600 !important;
 }
 
-.header-search {
-  max-width: 240px;
-}
-
-.search-input {
-  border-radius: var(--border-radius-md);
-  background-color: var(--bg-gray);
-  height: 40px;
-}
-
-.search-input input {
-  background-color: transparent;
-}
-
 /* Standardized icon styles */
 .app-icon-rounded {
   width: 40px !important;
@@ -76,10 +62,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .header-search {
-    max-width: 180px;
-  }
-  
   .site-header {
     padding: 0 12px;
   }

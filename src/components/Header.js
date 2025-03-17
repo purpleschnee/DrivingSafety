@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout, Input, Space, Typography } from 'antd';
-import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout, Space, Typography } from 'antd';
+import { BellOutlined, UserOutlined } from '@ant-design/icons';
 import './Header.css';
 
 const { Header: AntHeader } = Layout;
@@ -14,14 +14,6 @@ const Header = () => {
       </div>
       
       <div className="header-right">
-        <div className="header-search">
-          <Input
-            placeholder="Search..."
-            prefix={<SearchOutlined className="app-icon app-icon-md" />}
-            className="search-input"
-          />
-        </div>
-        
         <Space size={20}>
           <div className="app-icon-rounded">
             <BellOutlined className="app-icon app-icon-md" />
