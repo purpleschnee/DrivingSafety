@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import React from 'react';
+import { Layout, Menu, Typography } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   DashboardOutlined, 
@@ -11,9 +11,9 @@ import {
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
+const { Title } = Typography;
 
-const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+const Sidebar = ({ collapsed }) => {
   const location = useLocation();
   
   const menuItems = [
@@ -53,24 +53,28 @@ const Sidebar = () => {
     <Sider
       collapsible
       collapsed={collapsed}
-      onCollapse={(value) => setCollapsed(value)}
       style={{
-        background: '#fff',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.09)',
-        zIndex: 10
+        height: '100vh',
+        position: 'fixed',
+        left: 0
       }}
+      width={240}
+      collapsedWidth={80}
+      trigger={null} 
+      theme="light"
     >
       <div style={{ 
         height: '64px', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
-        padding: '16px'
+        padding: '16px',
+        borderBottom: '1px solid var(--border-color)'
       }}>
         {!collapsed ? (
-          <h2 style={{ margin: 0, color: '#0071e3' }}>Safe Driving Platform</h2>
+          <Title level={4} style={{ margin: 0, color: 'var(--primary-color)' }}>Driving Safety Monitor</Title>
         ) : (
-          <h2 style={{ margin: 0, color: '#0071e3' }}>SDP</h2>
+          <Title level={4} style={{ margin: 0, color: 'var(--primary-color)' }}>DSM</Title>
         )}
       </div>
       <Menu
@@ -78,6 +82,7 @@ const Sidebar = () => {
         mode="inline"
         selectedKeys={[location.pathname]}
         items={menuItems}
+        style={{ borderRight: 0 }}
       />
     </Sider>
   );

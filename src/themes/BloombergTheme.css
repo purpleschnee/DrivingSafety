@@ -1,0 +1,502 @@
+/* Bloomberg-inspired Light Theme with Gradients */
+:root {
+  /* Main colors from Bloomberg */
+  --primary-color: #0064fa; /* Bloomberg blue */
+  --secondary-color: #338736; /* Bloomberg green */
+  --warning-color: #e6b120; /* Bloomberg yellow */
+  --danger-color: #e51503; /* Bloomberg red */
+  --success-color: #338736; /* Bloomberg green */
+  
+  /* Background colors */
+  --bg-light: #ffffff;
+  --bg-gray: #f8f8f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f2f7ff;
+  
+  /* Text colors */
+  --text-primary: #262626;
+  --text-secondary: #545454;
+  --text-muted: #767676;
+  --text-light: #ffffff;
+  
+  /* Border and shadow */
+  --border-color: #efefef;
+  --border-color-dark: #ccc;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #3d89fb 0%, #0064fa 100%);
+  --gradient-success: linear-gradient(135deg, #4db250 0%, #338736 100%);
+  --gradient-warning: linear-gradient(135deg, #ffcd1e 0%, #e6b120 100%);
+  --gradient-danger: linear-gradient(135deg, #f05143 0%, #e51503 100%);
+  --gradient-light: linear-gradient(to right, #f8f8f8, #ffffff, #f8f8f8);
+  --gradient-sidebar: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+  --gradient-header: linear-gradient(90deg, #f8f8f8 0%, #ffffff 100%);
+  
+  /* Chart colors */
+  --chart-green: #338736;
+  --chart-red: #e51503;
+  --chart-blue: #0064fa;
+  --chart-yellow: #e6b120;
+  --chart-purple: #7573ff;
+  
+  /* Transition */
+  --transition: all 0.3s ease;
+}
+
+/* Global styles */
+body {
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  font-family: 'BWHaasGroteskWeb', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout components */
+.app-container {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+.site-layout {
+  min-height: 100vh;
+  background-color: var(--bg-gray);
+}
+
+/* Header styles */
+.ant-layout-header {
+  background: var(--bg-light) !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 24px;
+  height: 64px;
+  line-height: 64px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Sidebar styles */
+.ant-layout-sider {
+  background: var(--bg-light) !important;
+  border-right: 1px solid var(--border-color);
+}
+
+.ant-menu,
+.ant-menu-sub {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.ant-menu-item-selected {
+  background: var(--bg-card-hover) !important;
+  color: var(--primary-color) !important;
+  font-weight: 500;
+}
+
+.ant-menu-item:hover {
+  color: var(--primary-color) !important;
+}
+
+.ant-menu-item-selected .ant-menu-title-content a {
+  color: var(--primary-color) !important;
+}
+
+/* Content area */
+.site-content {
+  margin: 24px 16px;
+  padding: 24px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Card styles */
+.ant-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Statistic styles */
+.ant-statistic-title {
+  color: var(--text-secondary);
+}
+
+.ant-statistic-content {
+  color: var(--text-primary);
+}
+
+/* Table styles */
+.ant-table {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.ant-table-thead > tr > th {
+  background-color: var(--bg-gray) !important;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 500;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.ant-table-tbody > tr:hover > td {
+  background-color: var(--bg-card-hover) !important;
+}
+
+/* Form styles */
+.ant-form-item-label > label {
+  color: var(--text-primary);
+}
+
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker,
+.ant-input-affix-wrapper {
+  background-color: var(--bg-light) !important;
+  border: 1px solid var(--border-color-dark) !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Button styles */
+.ant-btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  color: var(--text-light);
+}
+
+.ant-btn-success {
+  background: var(--gradient-success);
+  border: none;
+  color: var(--text-light);
+}
+
+.ant-btn-warning {
+  background: var(--gradient-warning);
+  border: none;
+  color: var(--text-primary);
+}
+
+.ant-btn-danger {
+  background: var(--gradient-danger);
+  border: none;
+  color: var(--text-light);
+}
+
+/* Tag styles */
+.ant-tag-green {
+  background: var(--chart-green);
+  border: none;
+  color: var(--text-light);
+}
+
+.ant-tag-red {
+  background: var(--chart-red);
+  border: none;
+  color: var(--text-light);
+}
+
+.ant-tag-blue {
+  background: var(--chart-blue);
+  border: none;
+  color: var(--text-light);
+}
+
+.ant-tag-orange {
+  background: var(--chart-yellow);
+  border: none;
+  color: var(--text-primary);
+}
+
+/* Progress bar styles */
+.ant-progress-bg {
+  background: var(--gradient-primary);
+}
+
+/* Chart styles - for custom charts */
+.custom-chart-container {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Bloomberg-style chart */
+.bloomberg-chart {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-light);
+  padding: 16px;
+}
+
+.bloomberg-chart-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.2;
+}
+
+.bloomberg-chart-line {
+  stroke: var(--primary-color);
+  stroke-width: 2px;
+  fill: none;
+}
+
+.bloomberg-chart-area {
+  fill: url(#chart-gradient);
+  opacity: 0.2;
+}
+
+/* Dashboard cards with top borders */
+.dashboard-card {
+  position: relative;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-color);
+}
+
+.dashboard-card-success::before {
+  background: var(--success-color);
+}
+
+.dashboard-card-warning::before {
+  background: var(--warning-color);
+}
+
+.dashboard-card-danger::before {
+  background: var(--danger-color);
+}
+
+/* Tabs styles */
+.ant-tabs-tab {
+  color: var(--text-secondary) !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary-color) !important;
+  font-weight: 500;
+}
+
+.ant-tabs-ink-bar {
+  background: var(--primary-color) !important;
+}
+
+/* Badge styles */
+.ant-badge-status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* Tooltip styles */
+.ant-tooltip-inner {
+  background-color: var(--text-primary);
+}
+
+/* Modal styles */
+.ant-modal-content,
+.ant-modal-header {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+}
+
+.ant-modal-title,
+.ant-modal-close {
+  color: var(--text-primary);
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ant-modal-footer {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Dropdown menu */
+.ant-dropdown-menu {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+.ant-dropdown-menu-item:hover {
+  background-color: var(--bg-card-hover);
+}
+
+/* Notification styles */
+.ant-notification-notice {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+/* List styles */
+.ant-list-item {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.ant-list-item-meta-title {
+  color: var(--text-primary) !important;
+}
+
+.ant-list-item-meta-description {
+  color: var(--text-secondary) !important;
+}
+
+/* Divider styles */
+.ant-divider {
+  border-top: 1px solid var(--border-color);
+}
+
+.ant-divider-inner-text {
+  color: var(--text-secondary);
+}
+
+/* Typography styles */
+.ant-typography {
+  color: var(--text-primary);
+}
+
+.ant-typography-secondary {
+  color: var(--text-secondary);
+}
+
+/* Bloomberg-style stat cards */
+.stat-card {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+.stat-card-primary {
+  border-left: 4px solid var(--primary-color);
+}
+
+.stat-card-success {
+  border-left: 4px solid var(--success-color);
+}
+
+.stat-card-warning {
+  border-left: 4px solid var(--warning-color);
+}
+
+.stat-card-danger {
+  border-left: 4px solid var(--danger-color);
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.stat-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 24px;
+  opacity: 0.5;
+  color: var(--text-secondary);
+}
+
+/* Bloomberg-style positive/negative values */
+.value-positive {
+  color: var(--success-color);
+}
+
+.value-negative {
+  color: var(--danger-color);
+}
+
+/* Improved form elements for better accessibility */
+.ant-form-item {
+  margin-bottom: 24px;
+}
+
+.ant-select-selection-item {
+  color: var(--text-primary);
+}
+
+.ant-select-arrow {
+  color: var(--text-secondary);
+}
+
+/* Improved header search */
+.header-search input {
+  background-color: var(--bg-gray) !important;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.header-search .ant-input-suffix {
+  color: var(--text-secondary);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
