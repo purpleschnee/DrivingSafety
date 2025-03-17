@@ -1,96 +1,92 @@
-<<<<<<< HEAD
-# 安全驾驶平台 (Safe Driving Platform)
+# Safe Driving Platform (B2B)
 
-这是一个B2B安全驾驶数据可视化平台，专为出租车公司和车队管理者设计，用于监控和分析驾驶员的安全驾驶表现。
+A B2B safety driving data visualization platform designed for taxi companies and fleet managers to monitor and analyze drivers' safety performance.
 
-## 功能特点
+## Features
 
-- **实时安全监控**：实时跟踪和显示驾驶员的安全评分和事件
-- **驾驶员分析**：详细分析每个驾驶员的表现和安全记录
-- **安全指标**：全面的安全指标和趋势分析
-- **培训管理**：管理驾驶员培训课程和进度
-- **公司对比**：将公司表现与行业标准和竞争对手进行比较
-- **系统设置**：自定义平台设置和通知
+- **Real-time Safety Monitoring**: Track and display driver safety scores and events in real-time
+- **Driver Analytics**: Detailed analysis of each driver's performance and safety records
+- **Safety Metrics**: Comprehensive safety indicators and trend analysis
+- **Training Management**: Manage driver training courses and progress
+- **Company Comparison**: Compare company performance against industry standards and competitors
+- **System Settings**: Customize platform settings and notifications
 
-## 技术栈
+## Technology Stack
 
-### 前端
+### Frontend
 - React
-- Ant Design UI框架
-- Ant Design Charts 数据可视化库
-- Socket.IO 客户端 (实时数据更新)
+- Ant Design UI Framework
+- Ant Design Charts for data visualization
+- Socket.IO Client (for real-time data updates)
 
-### 后端
+### Backend
 - Node.js
 - Express
-- Socket.IO (实时数据传输)
+- Socket.IO (for real-time data transmission)
 
-## 项目结构
+## Project Structure
 
 ```
-├── public/                 # 静态文件
-├── server/                 # 后端服务器代码
-│   ├── index.js            # 服务器入口文件
-│   └── package.json        # 后端依赖配置
-└── src/                    # 前端源代码
-    ├── components/         # React组件
-    ├── data/               # 模拟数据
-    ├── pages/              # 页面组件
-    ├── services/           # 服务和API
-    ├── App.js              # 主应用组件
-    └── index.js            # 应用入口点
+├── public/                 # Static files
+├── server/                 # Backend server code
+│   ├── index.js            # Server entry file
+│   └── package.json        # Backend dependencies configuration
+└── src/                    # Frontend source code
+    ├── components/         # React components
+    ├── data/               # Mock data
+    ├── pages/              # Page components
+    ├── services/           # Services and APIs
+    ├── App.js              # Main application component
+    └── index.js            # Application entry point
 ```
 
-## 安装和运行
+## Installation and Running
 
-### 前端
+### Frontend
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start development server
 npm start
 ```
 
-### 后端
+### Backend
 
 ```bash
-# 进入服务器目录
+# Navigate to server directory
 cd server
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动服务器
+# Start server
 npm start
 ```
 
-## 主要页面
+## Main Pages
 
-- **仪表盘**：提供安全指标和驾驶员表现的概览
-- **驾驶员分析**：详细分析每个驾驶员的安全表现
-- **安全指标**：展示安全趋势和指标
-- **培训管理**：管理培训课程和驾驶员进度
-- **公司对比**：将公司表现与行业标准进行比较
-- **设置**：配置平台参数和通知
+- **Dashboard**: Provides an overview of safety metrics and driver performance
+- **Driver Analytics**: Detailed analysis of each driver's safety performance
+- **Safety Metrics**: Displays safety trends and indicators
+- **Training Management**: Manage training courses and driver progress
+- **Company Comparison**: Compare company performance against industry standards
+- **Settings**: Configure platform parameters and notifications
 
-## 数据可视化
+## Data Visualization
 
-平台使用多种图表类型来可视化安全数据：
+The platform uses various chart types to visualize safety data:
 
-- 折线图：显示安全评分趋势
-- 柱状图：比较不同指标或驾驶员
-- 雷达图：多维度安全指标比较
-- 表格：详细的驾驶员和事件数据
+- Line charts: Display safety score trends
+- Bar charts: Compare different metrics or drivers
+- Radar charts: Multi-dimensional safety indicator comparison
+- Tables: Detailed driver and event data
 
-## 实时功能
+## Real-time Features
 
-平台使用Socket.IO实现实时数据更新：
+The platform uses Socket.IO to implement real-time data updates:
 
-- 实时安全评分更新
-- 事件实时通知
-- 驾驶员状态实时监控
-=======
-# DrivingSafety
->>>>>>> e477db3e4aa50293543144c62a93fc4685358e32
+- Real-time safety score updates
+- Event notifications in real-time
+- Driver status monitoring in real-time
