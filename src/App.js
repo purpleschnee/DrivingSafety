@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import './App.css';
 import './themes/BloombergTheme.css';
-import './styles/minimalist-overrides.css';
+import './styles/chart-fixes.css';
 
 // Components
 import Sidebar from './components/Sidebar';

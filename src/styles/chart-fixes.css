@@ -1,0 +1,125 @@
+/* Safe Chart Fixes - Targeted CSS for improving chart value displays */
+
+/* 
+ * Safe Chart Fixes - Targeted CSS for improving chart value displays
+ * This file contains careful adjustments that won't disrupt the overall dashboard layout
+ */
+
+/* Page Header styles - keeping these as they were fine */
+.page-header {
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.page-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: #505a64 !important;
+  margin-bottom: 10px !important;
+  position: relative;
+  display: inline-block;
+  border-bottom: none;
+}
+
+/* Simplified description banner */
+.page-description {
+  background-color: transparent;
+  color: #666;
+  font-size: 14px;
+  padding: 0;
+  border-left: none;
+  border-radius: 0;
+  margin: 0 0 16px 0;
+  box-shadow: none;
+  border: none;
+  display: block;
+  width: 100%;
+}
+
+/* Card styles - simplified and safe */
+.ant-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #eee !important;
+  border-radius: 3px !important;
+  transition: none !important;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #eee !important;
+  padding: 12px 16px !important;
+}
+
+.ant-card-head-title {
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  color: #505a64 !important;
+}
+
+.ant-card-body {
+  padding: 16px !important;
+}
+
+/* Statistics - safe improvements */
+.ant-statistic-title {
+  color: #666 !important;
+  font-weight: normal !important;
+  font-size: 14px !important;
+}
+
+.ant-statistic-content {
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  color: #333 !important;
+}
+
+/* Icons - keeping these simple improvements */
+.anticon {
+  color: #666; /* Default icon color */
+}
+
+/* Button icon color fix */
+.ant-btn .anticon {
+  color: inherit; /* Let button icons inherit button color */
+}
+
+/* Primary button icon color */
+.ant-btn-primary .anticon {
+  color: #fff; /* White icons on primary buttons */
+}
+
+/* Status icons - safe colors */
+.anticon-check-circle {
+  color: #34c759 !important; /* Success icon */
+}
+
+.anticon-warning {
+  color: #ff9500 !important; /* Warning icon */
+}
+
+.anticon-close-circle {
+  color: #ff3b30 !important; /* Error icon */
+}
+
+/* Safe trend indicators */
+.trend-up {
+  color: #34c759 !important;
+}
+
+.trend-down {
+  color: #ff3b30 !important;
+}
+
+/* Table styles - keeping it minimal */
+.ant-table th {
+  background-color: #fafafa !important;
+  font-weight: 500 !important;
+}
+
+/* Button styles - ensuring visibility */
+.action-button, .ant-btn-link {
+  color: #0071e3 !important;
+}
+
+.action-button:hover, .ant-btn-link:hover {
+  color: #2b8ff3 !important;
+}
