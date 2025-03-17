@@ -30,7 +30,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(false);
   
   return (
-    <Router>
+    <Router basename="/SafeDrivingPlatform">
       <Layout style={{ minHeight: '100vh' }}>
         <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout style={{ 
