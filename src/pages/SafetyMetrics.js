@@ -148,7 +148,7 @@ const SafetyMetrics = () => {
     statistic: {
       title: {
         content: 'Safety Score',
-        offsetY: -10,
+        offsetY: 35,
         style: {
           fontSize: '16px',
           color: '#666',
@@ -1158,7 +1158,7 @@ const SafetyMetrics = () => {
           <TabPane 
             tab={
               <span style={{ display: 'flex', alignItems: 'center' }}>
-                <CheckCircleOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <CheckCircleOutlined style={{ fontSize: '18px', marginRight: '8px', color: '#666' }} />
                 <span>Training Effect Analysis</span>
               </span>
             } 
@@ -1257,7 +1257,7 @@ const SafetyMetrics = () => {
           <TabPane 
             tab={
               <span style={{ display: 'flex', alignItems: 'center' }}>
-                <WarningOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <WarningOutlined style={{ fontSize: '18px', marginRight: '8px', color: '#666' }} />
                 <span>Risk Analysis</span>
               </span>
             } 
