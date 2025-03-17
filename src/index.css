@@ -396,6 +396,26 @@ code {
   vertical-align: middle;
 }
 
+/* Action Button Alignment */
+.action-column {
+  text-align: left !important;
+}
+
+.action-button {
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+
+/* Table cell alignment for action buttons */
+td.ant-table-cell:last-child {
+  text-align: left !important;
+}
+
+td.ant-table-cell:last-child .ant-btn-link {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
 /* Tab Styles */
 .ant-tabs-tab {
   padding: 12px 16px !important;
@@ -442,14 +462,15 @@ code {
 /* Chart Container Styles */
 .chart-container {
   margin-top: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   background: white;
   padding: 20px;
+  padding-bottom: 80px;
   border-radius: var(--border-radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  height: 450px; /* 增加高度以确保图表完全显示 */
-  overflow: visible; /* 确保图表可以溢出容器 */
-  position: relative; /* 为溢出内容提供定位上下文 */
+  height: 550px;
+  overflow: visible;
+  position: relative;
 }
 
 .chart-title {

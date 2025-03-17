@@ -33,7 +33,7 @@ const SafetyMetrics = () => {
     data: safetyTrendData,
     height: 400,
     autoFit: true,
-    padding: [30, 30, 50, 50],
+    padding: [30, 30, 120, 50],
     xField: 'date',
     yField: 'score',
     point: {
@@ -61,7 +61,7 @@ const SafetyMetrics = () => {
     data: safetyTrendData,
     height: 400,
     autoFit: true,
-    padding: [30, 30, 50, 50],
+    padding: [30, 30, 120, 50],
     xField: 'date',
     yField: 'incidents',
     point: {
@@ -95,7 +95,7 @@ const SafetyMetrics = () => {
     data: radarData,
     height: 400,
     autoFit: true,
-    padding: [50, 50, 50, 50],
+    padding: [50, 50, 120, 50],
     xField: 'metric',
     yField: 'value',
     meta: {
@@ -127,9 +127,10 @@ const SafetyMetrics = () => {
   // Gauge chart configuration
   const gaugeConfig = {
     percent: 0.85,
-    height: 400,
-    autoFit: true,
-    padding: [30, 30, 60, 30],
+    height: 500,
+    autoFit: false,
+    width: 500,
+    padding: [30, 30, 120, 30],
     range: {
       color: '#30BF78',
     },
@@ -137,11 +138,13 @@ const SafetyMetrics = () => {
       pointer: {
         style: {
           stroke: '#D0D0D0',
+          lineWidth: 2,
         },
       },
       pin: {
         style: {
           stroke: '#D0D0D0',
+          lineWidth: 2,
         },
       },
     },
@@ -149,9 +152,22 @@ const SafetyMetrics = () => {
       content: {
         formatter: () => '85',
         style: {
-          fontSize: '36px',
-          lineHeight: '36px',
+          fontSize: '64px',
+          lineHeight: '64px',
+          fontWeight: 'bold',
+          color: '#333',
         },
+      },
+    },
+    axis: {
+      label: {
+        formatter: (v) => Number(v).toFixed(1),
+        style: {
+          fontSize: 14,
+        },
+      },
+      tickLine: {
+        length: 10,
       },
     },
   };

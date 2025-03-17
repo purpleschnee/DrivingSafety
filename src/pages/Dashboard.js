@@ -145,7 +145,7 @@ const Dashboard = () => {
       title: 'Action',
       key: 'action',
       className: 'action-column',
-      render: () => <Button type="link" size="small" className="action-button">Process</Button>,
+      render: () => <div style={{ textAlign: 'left' }}><Button type="link" size="small" style={{ textAlign: 'left' }} className="action-button">Process</Button></div>,
     },
   ];
 
@@ -195,7 +195,7 @@ const Dashboard = () => {
       title: 'Action',
       key: 'action',
       className: 'action-column',
-      render: () => <Button type="link" size="small">View Details</Button>,
+      render: () => <div style={{ textAlign: 'left' }}><Button type="link" size="small">View Details</Button></div>,
     },
   ];
 
