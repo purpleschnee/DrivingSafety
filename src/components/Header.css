@@ -38,8 +38,9 @@
 }
 
 .search-input {
-  border-radius: 6px;
+  border-radius: var(--border-radius-md);
   background-color: var(--bg-gray);
+  height: 36px;
 }
 
 .search-input input {
@@ -47,8 +48,12 @@
 }
 
 .user-avatar {
-  background-color: var(--primary-color);
-  cursor: pointer;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.user-avatar .app-icon {
+  color: white !important;
 }
 
 /* Responsive adjustments */

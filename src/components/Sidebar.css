@@ -19,14 +19,15 @@
 }
 
 .sidebar-toggle {
-  width: 32px;
-  height: 32px;
+  width: 36px !important;
+  height: 36px !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-md) !important;
   color: var(--text-secondary);
   transition: all 0.2s;
+  padding: 0 !important;
 }
 
 .sidebar-toggle:hover {
@@ -43,9 +44,9 @@
 .sidebar-menu .ant-menu-item {
   margin: 4px 12px !important;
   padding-left: 12px !important;
-  border-radius: var(--border-radius);
-  height: 40px !important;
-  line-height: 40px !important;
+  border-radius: var(--border-radius-md) !important;
+  height: 44px !important;
+  line-height: 44px !important;
 }
 
 .sidebar-menu .ant-menu-item-selected {
@@ -64,6 +65,10 @@
 
 .sidebar-menu .ant-menu-item a {
   color: inherit;
+}
+
+.sidebar-menu .ant-menu-item .anticon {
+  font-size: var(--icon-size-md);
 }
 
 /* Responsive adjustments */

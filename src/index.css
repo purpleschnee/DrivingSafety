@@ -11,3 +11,157 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Global Variables */
+:root {
+  /* Color Palette - Enhanced for better contrast */
+  --primary-color: #0070e0; /* Darker blue for better contrast */
+  --primary-hover: #2589e9;
+  --primary-active: #0052a3; /* Darker active state */
+  --success-color: #2a9d1c; /* Darker green */
+  --warning-color: #e09600; /* Darker orange */
+  --error-color: #d9212c; /* Slightly darker red */
+  --heading-color: #1a1a1a; /* Darker heading text */
+  --text-primary: #1a1a1a; /* Darker primary text */
+  --text-secondary: #444444; /* Darker secondary text for better readability */
+  --text-disabled: #8c8c8c; /* Darker disabled text */
+  --border-color: #e0e0e0; /* Slightly darker border */
+  --bg-gray: #f0f0f0; /* Slightly darker background */
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f4fa; /* Slightly darker hover state */
+  
+  /* Trend Colors */
+  --trend-up-color: #2a9d1c; /* Green for positive trends */
+  --trend-down-positive-color: #2a9d1c; /* Green for positive downward trends (like reduced incidents) */
+  --trend-down-negative-color: #d9212c; /* Red for negative downward trends */
+  
+  /* Icon Sizes - Standardized */
+  --icon-size-xs: 14px;
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* Standardized Icon System */
+.app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-primary); /* Darker icon color for better visibility */
+}
+
+/* Icon Sizes */
+.app-icon-xs {
+  font-size: var(--icon-size-xs);
+  line-height: var(--icon-size-xs);
+}
+
+.app-icon-sm {
+  font-size: var(--icon-size-sm);
+  line-height: var(--icon-size-sm);
+}
+
+.app-icon-md {
+  font-size: var(--icon-size-md);
+  line-height: var(--icon-size-md);
+}
+
+.app-icon-lg {
+  font-size: var(--icon-size-lg);
+  line-height: var(--icon-size-lg);
+}
+
+.app-icon-xl {
+  font-size: var(--icon-size-xl);
+  line-height: var(--icon-size-xl);
+}
+
+/* Icon Containers */
+.app-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  width: 36px;
+  height: 36px;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.app-icon-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--primary-color);
+}
+
+.app-icon-rounded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  transition: all 0.2s ease;
+  background-color: var(--bg-gray);
+}
+
+.app-icon-rounded:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--primary-color);
+}
+
+/* Active Icon States */
+.app-icon-active {
+  color: var(--primary-color);
+}
+
+.app-icon-btn.app-icon-active,
+.app-icon-rounded.app-icon-active {
+  background-color: var(--bg-card-hover);
+  color: var(--primary-color);
+}
+
+/* Trend Indicator Styles */
+.trend-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.trend-up {
+  color: var(--trend-up-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trend-down-positive {
+  color: var(--trend-down-positive-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trend-down-negative {
+  color: var(--trend-down-negative-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

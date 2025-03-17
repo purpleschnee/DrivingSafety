@@ -23,32 +23,32 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   const menuItems = [
     {
       key: '/',
-      icon: <DashboardOutlined />,
+      icon: <DashboardOutlined className="app-icon app-icon-md" />,
       label: <Link to="/">Dashboard</Link>,
     },
     {
       key: '/driver-analytics',
-      icon: <CarOutlined />,
+      icon: <CarOutlined className="app-icon app-icon-md" />,
       label: <Link to="/driver-analytics">Driver Analytics</Link>,
     },
     {
       key: '/safety-metrics',
-      icon: <SafetyOutlined />,
+      icon: <SafetyOutlined className="app-icon app-icon-md" />,
       label: <Link to="/safety-metrics">Safety Metrics</Link>,
     },
     {
       key: '/training',
-      icon: <ReadOutlined />,
+      icon: <ReadOutlined className="app-icon app-icon-md" />,
       label: <Link to="/training">Training Management</Link>,
     },
     {
       key: '/company-comparison',
-      icon: <TeamOutlined />,
+      icon: <TeamOutlined className="app-icon app-icon-md" />,
       label: <Link to="/company-comparison">Company Comparison</Link>,
     },
     {
       key: '/settings',
-      icon: <SettingOutlined />,
+      icon: <SettingOutlined className="app-icon app-icon-md" />,
       label: <Link to="/settings">Settings</Link>,
     },
   ];
@@ -64,9 +64,12 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       <div className="sidebar-header">
         <Button 
           type="text"
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          icon={collapsed ? 
+            <MenuUnfoldOutlined className="app-icon app-icon-md" /> : 
+            <MenuFoldOutlined className="app-icon app-icon-md" />
+          }
           onClick={() => setCollapsed(!collapsed)}
-          className="sidebar-toggle"
+          className="sidebar-toggle app-icon-btn"
         />
       </div>
       <Menu

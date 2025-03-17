@@ -239,7 +239,10 @@ const Dashboard = () => {
               prefix={<CarOutlined />}
               suffix="pts"
             />
-            <Text type="secondary">↑ 3.2% from last month</Text>
+            <div className="trend-container">
+              <span className="trend-up"><ArrowUpOutlined /> 3.2%</span>
+              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+            </div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -249,7 +252,10 @@ const Dashboard = () => {
               value={247}
               valueStyle={{ color: '#ff9500' }}
             />
-            <Text type="secondary">↑ 6.5% from last month</Text>
+            <div className="trend-container">
+              <span className="trend-up"><ArrowUpOutlined /> 6.5%</span>
+              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+            </div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -271,7 +277,10 @@ const Dashboard = () => {
               value={8}
               valueStyle={{ color: '#ff3b30' }}
             />
-            <Text type="secondary">↓ 2 from last month</Text>
+            <div className="trend-container">
+              <span className="trend-down-positive"><ArrowDownOutlined /> 2</span>
+              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+            </div>
           </Card>
         </Col>
       </Row>
@@ -299,15 +308,12 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card 
-            title="Real-time Safety Alerts" 
-            extra={<Button type="link">View All</Button>}
-          >
+          <Card title="Real-time Safety Alerts">
             <Table 
-              columns={realtimeAlertsColumns} 
               dataSource={realtimeAlertsData} 
+              columns={realtimeAlertsColumns} 
               pagination={false}
-              size="small"
+              size="middle"
             />
           </Card>
         </Col>
@@ -315,15 +321,12 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card 
-            title="Top Driver Performance" 
-            extra={<Button type="link">View All Drivers</Button>}
-          >
+          <Card title="Top Driver Performance">
             <Table 
-              columns={driverPerformanceColumns} 
               dataSource={driverPerformanceData} 
+              columns={driverPerformanceColumns} 
               pagination={false}
-              size="small"
+              size="middle"
             />
           </Card>
         </Col>

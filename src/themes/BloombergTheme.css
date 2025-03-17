@@ -41,6 +41,13 @@
   
   /* Transition */
   --transition: all 0.3s ease;
+  
+  /* Icon sizes - iOS inspired */
+  --icon-size-xs: 16px;
+  --icon-size-sm: 20px;
+  --icon-size-md: 24px;
+  --icon-size-lg: 28px;
+  --icon-size-xl: 32px;
 }
 
 /* Global styles */
@@ -327,6 +334,70 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-dropdown-menu-item:hover {
   background-color: var(--bg-card-hover);
+}
+
+/* iOS-inspired Icon Styles */
+.app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.app-icon-xs {
+  font-size: var(--icon-size-xs);
+  width: calc(var(--icon-size-xs) + 8px);
+  height: calc(var(--icon-size-xs) + 8px);
+}
+
+.app-icon-sm {
+  font-size: var(--icon-size-sm);
+  width: calc(var(--icon-size-sm) + 8px);
+  height: calc(var(--icon-size-sm) + 8px);
+}
+
+.app-icon-md {
+  font-size: var(--icon-size-md);
+  width: calc(var(--icon-size-md) + 8px);
+  height: calc(var(--icon-size-md) + 8px);
+}
+
+.app-icon-lg {
+  font-size: var(--icon-size-lg);
+  width: calc(var(--icon-size-lg) + 8px);
+  height: calc(var(--icon-size-lg) + 8px);
+}
+
+.app-icon-xl {
+  font-size: var(--icon-size-xl);
+  width: calc(var(--icon-size-xl) + 8px);
+  height: calc(var(--icon-size-xl) + 8px);
+}
+
+.app-icon-rounded {
+  border-radius: 50%;
+}
+
+.app-icon-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+}
+
+.app-icon-btn:hover {
+  background-color: var(--bg-gray);
+  color: var(--primary-color);
+}
+
+.app-icon-btn-primary {
+  color: var(--primary-color);
+}
+
+.app-icon-btn-primary:hover {
+  background-color: rgba(0, 100, 250, 0.1);
 }
 
 /* Scrollbar styling */
