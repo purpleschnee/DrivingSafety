@@ -21,8 +21,8 @@ code {
   --success-color: #2a9d1c; /* Darker green */
   --warning-color: #e09600; /* Darker orange */
   --error-color: #d9212c; /* Slightly darker red */
-  --heading-color: #1a1a1a; /* Darker heading text */
-  --text-primary: #1a1a1a; /* Darker primary text */
+  --heading-color: #000000E0; /* Dark gray for headings */
+  --text-primary: #000000E0; /* Dark gray for primary text */
   --text-secondary: #444444; /* Darker secondary text for better readability */
   --text-disabled: #8c8c8c; /* Darker disabled text */
   --border-color: #e0e0e0; /* Slightly darker border */
@@ -135,6 +135,12 @@ code {
   color: var(--primary-color);
 }
 
+/* Icon line thickness consistency */
+.anticon svg {
+  stroke-width: 1.5;
+  stroke: currentColor;
+}
+
 /* Trend Indicator Styles */
 .trend-container {
   display: flex;
@@ -164,4 +170,15 @@ code {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+/* Ant Design Component Overrides */
+.ant-statistic-title {
+  color: var(--heading-color) !important;
+  font-weight: 500;
+}
+
+.ant-card-head-title {
+  color: var(--heading-color) !important;
+  font-weight: 500;
 }

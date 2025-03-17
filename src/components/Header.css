@@ -24,12 +24,12 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 40px;
 }
 
 .app-title {
   margin: 0 !important;
-  color: var(--primary-color) !important;
+  color: var(--heading-color) !important;
   font-weight: 600 !important;
 }
 
@@ -40,21 +40,39 @@
 .search-input {
   border-radius: var(--border-radius-md);
   background-color: var(--bg-gray);
-  height: 36px;
+  height: 40px;
 }
 
 .search-input input {
   background-color: transparent;
 }
 
-.user-avatar {
+/* Standardized icon styles */
+.app-icon-rounded {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bg-gray);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.app-icon-rounded:hover {
+  background-color: var(--bg-card-hover);
+}
+
+/* Removed custom styling for user-avatar to match notification icon */
+/* .user-avatar {
   background-color: var(--primary-color) !important;
   color: white !important;
 }
 
 .user-avatar .app-icon {
   color: white !important;
-}
+} */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

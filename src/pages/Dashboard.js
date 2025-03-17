@@ -225,8 +225,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Title level={3}>Safety Driving Data Overview</Title>
-      <Text type="secondary">Real-time monitoring of fleet safety performance</Text>
+      <Title level={3} style={{ color: 'var(--heading-color)' }}>Safety Driving Data Overview</Title>
+      <Text type="secondary" style={{ color: 'var(--text-secondary)' }}>Real-time monitoring of fleet safety performance</Text>
       
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24} sm={12} lg={6}>
@@ -267,7 +267,9 @@ const Dashboard = () => {
               valueStyle={{ color: '#34c759' }}
               suffix="%"
             />
-            <Progress percent={92.3} showInfo={false} strokeColor="#34c759" />
+            <div className="trend-container">
+              <Progress percent={92.3} showInfo={false} strokeColor="#34c759" style={{ width: '100%' }} />
+            </div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -287,12 +289,12 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24} lg={12}>
-          <Card title="Safety Score Trend">
+          <Card title={<span style={{ color: 'var(--heading-color)' }}>Safety Score Trend</span>}>
             <Line {...safetyScoreConfig} />
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Incident Type Distribution">
+          <Card title={<span style={{ color: 'var(--heading-color)' }}>Incident Type Distribution</span>}>
             <Pie {...incidentTypeConfig} />
           </Card>
         </Col>
@@ -300,7 +302,7 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card title="Driver Safety Score Distribution">
+          <Card title={<span style={{ color: 'var(--heading-color)' }}>Driver Safety Score Distribution</span>}>
             <Column {...safetyScoreDistributionConfig} />
           </Card>
         </Col>
@@ -308,7 +310,7 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card title="Real-time Safety Alerts">
+          <Card title={<span style={{ color: 'var(--heading-color)' }}>Real-time Safety Alerts</span>}>
             <Table 
               dataSource={realtimeAlertsData} 
               columns={realtimeAlertsColumns} 
@@ -321,7 +323,7 @@ const Dashboard = () => {
 
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24}>
-          <Card title="Top Driver Performance">
+          <Card title={<span style={{ color: 'var(--heading-color)' }}>Top Driver Performance</span>}>
             <Table 
               dataSource={driverPerformanceData} 
               columns={driverPerformanceColumns} 

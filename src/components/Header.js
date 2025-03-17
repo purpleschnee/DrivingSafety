@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Input, Badge, Space, Typography } from 'antd';
+import { Layout, Input, Space, Typography } from 'antd';
 import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 import './Header.css';
 
@@ -17,17 +17,15 @@ const Header = () => {
         <div className="header-search">
           <Input
             placeholder="Search..."
-            prefix={<SearchOutlined className="app-icon app-icon-sm" />}
+            prefix={<SearchOutlined className="app-icon app-icon-md" />}
             className="search-input"
           />
         </div>
         
-        <Space size={16}>
-          <Badge count={5} size="small">
-            <div className="app-icon-rounded">
-              <BellOutlined className="app-icon app-icon-md" />
-            </div>
-          </Badge>
+        <Space size={20}>
+          <div className="app-icon-rounded">
+            <BellOutlined className="app-icon app-icon-md" />
+          </div>
           <div className="app-icon-rounded user-avatar">
             <UserOutlined className="app-icon app-icon-md" />
           </div>
