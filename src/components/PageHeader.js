@@ -16,7 +16,11 @@ const PageHeader = ({ title, description }) => {
       <Title level={2} className="mb-xs page-title">
         {title}
       </Title>
-      {description && <div className="page-description">{description}</div>}
+      {description && (
+        <div className="page-description">
+          {description}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,41 +1,42 @@
 /* Dashboard styles */
 .dashboard-container {
   padding: 0;
-  background-color: #f5f7fa;
+  background-color: #ffffff;
 }
 
 /* Card styles */
 .dashboard-container .ant-card {
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   overflow: hidden;
-  border: none;
+  border: 1px solid #f0f0f0;
 }
 
 .dashboard-container .ant-card-head {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f5f5f5;
   padding: 0 16px;
   min-height: 48px;
 }
 
 .dashboard-container .ant-card-body {
-  padding: 20px;
+  padding: 16px;
 }
 
 /* Statistic styles */
 .dashboard-container .ant-statistic-title {
-  color: #666;
+  color: #777;
   font-size: 14px;
   margin-bottom: 8px;
+  font-weight: normal;
 }
 
 .dashboard-container .ant-statistic-content {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .dashboard-container .ant-statistic-content-value {
-  color: #0071e3;
+  color: #333333;
 }
 
 /* Trend indicators */
@@ -60,25 +61,25 @@
 
 /* Table styles */
 .dashboard-table {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .dashboard-table .ant-table-thead > tr > th {
-  background-color: #f5f7fa;
-  color: #333;
-  font-weight: 600;
-  padding: 12px 16px;
+  background-color: #fafafa;
+  color: #555;
+  font-weight: 500;
+  padding: 10px 14px;
   border-bottom: 1px solid #f0f0f0;
 }
 
 .dashboard-table .ant-table-tbody > tr > td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .dashboard-table .ant-table-tbody > tr:hover > td {
-  background-color: #f5f7fa;
+  background-color: #fafafa;
 }
 
 /* Action column styles */
@@ -87,25 +88,25 @@
 }
 
 .action-button {
-  border-radius: 4px;
-  padding: 0 12px;
-  height: 28px;
-  line-height: 28px;
-  font-weight: 500;
-  color: #0071e3;
+  border-radius: 2px;
+  padding: 0 10px;
+  height: 26px;
+  line-height: 26px;
+  font-weight: normal;
+  color: #555;
 }
 
 .action-button:hover {
-  color: #0057b7;
-  background-color: rgba(0, 113, 227, 0.05);
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 /* Chart container styles */
 .dashboard-container .ant-card-body .g2-tooltip {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  border-radius: 4px !important;
-  padding: 8px 12px !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 2px !important;
+  padding: 6px 10px !important;
 }
 
 /* Status text styles */
@@ -128,18 +129,22 @@
 
 .dashboard-container .page-header-title {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
 }
 
 .dashboard-container .page-header-description {
   color: #666;
   font-size: 14px;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
-/* Make charts more vibrant */
+/* Make charts less vibrant */
 .dashboard-container .g2-html-annotation {
-  font-weight: 600;
+  font-weight: normal;
 }
 
 /* Adjust row spacing */

@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import './App.css';
 import './themes/BloombergTheme.css';
+import './styles/minimalist-overrides.css';
 
 // Components
 import Sidebar from './components/Sidebar';
@@ -41,7 +42,7 @@ function App() {
           <Content style={{ 
             margin: '0',
             padding: '24px',
-            background: 'var(--bg-light)',
+            background: '#ffffff',
             minHeight: 'calc(100vh - 64px)',
             overflow: 'auto'
           }}>

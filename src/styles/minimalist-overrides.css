@@ -1,0 +1,302 @@
+/* 
+ * Minimalist Design Overrides 
+ * This file contains overrides to make the dashboard more clean and minimal
+ */
+
+/* Page Header styles */
+.page-header {
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.page-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: #505a64 !important;
+  margin-bottom: 10px !important;
+  position: relative;
+  display: inline-block;
+  border-bottom: none;
+}
+
+/* Simplified description banner */
+.page-description {
+  background-color: transparent;
+  color: #666;
+  font-size: 14px;
+  padding: 0;
+  border-left: none;
+  border-radius: 0;
+  margin: 0 0 16px 0;
+  box-shadow: none;
+  border: none;
+  display: block;
+  width: 100%;
+}
+
+/* Card styles */
+.ant-card {
+  box-shadow: none !important;
+  border: 1px solid #eee !important;
+  border-radius: 3px !important;
+  transition: none !important;
+}
+
+.ant-card:hover {
+  box-shadow: none !important;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #eee !important;
+  padding: 12px 16px !important;
+}
+
+.ant-card-head-title {
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  color: #505a64 !important;
+}
+
+.ant-card-body {
+  padding: 16px !important;
+}
+
+/* Statistics */
+.ant-statistic-title {
+  color: #666 !important;
+  font-weight: normal !important;
+  font-size: 14px !important;
+}
+
+.ant-statistic-content {
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  color: #333 !important;
+}
+
+/* Icons */
+.anticon {
+  color: #666; /* 默认图标颜色 */
+}
+
+/* 按钮图标颜色修复 */
+.ant-btn .anticon {
+  color: inherit; /* 让按钮图标继承按钮的颜色 */
+}
+
+/* 主要按钮的图标颜色 */
+.ant-btn-primary .anticon {
+  color: #fff; /* 主要按钮上的图标使用白色 */
+}
+
+/* 操作按钮和表格操作列中的图标颜色 */
+.action-button .anticon,
+.ant-table .anticon,
+.ant-btn-link .anticon,
+.ant-tag .anticon {
+  color: #505a64; /* 更明显的灰色 */
+}
+
+/* 操作按钮悬停时图标颜色 */
+.action-button:hover .anticon,
+.ant-btn-link:hover .anticon {
+  color: #0071e3; /* 悬停时使用蓝色增加可见度 */
+}
+
+/* 确保状态图标颜色正确 */
+.anticon-check-circle {
+  color: #34c759 !important; /* 成功状态图标 */
+}
+
+.anticon-warning {
+  color: #ff9500 !important; /* 警告状态图标 */
+}
+
+.anticon-close-circle {
+  color: #ff3b30 !important; /* 错误状态图标 */
+}
+
+/* 确保上升下降趋势图标颜色正确 */
+.trend-up .anticon {
+  color: #34c759 !important; /* 上升趋势图标 */
+}
+
+.trend-down .anticon {
+  color: #ff3b30 !important; /* 下降趋势图标 */
+}
+
+/* Remove excessive box-shadow */
+.ant-card, 
+.ant-table-wrapper, 
+.ant-select-dropdown,
+.ant-tooltip-inner,
+.ant-popover-inner,
+.ant-modal-content {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Chart styles */
+.g2-tooltip {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 2px !important;
+  padding: 6px 10px !important;
+}
+
+/* Simpler buttons */
+.ant-btn {
+  box-shadow: none !important;
+  border-radius: 2px !important;
+  height: 30px !important;
+  padding: 0 12px !important;
+}
+
+/* 主按钮（如添加课程）的样式优化 */
+.ant-btn-primary {
+  background-color: #0071e3 !important; /* 使用更明亮的蓝色 */
+  border-color: #0071e3 !important;
+  color: white !important;
+  font-weight: 500 !important;
+  height: 32px !important; /* 稍微高一点 */
+}
+
+.ant-btn-primary:hover {
+  background-color: #005bbd !important;
+  border-color: #005bbd !important;
+}
+
+/* 修复添加按钮的高亮显示 */
+.add-button,
+.btn-add,
+button[class*="add"] {
+  background-color: #0071e3 !important;
+  border-color: #0071e3 !important;
+  color: white !important;
+}
+
+.add-button:hover,
+.btn-add:hover,
+button[class*="add"]:hover {
+  background-color: #005bbd !important;
+  border-color: #005bbd !important;
+}
+
+/* Simplified progress bars */
+.ant-progress-bg {
+  height: 6px !important;
+  border-radius: 3px !important;
+}
+
+.ant-progress-inner {
+  background-color: #f0f0f0 !important;
+}
+
+/* Cleaner tabs */
+.ant-tabs-tab {
+  padding: 10px 16px !important;
+}
+
+.ant-tabs-tab-active {
+  font-weight: 500 !important;
+}
+
+.ant-tabs-ink-bar {
+  height: 2px !important;
+  background: #505a64 !important;
+}
+
+/* Cleaner tables */
+.ant-table {
+  border: 1px solid #eee !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: #f8f9fa !important;
+  color: #505a64 !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid #eee !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid #eee !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background-color: #f8f9fa !important;
+}
+
+/* 时间线和事件指示器样式 */
+.timeline-item .anticon,
+.event-indicator .anticon,
+.event-dot,
+.timeline-dot {
+  color: #0071e3 !important; /* 蓝色事件指示器 */
+}
+
+/* 确保事件列表中的圆点图标可见 */
+.ant-timeline-item-head-blue {
+  color: #0071e3 !important;
+  border-color: #0071e3 !important;
+  background-color: #fff !important;
+}
+
+/* 如果是自定义圆点元素 */
+.event-dot,
+.timeline-dot,
+.event-indicator {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #0071e3;
+  color: white;
+  text-align: center;
+  line-height: 24px;
+}
+
+/* 表格中的操作图标样式 */
+.ant-table-tbody .anticon {
+  font-size: 16px; /* 稍微大一点的图标 */
+  color: #505a64; /* 默认颜色 */
+  margin: 0 4px; /* 图标之间的间距 */
+  transition: color 0.3s;
+}
+
+/* 查看图标 */
+.ant-table-tbody .anticon-eye {
+  color: #0071e3;
+}
+
+/* 编辑图标 */
+.ant-table-tbody .anticon-edit {
+  color: #505a64;
+}
+
+/* 删除图标 */
+.ant-table-tbody .anticon-delete {
+  color: #ff3b30;
+}
+
+/* 图标悬停效果 */
+.ant-table-tbody .anticon:hover {
+  opacity: 0.8;
+  color: #0071e3; /* 统一的悬停颜色 */
+}
+
+/* 删除图标悬停颜色保持红色 */
+.ant-table-tbody .anticon-delete:hover {
+  color: #ff3b30;
+}
+
+/* 添加状态圆点样式 */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-active {
+  background-color: #34c759; /* 绿色表示激活状态 */
+} 

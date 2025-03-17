@@ -420,44 +420,35 @@
  * PAGE HEADER COMPONENTS
  */
 
-/* u9875u9762u6807u9898u7279u6b8au6837u5f0f */
+/* 页面标题特殊样式 */
 .page-title {
   position: relative;
   display: inline-block;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--primary-color);
-  margin-bottom: 16px !important;
+  margin-bottom: 12px !important;
+  /* Removed border-bottom and decorative elements */
 }
 
-.page-title::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: var(--primary-color);
-}
+/* Removed the ::after pseudo-element with the decorative underline */
 
 .page-header h2 {
-  font-size: 22px !important;
-  font-weight: 600 !important;
-  color: var(--heading-color) !important;
+  font-size: 20px !important; /* Reduced from 22px */
+  font-weight: 500 !important; /* Reduced from 600 */
+  color: #505a64 !important; /* Changed to match the header for consistency */
   margin-bottom: 8px !important;
 }
 
-/* Page Description - u7edfu4e00u9875u9762u63cfu8ff0u6837u5f0f */
+/* Page Description - 统一页面描述样式 */
 .page-description {
-  background-color: #f0f7ff; /* u6d45u84ddu8272u80ccu666fu ff0cu786eu4fddu8db3u591fu7684u5bf9u6bd4u5ea6 */
-  border-left: 4px solid var(--primary-color);
-  color: #555555; /* u6df1u8272u6587u5b57u786eu4fddu53efu8bfbu6027 */
-  font-size: 15px; /* u7f29u5c0fu5b57u4f53u5927u5c0fu ff0cu589eu5f3au4e0eu6807u9898u7684u5c42u7ea7u5dee u5f02 */
-  font-weight: 400; /* u51cfu5c0fu5b57u91cdu ff0cu589eu5f3au4e0eu6807u9898u7684u5c42u7ea7u5dee u5f02 */
+  background-color: transparent; /* 透明背景 */
+  color: #666666; /* 保持文字颜色 */
+  font-size: 14px;
+  font-weight: 400;
   line-height: 1.5;
-  padding: 10px 16px; /* u51cfu5c0fu586bu5145u ff0cu4f7fu5176u66f4u7d27u51d1 */
-  margin: 12px 0 20px 0; /* u8c03u6574u4e0au4e0bu5916u8fb9u8ddd */
-  border-radius: 4px; /* 4px */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  padding: 0; /* 移除内边距 */
+  margin: 0 0 16px 0; /* 只保留下边距 */
+  border-radius: 0;
+  box-shadow: none;
+  border: none; /* 移除所有边框 */
   display: block;
   width: 100%;
 }
