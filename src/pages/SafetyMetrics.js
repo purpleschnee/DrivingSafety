@@ -192,7 +192,7 @@ const SafetyMetrics = () => {
       },
     },
     {
-      title: 'u6743u91cd',
+      title: 'Weight',
       dataIndex: 'weight',
       key: 'weight',
       render: (weight) => `${weight}%`,
@@ -211,7 +211,7 @@ const SafetyMetrics = () => {
     },
     {
       key: '2',
-      name: 'u6025u5239u8f66u6b21u6570',
+      name: 'Number of Accidents',
       current: 38,
       target: 30,
       completion: 79,
@@ -220,7 +220,7 @@ const SafetyMetrics = () => {
     },
     {
       key: '3',
-      name: 'u6025u52a0u901fu6b21u6570',
+      name: 'Number of Near Misses',
       current: 25,
       target: 20,
       completion: 80,
@@ -229,7 +229,7 @@ const SafetyMetrics = () => {
     },
     {
       key: '4',
-      name: 'u6025u8f6cu5f2fu6b21u6570',
+      name: 'Number of Traffic Violations',
       current: 18,
       target: 15,
       completion: 83,
@@ -238,7 +238,7 @@ const SafetyMetrics = () => {
     },
     {
       key: '5',
-      name: 'u8d85u901fu6b21u6570',
+      name: 'Number of Speeding Incidents',
       current: 15,
       target: 10,
       completion: 67,
@@ -247,7 +247,7 @@ const SafetyMetrics = () => {
     },
     {
       key: '6',
-      name: 'u4e58u5ba2u6295u8bc9u7387',
+      name: 'Passenger Complaint Rate',
       current: 2.1,
       target: 1.5,
       completion: 71,
@@ -292,8 +292,8 @@ const SafetyMetrics = () => {
     legend: {
       itemName: {
         formatter: (text) => {
-          if (text === 'obd') return 'OBD设备准确率';
-          if (text === 'mobile') return '手机监测准确率';
+          if (text === 'obd') return 'OBD Device Accuracy';
+          if (text === 'mobile') return 'Mobile Device Accuracy';
           return text;
         },
       },
@@ -303,7 +303,7 @@ const SafetyMetrics = () => {
         min: 80,
         max: 100,
         title: {
-          text: '准确率 (%)',
+          text: 'Accuracy (%)',
         },
       },
       mobile: {
@@ -313,22 +313,22 @@ const SafetyMetrics = () => {
     },
     meta: {
       obd: {
-        alias: 'OBD设备准确率',
+        alias: 'OBD Device Accuracy',
       },
       mobile: {
-        alias: '手机监测准确率',
+        alias: 'Mobile Device Accuracy',
       },
     },
   };
 
   // 乘客评分与安全指标相关性数据
   const correlationData = [
-    { metric: '急刹车', correlation: 0.85 },
-    { metric: '急加速', correlation: 0.72 },
-    { metric: '急转弯', correlation: 0.78 },
-    { metric: '超速', correlation: 0.92 },
-    { metric: '疲劳驾驶', correlation: 0.89 },
-    { metric: '分心驾驶', correlation: 0.81 },
+    { metric: 'Hard Braking', correlation: 0.85 },
+    { metric: 'Rapid Acceleration', correlation: 0.72 },
+    { metric: 'Hard Turning', correlation: 0.78 },
+    { metric: 'Speeding', correlation: 0.92 },
+    { metric: 'Fatigue Driving', correlation: 0.89 },
+    { metric: 'Distracted Driving', correlation: 0.81 },
   ];
 
   // 乘客评分与安全指标相关性图表配置
@@ -352,7 +352,7 @@ const SafetyMetrics = () => {
     },
     meta: {
       correlation: {
-        alias: '相关性系数',
+        alias: 'Correlation Coefficient',
         min: 0,
         max: 1,
       },
@@ -361,8 +361,8 @@ const SafetyMetrics = () => {
 
   // 安全培训效果数据
   const trainingEffectData = [
-    { type: '培训前', value: 68 },
-    { type: '培训后', value: 86 },
+    { type: 'Before Training', value: 68 },
+    { type: 'After Training', value: 86 },
   ];
 
   // 安全培训效果图表配置
@@ -384,7 +384,7 @@ const SafetyMetrics = () => {
     },
     statistic: {
       title: {
-        content: '提升',
+        content: 'Improvement',
         style: {
           fontSize: '14px',
         },
@@ -440,18 +440,18 @@ const SafetyMetrics = () => {
     legend: {
       itemName: {
         formatter: (text) => {
-          if (text === 'actual') return '历史数据';
-          if (text === 'predicted') return '预测数据';
+          if (text === 'actual') return 'Historical Data';
+          if (text === 'predicted') return 'Predicted Data';
           return text;
         },
       },
     },
     meta: {
       actual: {
-        alias: '历史安全评分',
+        alias: 'Historical Safety Score',
       },
       predicted: {
-        alias: '预测安全评分',
+        alias: 'Predicted Safety Score',
       },
     },
     annotations: [
@@ -464,7 +464,7 @@ const SafetyMetrics = () => {
       {
         type: 'text',
         position: ['2025-07', 95],
-        content: '预测区间',
+        content: 'Prediction Interval',
         style: {
           fill: '#34c759',
           fontSize: 12,
@@ -477,7 +477,7 @@ const SafetyMetrics = () => {
 
   // 风险热力图数据
   const riskHeatmapData = [];
-  const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const hours = [
     '00:00', '01:00', '02:00', '03:00', '04:00', '05:00',
     '06:00', '07:00', '08:00', '09:00', '10:00', '11:00',
@@ -492,13 +492,13 @@ const SafetyMetrics = () => {
       let value = Math.floor(Math.random() * 30) + 10;
       
       // 周五和周六晚上
-      if ((day === '周五' || day === '周六') && 
+      if ((day === 'Friday' || day === 'Saturday') && 
           (hour === '22:00' || hour === '23:00' || hour === '00:00' || hour === '01:00')) {
         value = Math.floor(Math.random() * 30) + 70;
       }
       
       // 工作日早晚高峰
-      if (['周一', '周二', '周三', '周四', '周五'].includes(day) && 
+      if (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(day) && 
           (hour === '08:00' || hour === '09:00' || hour === '17:00' || hour === '18:00')) {
         value = Math.floor(Math.random() * 20) + 50;
       }
@@ -528,11 +528,11 @@ const SafetyMetrics = () => {
     color: ['#34c759', '#5ac8fa', '#ffcc00', '#ff9500', '#ff3b30'],
     meta: {
       value: {
-        alias: '风险指数',
+        alias: 'Risk Index',
       },
     },
     tooltip: {
-      title: '风险指数',
+      title: 'Risk Index',
       formatter: (datum) => {
         return { name: `${datum.day} ${datum.hour}`, value: datum.value };
       },
@@ -541,27 +541,27 @@ const SafetyMetrics = () => {
 
   // 高风险驾驶员数据
   const highRiskDriversData = [
-    { key: '1', id: 'D-8294', name: '张明', score: 62, incidents: 8, trend: 'down', riskLevel: 'high' },
-    { key: '2', id: 'D-7391', name: '李强', score: 65, incidents: 6, trend: 'down', riskLevel: 'high' },
-    { key: '3', id: 'D-5672', name: '王伟', score: 68, incidents: 5, trend: 'stable', riskLevel: 'medium' },
-    { key: '4', id: 'D-9012', name: '赵刚', score: 70, incidents: 4, trend: 'up', riskLevel: 'medium' },
-    { key: '5', id: 'D-3458', name: '陈勇', score: 71, incidents: 4, trend: 'up', riskLevel: 'medium' },
+    { key: '1', id: 'D-8294', name: 'Joel', score: 62, incidents: 8, trend: 'down', riskLevel: 'high' },
+    { key: '2', id: 'D-7391', name: 'Liam', score: 65, incidents: 6, trend: 'down', riskLevel: 'high' },
+    { key: '3', id: 'D-5672', name: 'Ethan', score: 68, incidents: 5, trend: 'stable', riskLevel: 'medium' },
+    { key: '4', id: 'D-9012', name: 'Oscar', score: 70, incidents: 4, trend: 'up', riskLevel: 'medium' },
+    { key: '5', id: 'D-3458', name: 'Max', score: 71, incidents: 4, trend: 'up', riskLevel: 'medium' },
   ];
 
   // 高风险驾驶员表格列配置
   const highRiskDriversColumns = [
     {
-      title: '驾驶员ID',
+      title: 'Driver ID',
       dataIndex: 'id',
       key: 'id',
     },
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '安全评分',
+      title: 'Safety Score',
       dataIndex: 'score',
       key: 'score',
       render: (score) => (
@@ -571,45 +571,45 @@ const SafetyMetrics = () => {
       ),
     },
     {
-      title: '近30天事件',
+      title: 'Events in the past 30 days',
       dataIndex: 'incidents',
       key: 'incidents',
     },
     {
-      title: '趋势',
+      title: 'Trend',
       dataIndex: 'trend',
       key: 'trend',
       render: (trend) => {
         if (trend === 'up') {
-          return <Tag color="green"><RiseOutlined /> 改善中</Tag>;
+          return <Tag color="green"><RiseOutlined /> Improving</Tag>;
         } else if (trend === 'down') {
-          return <Tag color="red"><FallOutlined /> 恶化中</Tag>;
+          return <Tag color="red"><FallOutlined /> Deteriorating</Tag>;
         } else {
-          return <Tag color="blue">稳定</Tag>;
+          return <Tag color="blue">Stable</Tag>;
         }
       },
     },
     {
-      title: '风险等级',
+      title: 'Risk Level',
       dataIndex: 'riskLevel',
       key: 'riskLevel',
       render: (level) => {
         if (level === 'high') {
-          return <Tag color="red">高风险</Tag>;
+          return <Tag color="red">High Risk</Tag>;
         } else if (level === 'medium') {
-          return <Tag color="orange">中风险</Tag>;
+          return <Tag color="orange">Medium Risk</Tag>;
         } else {
-          return <Tag color="green">低风险</Tag>;
+          return <Tag color="green">Low Risk</Tag>;
         }
       },
     },
     {
-      title: '操作',
+      title: 'Action',
       key: 'action',
       render: () => (
         <Space size="small">
-          <Button type="link" size="small">详情</Button>
-          <Button type="link" size="small">干预</Button>
+          <Button type="link" size="small">Details</Button>
+          <Button type="link" size="small">Intervention</Button>
         </Space>
       ),
     },
@@ -618,28 +618,28 @@ const SafetyMetrics = () => {
   // 风险干预建议
   const interventionSuggestions = [
     {
-      title: '针对高风险时段增加巡检',
-      description: '周五和周六晚间22:00-02:00增加路面巡检和随机检查，重点关注酒驾和疲劳驾驶。',
+      title: 'Increase patrols during high-risk periods',
+      description: 'Friday and Saturday evenings from 22:00 to 02:00, increase road patrols and random checks, focusing on drunk driving and fatigue driving.',
       priority: 'high',
     },
     {
-      title: '对高风险驾驶员进行专项培训',
-      description: '为安全评分低于70分的驾驶员安排专项安全培训，重点培训防御性驾驶技巧。',
+      title: 'Specialized training for high-risk drivers',
+      description: 'For drivers with safety scores below 70, arrange specialized safety training focusing on defensive driving techniques.',
       priority: 'high',
     },
     {
-      title: '优化高峰期排班',
-      description: '工作日早晚高峰期（8-9点，17-18点）增加驾驶员轮换频率，避免单个驾驶员连续工作时间过长。',
+      title: 'Optimize peak period rotations',
+      description: 'Workday early and late peak periods (8-9am, 5-6pm) increase driver rotation frequency to avoid single driver working for too long.',
       priority: 'medium',
     },
     {
-      title: '深夜驾驶员疲劳监测',
-      description: '为深夜（23:00-5:00）工作的驾驶员配备疲劳监测设备，发现疲劳驾驶迹象立即提醒。',
+      title: 'Fatigue monitoring for night drivers',
+      description: 'For drivers working late at night (23:00-5:00), install fatigue monitoring devices to alert drivers of signs of fatigue.',
       priority: 'medium',
     },
     {
-      title: '安装车载ADAS系统',
-      description: '为所有车辆安装高级驾驶辅助系统(ADAS)，提供车道偏离警告、前方碰撞预警等功能。',
+      title: 'Install Advanced Driver Assistance Systems (ADAS) in all vehicles',
+      description: 'Install Advanced Driver Assistance Systems (ADAS) in all vehicles, providing features such as lane departure warning and forward collision warning.',
       priority: 'low',
     },
   ];
@@ -651,38 +651,38 @@ const SafetyMetrics = () => {
       date: '2025-06-01',
       tripId: 'T-78945',
       driverId: 'D-7391',
-      driverName: '李强',
-      passengerName: '王小明',
+      driverName: 'Liam',
+      passengerName: 'Wang Xiaoming',
       safetyRating: 2,
-      feedbackType: '超速行驶',
-      feedbackDetail: '司机在高速公路上超速行驶，让人感到非常不安全。',
-      status: '已处理',
-      resolution: '已对驾驶员进行警告并安排参加安全驾驶培训。',
+      feedbackType: 'Speeding',
+      feedbackDetail: 'Driver speeding on the highway, making passengers feel unsafe.',
+      status: 'Processed',
+      resolution: 'Warned driver and scheduled safety training.',
     },
     {
       key: '2',
       date: '2025-06-02',
       tripId: 'T-78946',
       driverId: 'D-8294',
-      driverName: '张明',
-      passengerName: '张三',
+      driverName: 'Zhang Ming',
+      passengerName: 'Zhang San',
       safetyRating: 1,
-      feedbackType: '急刹车',
-      feedbackDetail: '司机多次紧急刹车，造成乘客头部撞到前排座椅。',
-      status: '处理中',
-      resolution: '正在调查驾驶员行为并安排进一步培训。',
+      feedbackType: 'Braking',
+      feedbackDetail: "Driver repeatedly made emergency stops, causing the passenger's head to hit the front seat.",
+      status: 'In Progress',
+      resolution: 'Investigating driver behavior and arranging further training.',
     },
     {
       key: '3',
       date: '2025-06-03',
       tripId: 'T-78947',
       driverId: 'D-5672',
-      driverName: '王伟',
-      passengerName: '李四',
+      driverName: 'Wang Wei',
+      passengerName: 'Li Si',
       safetyRating: 3,
-      feedbackType: '疲劳驾驶',
-      feedbackDetail: '司机看起来非常疲惫，驾驶过程中打哈欠多次。',
-      status: '待处理',
+      feedbackType: 'Fatigue driving',
+      feedbackDetail: 'Driver looking very tired, nodding off multiple times while driving.',
+      status: 'Pending',
       resolution: '',
     },
     {
@@ -690,12 +690,12 @@ const SafetyMetrics = () => {
       date: '2025-06-04',
       tripId: 'T-78948',
       driverId: 'D-3458',
-      driverName: '陈勇',
-      passengerName: '赵五',
+      driverName: 'Chen Yong',
+      passengerName: 'Zhao Wu',
       safetyRating: 2,
-      feedbackType: '分心驾驶',
-      feedbackDetail: '司机在驾驶过程中不断玩手机，多次错过路口。',
-      status: '待处理',
+      feedbackType: 'Distraction',
+      feedbackDetail: 'Driver repeatedly distracted while driving, missing several intersections.',
+      status: 'Pending',
       resolution: '',
     },
     {
@@ -703,24 +703,24 @@ const SafetyMetrics = () => {
       date: '2025-06-05',
       tripId: 'T-78949',
       driverId: 'D-9012',
-      driverName: '赵刚',
-      passengerName: '王六',
+      driverName: 'Zhao Gang',
+      passengerName: 'Wang Liu',
       safetyRating: 4,
-      feedbackType: '车辆状况',
-      feedbackDetail: '车辆制动系统差，刹车时有异响。',
-      status: '已处理',
-      resolution: '已安排车辆维修并更换制动系统。',
+      feedbackType: 'Vehicle Condition',
+      feedbackDetail: 'Vehicle braking system is poor, with unusual noise when braking.',
+      status: 'Processed',
+      resolution: 'Arranged vehicle maintenance and replaced braking system.',
     },
   ];
 
   // 乘客安全反馈类型分布
   const feedbackTypeData = [
-    { type: '超速行驶', value: 35 },
-    { type: '急刹车', value: 28 },
-    { type: '分心驾驶', value: 22 },
-    { type: '疲劳驾驶', value: 18 },
-    { type: '车辆状况', value: 12 },
-    { type: '其他', value: 5 },
+    { type: 'Speeding', value: 35 },
+    { type: 'Braking', value: 28 },
+    { type: 'Distraction', value: 22 },
+    { type: 'Fatigue driving', value: 18 },
+    { type: 'Vehicle Condition', value: 12 },
+    { type: 'Other', value: 5 },
   ];
 
   // 乘客安全满意度趋势
@@ -736,32 +736,32 @@ const SafetyMetrics = () => {
   // 乘客安全反馈表格列配置
   const passengerFeedbackColumns = [
     {
-      title: '日期',
+      title: 'Date',
       dataIndex: 'date',
       key: 'date',
     },
     {
-      title: '行程ID',
+      title: 'Trip ID',
       dataIndex: 'tripId',
       key: 'tripId',
     },
     {
-      title: '驾驶员ID',
+      title: 'Driver ID',
       dataIndex: 'driverId',
       key: 'driverId',
     },
     {
-      title: '驾驶员姓名',
+      title: 'Driver Name',
       dataIndex: 'driverName',
       key: 'driverName',
     },
     {
-      title: '乘客姓名',
+      title: 'Passenger Name',
       dataIndex: 'passengerName',
       key: 'passengerName',
     },
     {
-      title: '安全评分',
+      title: 'Safety Rating',
       dataIndex: 'safetyRating',
       key: 'safetyRating',
       render: (rating) => (
@@ -769,32 +769,32 @@ const SafetyMetrics = () => {
       ),
     },
     {
-      title: '反馈类型',
+      title: 'Feedback Type',
       dataIndex: 'feedbackType',
       key: 'feedbackType',
     },
     {
-      title: '反馈详情',
+      title: 'Feedback Detail',
       dataIndex: 'feedbackDetail',
       key: 'feedbackDetail',
       ellipsis: true,
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       key: 'status',
       render: (status) => {
-        if (status === '已处理') {
-          return <Tag color="green">已处理</Tag>;
-        } else if (status === '处理中') {
-          return <Tag color="blue">处理中</Tag>;
+        if (status === 'Processed') {
+          return <Tag color="green">Processed</Tag>;
+        } else if (status === 'In Progress') {
+          return <Tag color="blue">In Progress</Tag>;
         } else {
-          return <Tag color="red">待处理</Tag>;
+          return <Tag color="red">Pending</Tag>;
         }
       },
     },
     {
-      title: '解决方案',
+      title: 'Resolution',
       dataIndex: 'resolution',
       key: 'resolution',
       ellipsis: true,
@@ -807,9 +807,9 @@ const SafetyMetrics = () => {
       id: 'RT-1001',
       time: '10:35:22',
       driverId: 'D-7391',
-      driverName: '李强',
-      event: '超速行驶',
-      location: '北京市朝阳区建国路',
+      driverName: 'Li Qiang',
+      event: 'Speeding',
+      location: 'Beijing Chaoyang District Jiuji Road',
       severity: 'high',
       status: 'new',
     },
@@ -817,9 +817,9 @@ const SafetyMetrics = () => {
       id: 'RT-1002',
       time: '10:28:45',
       driverId: 'D-8294',
-      driverName: '张明',
-      event: '急刹车',
-      location: '北京市海淀区中关村大街',
+      driverName: 'Zhang Ming',
+      event: 'Braking',
+      location: 'Beijing Haidian District Zhongzhuan Street',
       severity: 'medium',
       status: 'processing',
     },
@@ -827,9 +827,9 @@ const SafetyMetrics = () => {
       id: 'RT-1003',
       time: '10:15:33',
       driverId: 'D-5672',
-      driverName: '王伟',
-      event: '疲劳驾驶',
-      location: '北京市西城区西长安街',
+      driverName: 'Wang Wei',
+      event: 'Fatigue driving',
+      location: 'Beijing Xicheng District Xianan Street',
       severity: 'high',
       status: 'processing',
     },
@@ -837,9 +837,9 @@ const SafetyMetrics = () => {
       id: 'RT-1004',
       time: '10:02:18',
       driverId: 'D-3458',
-      driverName: '陈勇',
-      event: '分心驾驶',
-      location: '北京市东城区东长安街',
+      driverName: 'Chen Yong',
+      event: 'Distraction',
+      location: 'Beijing Dongcheng District Dongduan Street',
       severity: 'medium',
       status: 'resolved',
     },
@@ -847,9 +847,9 @@ const SafetyMetrics = () => {
       id: 'RT-1005',
       time: '09:48:52',
       driverId: 'D-9012',
-      driverName: '赵刚',
-      event: '急转弯',
-      location: '北京市丰台区丰台路',
+      driverName: 'Zhao Gang',
+      event: 'Hard Turning',
+      location: 'Beijing Fengtai District Fengtai Road',
       severity: 'low',
       status: 'resolved',
     },
@@ -857,33 +857,33 @@ const SafetyMetrics = () => {
 
   return (
     <div className="safety-metrics-container">
-      <Title level={3}>安全指标分析</Title>
+      <Title level={3}>Safety Metrics Analysis</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        全面分析和监控驾驶安全指标、趋势和相关性
+        Comprehensive analysis and monitoring of driving safety metrics, trends, and correlations
       </Text>
       
       {/* 筛选和控制区域 */}
       <Card style={{ marginBottom: '24px' }}>
         <Row gutter={[16, 16]} align="middle">
           <Col xs={24} md={6}>
-            <Text strong>时间范围：</Text>
+            <Text strong>Time Range:</Text>
             <Select 
               style={{ width: '80%', marginLeft: '10px' }} 
               defaultValue="month"
               onChange={(value) => setTimeRange(value)}
             >
-              <Option value="week">最近一周</Option>
-              <Option value="month">最近一个月</Option>
-              <Option value="quarter">最近一个季度</Option>
-              <Option value="year">最近一年</Option>
+              <Option value="week">The past week</Option>
+              <Option value="month">The past month</Option>
+              <Option value="quarter">The past quarter</Option>
+              <Option value="year">The past year</Option>
             </Select>
           </Col>
           <Col xs={24} md={8}>
-            <Text strong>自定义日期：</Text>
+            <Text strong>Custom Date Range:</Text>
             <RangePicker style={{ width: '80%', marginLeft: '10px' }} />
           </Col>
           <Col xs={24} md={6}>
-            <Button icon={<DownloadOutlined />} type="primary">导出报告</Button>
+            <Button icon={<DownloadOutlined />} type="primary">Export Report</Button>
           </Col>
         </Row>
       </Card>
@@ -893,14 +893,14 @@ const SafetyMetrics = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="平均安全评分"
+              title="Average Safety Score"
               value={85}
               suffix="/ 100"
               valueStyle={{ color: '#0071e3' }}
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowUpOutlined /> 3.5% 较上月
+                <ArrowUpOutlined /> 3.5% compared to last month
               </Text>
             </div>
           </Card>
@@ -908,13 +908,13 @@ const SafetyMetrics = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="安全事件总数"
+              title="Total Safety Events"
               value={247}
               valueStyle={{ color: '#ff9500' }}
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowDownOutlined /> 8.5% 较上月
+                <ArrowDownOutlined /> 8.5% compared to last month
               </Text>
             </div>
           </Card>
@@ -922,14 +922,14 @@ const SafetyMetrics = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="安全指标达标率"
+              title="Safety Metrics Compliance Rate"
               value={92}
               suffix="%"
               valueStyle={{ color: '#34c759' }}
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowUpOutlined /> 4.2% 较上月
+                <ArrowUpOutlined /> 4.2% compared to last month
               </Text>
             </div>
           </Card>
@@ -937,14 +937,14 @@ const SafetyMetrics = () => {
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title="驾驶员培训完成率"
+              title="Driver Training Completion Rate"
               value={78}
               suffix="%"
               valueStyle={{ color: '#5ac8fa' }}
             />
             <div style={{ marginTop: '10px' }}>
               <Text type="success">
-                <ArrowUpOutlined /> 12.3% 较上月
+                <ArrowUpOutlined /> 12.3% compared to last month
               </Text>
             </div>
           </Card>
@@ -954,34 +954,34 @@ const SafetyMetrics = () => {
       {/* 安全指标详细分析 */}
       <Card style={{ marginBottom: '24px' }}>
         <Tabs defaultActiveKey="1" onChange={setActiveTab}>
-          <TabPane tab="安全趋势" key="1">
+          <TabPane tab="Safety Trends" key="1">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={12}>
-                <Card title="安全评分趋势" bordered={false}>
+                <Card title="Safety Score Trend" bordered={false}>
                   <Line {...safetyTrendConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={12}>
-                <Card title="安全事件趋势" bordered={false}>
+                <Card title="Safety Incident Trend" bordered={false}>
                   <Line {...incidentTrendConfig} />
                 </Card>
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="安全指标详情" key="2">
+          <TabPane tab="Safety Metrics Details" key="2">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={12}>
-                <Card title="安全指标雷达图" bordered={false}>
+                <Card title="Safety Metrics Radar Chart" bordered={false}>
                   <Radar {...radarConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={12}>
-                <Card title="总体安全评分" bordered={false}>
+                <Card title="Overall Safety Score" bordered={false}>
                   <Gauge {...gaugeConfig} />
                 </Card>
               </Col>
               <Col xs={24}>
-                <Card title="安全指标明细" bordered={false}>
+                <Card title="Safety Metrics Details" bordered={false}>
                   <Table 
                     columns={metricsColumns} 
                     dataSource={metricsData} 
@@ -991,17 +991,17 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="数据采集分析" key="3">
+          <TabPane tab="Data Collection Analysis" key="3">
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
-                  message="数据采集技术对比"
+                  message="Data Collection Technology Comparison"
                   description={
                     <Paragraph>
-                      <Text>本页展示了OBD设备与手机监测模块的数据采集对比。OBD设备采样率为100Hz，手机数据采样率为50Hz。</Text>
+                      <Text>This page compares the data collection of OBD devices and mobile devices. OBD devices have a sampling rate of 100Hz, while mobile devices have a sampling rate of 50Hz.</Text>
                       <ul>
-                        <li><Text strong>OBD优势：</Text>直接连接车辆系统，数据更准确，但安装成本较高。</li>
-                        <li><Text strong>手机监测优势：</Text>部署简单，成本低，但在某些情况下准确性略低。</li>
+                        <li><Text strong>OBD advantage:</Text> Direct connection to vehicle systems, more accurate data, but higher installation costs.</li>
+                        <li><Text strong>Mobile device advantage:</Text> Easy deployment, low cost, but slightly lower accuracy in some cases.</li>
                       </ul>
                     </Paragraph>
                   }
@@ -1012,34 +1012,34 @@ const SafetyMetrics = () => {
               </Col>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="OBD与手机监测准确率对比" 
+                  title="OBD with Mobile Device Data Accuracy Comparison" 
                   bordered={false}
-                  extra={<Tooltip title="数据来源于实验室测试和实际道路测试的综合结果"><InfoCircleOutlined /></Tooltip>}
+                  extra={<Tooltip title="Data sourced from combined laboratory tests and actual road tests"><InfoCircleOutlined /></Tooltip>}
                 >
                   <DualAxes {...deviceComparisonConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title="数据采集方式对比" bordered={false}>
+                <Card title="Data Collection Method Comparison" bordered={false}>
                   <Space direction="vertical" style={{ width: '100%' }}>
-                    <Card type="inner" title="OBD设备" extra={<CarOutlined />}>
-                      <Statistic title="数据准确率" value="97.5%" valueStyle={{ color: '#5ac8fa' }} />
-                      <Statistic title="采样频率" value="100Hz" style={{ marginTop: '16px' }} />
-                      <Statistic title="丢包率" value="0.5%" style={{ marginTop: '16px' }} valueStyle={{ color: '#34c759' }} />
+                    <Card type="inner" title="OBD Device" extra={<CarOutlined />}>
+                      <Statistic title="Data Accuracy" value="97.5%" valueStyle={{ color: '#5ac8fa' }} />
+                      <Statistic title="Sampling Frequency" value="100Hz" style={{ marginTop: '16px' }} />
+                      <Statistic title="Packet Loss" value="0.5%" style={{ marginTop: '16px' }} valueStyle={{ color: '#34c759' }} />
                       <div style={{ marginTop: '16px' }}>
-                        <Tag color="green">高精度</Tag>
-                        <Tag color="blue">稳定性强</Tag>
-                        <Tag color="orange">成本较高</Tag>
+                        <Tag color="green">High precision</Tag>
+                        <Tag color="blue">Stable</Tag>
+                        <Tag color="orange">High cost</Tag>
                       </div>
                     </Card>
-                    <Card type="inner" title="手机监测" extra={<MobileOutlined />}>
-                      <Statistic title="数据准确率" value="93.8%" valueStyle={{ color: '#ff9500' }} />
-                      <Statistic title="采样频率" value="50Hz" style={{ marginTop: '16px' }} />
-                      <Statistic title="丢包率" value="2.3%" style={{ marginTop: '16px' }} valueStyle={{ color: '#ff9500' }} />
+                    <Card type="inner" title="Mobile Device" extra={<MobileOutlined />}>
+                      <Statistic title="Data Accuracy" value="93.8%" valueStyle={{ color: '#ff9500' }} />
+                      <Statistic title="Sampling Frequency" value="50Hz" style={{ marginTop: '16px' }} />
+                      <Statistic title="Packet Loss" value="2.3%" style={{ marginTop: '16px' }} valueStyle={{ color: '#ff9500' }} />
                       <div style={{ marginTop: '16px' }}>
-                        <Tag color="blue">部署简便</Tag>
-                        <Tag color="green">成本低</Tag>
-                        <Tag color="orange">信号弱区表现欠佳</Tag>
+                        <Tag color="blue">Easy deployment</Tag>
+                        <Tag color="green">Cost-effective</Tag>
+                        <Tag color="orange">Poor performance in weak signal areas</Tag>
                       </div>
                     </Card>
                   </Space>
@@ -1047,78 +1047,78 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="乘客反馈相关性" key="4">
+          <TabPane tab="Passenger Feedback Correlation" key="4">
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
-                  message="乘客评分与安全指标相关性分析"
-                  description="以下数据展示了各项安全指标与乘客评分之间的相关性系数。相关性越高，表示该指标对乘客感知安全的影响越大。"
+                  message="Passenger Feedback Correlation Analysis"
+                  description="Below data shows the correlation coefficients between various safety metrics and passenger ratings. The higher the correlation, the greater the impact of the metric on passenger safety perception."
                   type="info"
                   showIcon
                   style={{ marginBottom: '24px' }}
                 />
               </Col>
               <Col xs={24} lg={16}>
-                <Card title="乘客评分与安全指标相关性" bordered={false}>
+                <Card title="Passenger Rating Correlation" bordered={false}>
                   <Column {...correlationConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title="关键发现" bordered={false}>
+                <Card title="Key Findings" bordered={false}>
                   <ul>
                     <li>
-                      <Text strong>超速行为</Text>与乘客安全感知<Text type="danger">相关性最高(92%)</Text>，
-                      应重点控制车速。
+                      <Text strong>Speeding Behavior</Text> passengers' safety<Text type="danger">correlation highest(92%)</Text>，
+                      should be controlled.
                     </li>
                     <li>
-                      <Text strong>疲劳驾驶</Text>是乘客关注的第二大因素，相关性达<Text type="warning">89%</Text>。
+                      <Text strong>Fatigue Driving</Text> is the second factor of concern for passengers, with a correlation of<Text type="warning">89%</Text>。
                     </li>
                     <li>
-                      <Text strong>急刹车</Text>对乘客体验影响显著，相关性为<Text type="warning">85%</Text>。
+                      <Text strong>Sudden Braking</Text> significantly affects passengers' safety, with a correlation of<Text type="warning">85%</Text>。
                     </li>
                     <li>
-                      <Text strong>急加速</Text>相关性相对较低，但仍达<Text type="success">72%</Text>。
+                      <Text strong>Sudden Acceleration</Text> has a relative low correlation, but still reaches<Text type="success">72%</Text>。
                     </li>
                   </ul>
                   <Divider />
                   
                   <Paragraph>
                     <Text type="secondary">
-                      基于上述分析，建议优先改善超速和疲劳驾驶问题，可显著提升乘客安全满意度。
+                      Based on the analysis, it is recommended to prioritize improvements in speeding and fatigue driving, which can significantly enhance passenger safety satisfaction.
                     </Text>
                   </Paragraph>
                 </Card>
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="培训效果分析" key="5">
+          <TabPane tab="Training Effect Analysis" key="5">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={12}>
-                <Card title="安全培训效果" bordered={false}>
+                <Card title="Safety Training Effect" bordered={false}>
                   <Pie {...trainingEffectConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={12}>
-                <Card title="培训效果详情" bordered={false}>
+                <Card title="Training Effect Details" bordered={false}>
                   <Paragraph>
-                    <Text>安全培训对驾驶员安全评分的提升效果显著，平均提升了</Text>
+                    <Text>Safety training significantly improves driver safety scores, with an average increase of</Text>
                     <Text strong style={{ fontSize: '18px', color: '#34c759' }}> 26.5% </Text>
-                    <Text>。培训后的安全事件发生率降低了</Text>
+                    <Text>. Training reduces safety event occurrences by</Text>
                     <Text strong style={{ fontSize: '18px', color: '#34c759' }}> 38.2% </Text>
-                    <Text>。</Text>
+                    <Text>.</Text>
                   </Paragraph>
                   
-                  <Title level={5} style={{ marginTop: '16px' }}>培训课程效果排名：</Title>
+                  <Title level={5} style={{ marginTop: '16px' }}>Training Course Effectiveness Ranking:</Title>
                   <ol>
-                    <li><Text strong>应急情况处理</Text> - 提升效果 <Text type="success">34.7%</Text></li>
-                    <li><Text strong>安全驾驶基础</Text> - 提升效果 <Text type="success">29.3%</Text></li>
-                    <li><Text strong>疲劳驾驶防范</Text> - 提升效果 <Text type="success">25.8%</Text></li>
-                    <li><Text strong>防御性驾驶技巧</Text> - 提升效果 <Text type="success">22.1%</Text></li>
+                    <li><Text strong>Emergency Situation Handling</Text> - Improvement <Text type="success">34.7%</Text></li>
+                    <li><Text strong>Basic Safety Driving</Text> - Improvement <Text type="success">29.3%</Text></li>
+                    <li><Text strong>Fatigue Driving Prevention</Text> - Improvement <Text type="success">25.8%</Text></li>
+                    <li><Text strong>Defensive Driving Techniques</Text> - Improvement <Text type="success">22.1%</Text></li>
                   </ol>
                   
                   <Alert
-                    message="培训建议"
-                    description="根据分析结果，建议增加应急情况处理和安全驾驶基础课程的培训频次，并将这两门课程设为所有驾驶员的必修课程。"
+                    message="Training Recommendations"
+                    description="Based on the analysis, it is recommended to increase the frequency of emergency situation handling and basic safety driving training, and to make these two courses mandatory for all drivers."
                     type="success"
                     showIcon
                     style={{ marginTop: '16px' }}
@@ -1126,12 +1126,12 @@ const SafetyMetrics = () => {
                 </Card>
               </Col>
               <Col xs={24}>
-                <Card title="培训完成情况" bordered={false}>
+                <Card title="Training Completion Status" bordered={false}>
                   <Table 
                     columns={[
-                      { title: '培训课程', dataIndex: 'course', key: 'course' },
-                      { title: '参与人数', dataIndex: 'participants', key: 'participants' },
-                      { title: '完成率', dataIndex: 'completion', key: 'completion',
+                      { title: 'Training Course', dataIndex: 'course', key: 'course' },
+                      { title: 'Participants', dataIndex: 'participants', key: 'participants' },
+                      { title: 'Completion Rate', dataIndex: 'completion', key: 'completion',
                         render: (completion) => (
                           <Progress 
                             percent={completion} 
@@ -1140,17 +1140,17 @@ const SafetyMetrics = () => {
                           />
                         ),
                       },
-                      { title: '平均分数', dataIndex: 'avgScore', key: 'avgScore' },
-                      { title: '安全评分提升', dataIndex: 'improvement', key: 'improvement',
+                      { title: 'Average Score', dataIndex: 'avgScore', key: 'avgScore' },
+                      { title: 'Safety Score Improvement', dataIndex: 'improvement', key: 'improvement',
                         render: (improvement) => <Text type="success">+{improvement}%</Text>,
                       },
                     ]} 
                     dataSource={[
-                      { key: '1', course: '安全驾驶基础', participants: 120, completion: 95, avgScore: 88, improvement: 29.3 },
-                      { key: '2', course: '应急情况处理', participants: 98, completion: 87, avgScore: 92, improvement: 34.7 },
-                      { key: '3', course: '疲劳驾驶防范', participants: 105, completion: 82, avgScore: 85, improvement: 25.8 },
-                      { key: '4', course: '防御性驾驶技巧', participants: 86, completion: 76, avgScore: 83, improvement: 22.1 },
-                      { key: '5', course: '乘客服务与沟通', participants: 112, completion: 91, avgScore: 90, improvement: 18.5 },
+                      { key: '1', course: 'Basic Safety Driving', participants: 120, completion: 95, avgScore: 88, improvement: 29.3 },
+                      { key: '2', course: 'Emergency Situation Handling', participants: 98, completion: 87, avgScore: 92, improvement: 34.7 },
+                      { key: '3', course: 'Fatigue Driving Prevention', participants: 105, completion: 82, avgScore: 85, improvement: 25.8 },
+                      { key: '4', course: 'Defensive Driving Techniques', participants: 86, completion: 76, avgScore: 83, improvement: 22.1 },
+                      { key: '5', course: 'Passenger Service and Communication', participants: 112, completion: 91, avgScore: 90, improvement: 18.5 },
                     ]} 
                     pagination={false} 
                   />
@@ -1158,12 +1158,12 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="预测分析" key="6">
+          <TabPane tab="Prediction Analysis" key="6">
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
-                  message="安全评分预测分析"
-                  description="基于历史数据和机器学习算法，系统预测了未来6个月的安全评分趋势。预测考虑了季节性因素、驾驶员培训计划和历史改进率。"
+                  message="Safety Score Prediction Analysis"
+                  description="Based on historical data and machine learning algorithms, the system predicts future 6-month safety score trends. The prediction considers seasonal factors, driver training plans, and historical improvement rates."
                   type="info"
                   showIcon
                   style={{ marginBottom: '24px' }}
@@ -1171,38 +1171,43 @@ const SafetyMetrics = () => {
               </Col>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="安全评分预测趋势" 
+                  title="Safety Score Prediction Trend" 
                   bordered={false}
-                  extra={<Tooltip title="预测基于过去12个月数据，使用时间序列分析和机器学习算法"><InfoCircleOutlined /></Tooltip>}
+                  extra={<Tooltip title="Prediction based on past 12 months of data, using time series analysis and machine learning algorithms"><InfoCircleOutlined /></Tooltip>}
                 >
                   <DualAxes {...predictionConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title="预测分析结论" bordered={false}>
+                <Card title="Prediction Analysis Conclusion" bordered={false}>
                   <List
                     itemLayout="horizontal"
                     dataSource={[
                       {
-                        title: '安全评分预计提升',
-                        description: '预计未来6个月安全评分将从当前的85分提升至94分，提升幅度约10.6%。',
+                        title: 'Safety Score Expected Increase',
+                        description: 'It is expected that the safety score will increase from the current 85 points to 94 points over the next 6 months, an improvement of approximately 10.6%.',
                         icon: <RiseOutlined style={{ color: '#34c759' }} />,
                       },
                       {
-                        title: '关键改进因素',
-                        description: '驾驶员培训计划完成率提高和新安全监测设备部署是主要贡献因素。',
+                        title: 'Key Improvement Factors',
+                        description: 'The completion rate of driver training plans and the deployment of new safety monitoring devices are the main contributing factors.',
                         icon: <CheckCircleOutlined style={{ color: '#5ac8fa' }} />,
                       },
                       {
-                        title: '潜在风险因素',
-                        description: '预测模型显示，如果不解决疲劳驾驶问题，可能会限制安全评分的提升。',
+                        title: 'Potential Risk Factors',
+                        description: 'The prediction model shows that, without addressing fatigue driving issues, it may limit the increase in safety scores.',
                         icon: <ExclamationCircleOutlined style={{ color: '#ff9500' }} />,
                       },
                     ]}
                     renderItem={(item) => (
-                      <List.Item>
+                      <List.Item
+                        extra={
+                          <Tag color={item.priority === 'high' ? 'red' : item.priority === 'medium' ? 'orange' : 'blue'}>
+                            {item.priority === 'high' ? 'High Priority' : item.priority === 'medium' ? 'Medium Priority' : 'Low Priority'}
+                          </Tag>
+                        }
+                      >
                         <List.Item.Meta
-                          avatar={item.icon}
                           title={<Text strong>{item.title}</Text>}
                           description={item.description}
                         />
@@ -1210,23 +1215,23 @@ const SafetyMetrics = () => {
                     )}
                   />
                   
-                  <Divider orientation="left">建议行动</Divider>
+                  <Divider orientation="left">Action Recommendations</Divider>
                   
                   <ul>
-                    <li>继续推进驾驶员安全培训计划，重点关注疲劳驾驶防范。</li>
-                    <li>加速部署新一代安全监测设备，提高数据采集准确性。</li>
-                    <li>优化驾驶员排班，减少连续工作时间过长的情况。</li>
+                    <li>Continue to promote a driver safety training program, with a key focus on preventing fatigue driving.</li>
+                    <li>Accelerate the deployment of new safety monitoring devices to improve data collection accuracy.</li>
+                    <li>Optimize driver schedules to reduce long consecutive working hours.</li>
                   </ul>
                 </Card>
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="风险评估" key="7">
+          <TabPane tab="Risk Assessment" key="7">
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
-                  message="风险时段分析"
-                  description="以下热力图展示了不同时段的安全风险指数，帮助识别高风险时间段，优化资源分配和安全管理策略。"
+                  message="Risk Time Analysis"
+                  description="The following heat map shows the safety risk index at different times, helping to identify high-risk time periods and optimize resource allocation and safety management strategies."
                   type="warning"
                   showIcon
                   style={{ marginBottom: '24px' }}
@@ -1234,25 +1239,25 @@ const SafetyMetrics = () => {
               </Col>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="安全风险热力图" 
+                  title="Risk Heatmap" 
                   bordered={false}
-                  extra={<Tooltip title="数据基于过去3个月的安全事件统计"><InfoCircleOutlined /></Tooltip>}
+                  extra={<Tooltip title="Data based on past 3 months of safety events"><InfoCircleOutlined /></Tooltip>}
                 >
                   <Heatmap {...riskHeatmapConfig} />
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title="高风险时段分析" bordered={false}>
+                <Card title="Risk Time Analysis" bordered={false}>
                   <Paragraph>
-                    <Text>热力图分析显示，以下时段安全风险较高：</Text>
+                    <Text>Heatmap analysis shows that the following periods have high safety risks:</Text>
                   </Paragraph>
                   
                   <List
                     size="small"
                     dataSource={[
-                      { time: '周五和周六晚间 (22:00-02:00)', risk: '酒驾风险增加，乘客不文明行为增多' },
-                      { time: '工作日早晚高峰 (8-9点，17-18点)', risk: '交通拥堵导致驾驶员压力增大，急躁驾驶行为增多' },
-                      { time: '凌晨时段 (03:00-05:00)', risk: '驾驶员疲劳程度高，注意力不集中' },
+                      { time: 'Friday and Saturday nights (22:00-02:00)', risk: 'Alcohol driving risk increase, passenger behavior increase' },
+                      { time: 'Workday mornings and afternoons (8-9am, 5-6pm)', risk: 'Traffic congestion, driver stress, impulsive driving' },
+                      { time: 'Late-night hours (11pm-3am)', risk: 'Driver fatigue, distracted driving' },
                     ]}
                     renderItem={(item) => (
                       <List.Item>
@@ -1266,7 +1271,7 @@ const SafetyMetrics = () => {
                   
                   <Divider />
                   
-                  <Title level={5}>高风险驾驶员</Title>
+                  <Title level={5}>High-Risk Drivers</Title>
                   <Table 
                     columns={highRiskDriversColumns} 
                     dataSource={highRiskDriversData} 
@@ -1277,7 +1282,7 @@ const SafetyMetrics = () => {
               </Col>
               
               <Col xs={24}>
-                <Card title="风险干预建议" bordered={false}>
+                <Card title="Risk Intervention Suggestions" bordered={false}>
                   <List
                     itemLayout="horizontal"
                     dataSource={interventionSuggestions}
@@ -1285,7 +1290,7 @@ const SafetyMetrics = () => {
                       <List.Item
                         extra={
                           <Tag color={item.priority === 'high' ? 'red' : item.priority === 'medium' ? 'orange' : 'blue'}>
-                            {item.priority === 'high' ? '高优先级' : item.priority === 'medium' ? '中优先级' : '低优先级'}
+                            {item.priority === 'high' ? 'High Priority' : item.priority === 'medium' ? 'Medium Priority' : 'Low Priority'}
                           </Tag>
                         }
                       >
@@ -1300,50 +1305,50 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="实时监控" key="8">
+          <TabPane tab="Real-time Monitoring" key="8">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="实时安全事件监控" 
+                  title="Real-time Safety Event Monitoring" 
                   bordered={false}
                   extra={<Badge count={2} style={{ backgroundColor: '#ff3b30' }} />}
                 >
                   <Table
                     columns={[
                       {
-                        title: '事件ID',
+                        title: 'Event ID',
                         dataIndex: 'id',
                         key: 'id',
                         width: 100,
                       },
                       {
-                        title: '时间',
+                        title: 'Time',
                         dataIndex: 'time',
                         key: 'time',
                         width: 100,
                         render: (text) => <span><ClockCircleOutlined style={{ marginRight: '5px' }} />{text}</span>,
                       },
                       {
-                        title: '驾驶员',
+                        title: 'Driver',
                         dataIndex: 'driverName',
                         key: 'driverName',
                         width: 100,
                         render: (text, record) => <span>{text} ({record.driverId})</span>,
                       },
                       {
-                        title: '事件类型',
+                        title: 'Event Type',
                         dataIndex: 'event',
                         key: 'event',
                         width: 120,
                       },
                       {
-                        title: '位置',
+                        title: 'Location',
                         dataIndex: 'location',
                         key: 'location',
                         ellipsis: true,
                       },
                       {
-                        title: '严重程度',
+                        title: 'Severity',
                         dataIndex: 'severity',
                         key: 'severity',
                         width: 100,
@@ -1358,29 +1363,29 @@ const SafetyMetrics = () => {
                         },
                       },
                       {
-                        title: '状态',
+                        title: 'Status',
                         dataIndex: 'status',
                         key: 'status',
                         width: 120,
                         render: (status) => {
                           if (status === 'new') {
-                            return <Badge status="error" text="新事件" />;
+                            return <Badge status="error" text="New Event" />;
                           } else if (status === 'processing') {
-                            return <Badge status="processing" text="处理中" />;
+                            return <Badge status="processing" text="Processing" />;
                           } else {
-                            return <Badge status="success" text="已解决" />;
+                            return <Badge status="success" text="Resolved" />;
                           }
                         },
                       },
                       {
-                        title: '操作',
+                        title: 'Action',
                         key: 'action',
                         width: 120,
                         render: (_, record) => (
                           <Space size="small">
-                            <Button type="link" size="small">详情</Button>
+                            <Button type="link" size="small">Details</Button>
                             {record.status !== 'resolved' && (
-                              <Button type="link" size="small">处理</Button>
+                              <Button type="link" size="small">Process</Button>
                             )}
                           </Space>
                         ),
@@ -1392,42 +1397,42 @@ const SafetyMetrics = () => {
                   />
                   
                   <div style={{ marginTop: '16px', textAlign: 'right' }}>
-                    <Button type="primary" icon={<BellOutlined />}>设置警报规则</Button>
+                    <Button type="primary" icon={<BellOutlined />}>Set Alert Rules</Button>
                   </div>
                 </Card>
               </Col>
               
               <Col xs={24} lg={8}>
-                <Card title="今日事件时间线" bordered={false}>
+                <Card title="Today's Event Timeline" bordered={false}>
                   <Timeline style={{ marginTop: '16px' }}>
                     <Timeline.Item color="red">
-                      <p><Text strong>10:35:22</Text> - 李强 <Tag color="red">超速行驶</Tag></p>
-                      <p><Text type="secondary">北京市朝阳区建国路，超速35%</Text></p>
+                      <p><Text strong>10:35:22</Text> - Li Qiang <Tag color="red">Speeding</Tag></p>
+                      <p><Text type="secondary">Beijing Chaoyang District Jiu'an Road, 35% over the speed limit</Text></p>
                     </Timeline.Item>
                     <Timeline.Item color="orange">
-                      <p><Text strong>10:28:45</Text> - 张明 <Tag color="orange">急刹车</Tag></p>
-                      <p><Text type="secondary">北京市海淀区中关村大街，减速度0.8g</Text></p>
+                      <p><Text strong>10:28:45</Text> - Zhang Ming <Tag color="orange">Sudden Braking</Tag></p>
+                      <p><Text type="secondary">Beijing Haidian District Zhongguozhen Street, deceleration 0.8g</Text></p>
                     </Timeline.Item>
                     <Timeline.Item color="red">
-                      <p><Text strong>10:15:33</Text> - 王伟 <Tag color="red">疲劳驾驶</Tag></p>
-                      <p><Text type="secondary">北京市西城区西长安街，连续驾驶4.5小时</Text></p>
+                      <p><Text strong>10:15:33</Text> - Wang Wei <Tag color="red">Fatigue Driving</Tag></p>
+                      <p><Text type="secondary">Beijing Xicheng District Xichang Street, 4.5 hours of continuous driving</Text></p>
                     </Timeline.Item>
                     <Timeline.Item color="orange">
-                      <p><Text strong>10:02:18</Text> - 陈勇 <Tag color="orange">分心驾驶</Tag></p>
-                      <p><Text type="secondary">北京市东城区东长安街，注意力分散15秒</Text></p>
+                      <p><Text strong>10:02:18</Text> - Chen Yong <Tag color="orange">Distracted Driving</Tag></p>
+                      <p><Text type="secondary">Beijing Dongcheng District Dongchangan Street, 15 seconds of distraction</Text></p>
                     </Timeline.Item>
                     <Timeline.Item color="green">
-                      <p><Text strong>09:48:52</Text> - 赵刚 <Tag color="green">急转弯</Tag></p>
-                      <p><Text type="secondary">北京市丰台区丰台路，横向加速度0.4g</Text></p>
+                      <p><Text strong>09:48:52</Text> - Zhao Gang <Tag color="green">Sharp Turn</Tag></p>
+                      <p><Text type="secondary">Beijing Fengtai District Fengtai Road, horizontal acceleration 0.4g</Text></p>
                     </Timeline.Item>
                   </Timeline>
                   
                   <Divider />
                   
                   <Statistic 
-                    title="今日安全事件总数" 
+                    title="Today's Total Safety Events" 
                     value={27} 
-                    suffix="/ 较昨日 -12%" 
+                    suffix="/ Compared to yesterday -12%" 
                     valueStyle={{ color: '#34c759' }}
                   />
                 </Card>
@@ -1435,19 +1440,19 @@ const SafetyMetrics = () => {
               
               <Col xs={24}>
                 <Alert
-                  message="实时监控说明"
+                  message="Real-time Monitoring Instructions"
                   description={
                     <div>
                       <Paragraph>
-                        实时监控系统通过OBD设备和手机传感器收集驾驶行为数据，当检测到异常驾驶行为时立即生成安全事件警报。系统根据以下规则判定事件严重程度：
+                        Real-time monitoring system collects driving behavior data through OBD devices and mobile sensors. When abnormal driving behavior is detected, it immediately generates safety event alerts. The system determines the severity of events based on the following rules:
                       </Paragraph>
                       <ul>
-                        <li><Text strong>高风险事件（红色）</Text>：超速30%以上、严重疲劳驾驶（连续驾驶4小时以上）、酒驾嫌疑等</li>
-                        <li><Text strong>中风险事件（橙色）</Text>：急刹车（减速度{'>'}0.7g）、分心驾驶（注意力分散{'>'}10秒）、超速10-30%等</li>
-                        <li><Text strong>低风险事件（绿色）</Text>：轻微急转弯、轻微急加速、短暂分心等</li>
+                        <li><Text strong>High-risk events (red)</Text>：Exceeding speed by 30% or more, severe fatigue driving (continuous driving for 4 hours), alcohol suspicion, etc.</li>
+                        <li><Text strong>Medium-risk events (orange)</Text>：Sudden braking (deceleration > 0.7g), distracted driving (distracted for > 10 seconds), speed 10-30% over limit, etc.</li>
+                        <li><Text strong>Low-risk events (green)</Text>：Minor sharp turns, minor sharp accelerations, brief distractions, etc.</li>
                       </ul>
                       <Paragraph>
-                        系统会自动将高风险事件推送给管理人员，并根据公司安全管理流程进行干预。所有事件数据将用于驾驶员安全评分计算和培训需求分析。
+                        The system automatically sends high-risk events to managers and intervenes according to company safety management procedures. All event data is used for driver safety score calculations and training needs analysis.
                       </Paragraph>
                     </div>
                   }
@@ -1457,38 +1462,38 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="乘客安全反馈" key="9">
+          <TabPane tab="Passenger Safety Feedback" key="9">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="乘客安全反馈列表" 
+                  title="Passenger Safety Feedback List" 
                   bordered={false}
-                  extra={<Button type="primary" icon={<DownloadOutlined />} size="small">导出数据</Button>}
+                  extra={<Button type="primary" icon={<DownloadOutlined />} size="small">Export Data</Button>}
                 >
                   <Table
                     columns={[
                       {
-                        title: '日期',
+                        title: 'Date',
                         dataIndex: 'date',
                         key: 'date',
                         width: 100,
                         sorter: (a, b) => new Date(a.date) - new Date(b.date),
                       },
                       {
-                        title: '行程号',
+                        title: 'Trip ID',
                         dataIndex: 'tripId',
                         key: 'tripId',
                         width: 100,
                       },
                       {
-                        title: '驾驶员',
+                        title: 'Driver',
                         dataIndex: 'driverName',
                         key: 'driverName',
                         width: 100,
                         render: (text, record) => <span>{text} ({record.driverId})</span>,
                       },
                       {
-                        title: '安全评分',
+                        title: 'Safety Rating',
                         dataIndex: 'safetyRating',
                         key: 'safetyRating',
                         width: 100,
@@ -1505,55 +1510,55 @@ const SafetyMetrics = () => {
                         },
                       },
                       {
-                        title: '问题类型',
+                        title: 'Feedback Type',
                         dataIndex: 'feedbackType',
                         key: 'feedbackType',
                         width: 120,
                         filters: [
-                          { text: '超速行驶', value: '超速行驶' },
-                          { text: '急刹车', value: '急刹车' },
-                          { text: '分心驾驶', value: '分心驾驶' },
-                          { text: '疲劳驾驶', value: '疲劳驾驶' },
-                          { text: '车辆状况', value: '车辆状况' },
+                          { text: 'Speeding', value: 'Speeding' },
+                          { text: 'Sudden Braking', value: 'Sudden Braking' },
+                          { text: 'Distracted Driving', value: 'Distracted Driving' },
+                          { text: 'Fatigue Driving', value: 'Fatigue Driving' },
+                          { text: 'Vehicle Condition', value: 'Vehicle Condition' },
                         ],
                         onFilter: (value, record) => record.feedbackType === value,
                       },
                       {
-                        title: '反馈详情',
+                        title: 'Feedback Detail',
                         dataIndex: 'feedbackDetail',
                         key: 'feedbackDetail',
                         ellipsis: true,
                       },
                       {
-                        title: '状态',
+                        title: 'Status',
                         dataIndex: 'status',
                         key: 'status',
                         width: 100,
                         render: (status) => {
-                          if (status === '待处理') {
-                            return <Badge status="error" text="待处理" />;
-                          } else if (status === '处理中') {
-                            return <Badge status="processing" text="处理中" />;
+                          if (status === 'Pending') {
+                            return <Badge status="error" text="Pending" />;
+                          } else if (status === 'Processing') {
+                            return <Badge status="processing" text="Processing" />;
                           } else {
-                            return <Badge status="success" text="已处理" />;
+                            return <Badge status="success" text="Processed" />;
                           }
                         },
                         filters: [
-                          { text: '待处理', value: '待处理' },
-                          { text: '处理中', value: '处理中' },
-                          { text: '已处理', value: '已处理' },
+                          { text: 'Pending', value: 'Pending' },
+                          { text: 'Processing', value: 'Processing' },
+                          { text: 'Processed', value: 'Processed' },
                         ],
                         onFilter: (value, record) => record.status === value,
                       },
                       {
-                        title: '操作',
+                        title: 'Action',
                         key: 'action',
                         width: 120,
                         render: (_, record) => (
                           <Space size="small">
-                            <Button type="link" size="small">详情</Button>
-                            {record.status !== '已处理' && (
-                              <Button type="link" size="small">处理</Button>
+                            <Button type="link" size="small">Details</Button>
+                            {record.status !== 'Processed' && (
+                              <Button type="link" size="small">Process</Button>
                             )}
                           </Space>
                         ),
@@ -1564,7 +1569,7 @@ const SafetyMetrics = () => {
                     expandable={{
                       expandedRowRender: (record) => (
                         <p style={{ margin: 0 }}>
-                          <Text strong>处理结果：</Text> {record.resolution || '暂无处理结果'}
+                          <Text strong>Processing Result:</Text> {record.resolution || 'No processing result'}
                         </p>
                       ),
                     }}
@@ -1575,7 +1580,7 @@ const SafetyMetrics = () => {
               <Col xs={24} lg={8}>
                 <Row gutter={[0, 24]}>
                   <Col xs={24}>
-                    <Card title="安全问题类型分布" bordered={false}>
+                    <Card title="Feedback Type Distribution" bordered={false}>
                       <Pie
                         data={feedbackTypeData}
                         angleField="value"
@@ -1591,7 +1596,7 @@ const SafetyMetrics = () => {
                   </Col>
                   
                   <Col xs={24}>
-                    <Card title="乘客安全满意度趋势" bordered={false}>
+                    <Card title="Passenger Safety Satisfaction Trend" bordered={false}>
                       <Line
                         data={safetyRatingTrendData}
                         xField="month"
@@ -1607,11 +1612,11 @@ const SafetyMetrics = () => {
                       
                       <div style={{ marginTop: '16px', textAlign: 'center' }}>
                         <Statistic 
-                          title="当前月安全满意度" 
+                          title="Current month safety satisfaction" 
                           value={3.9} 
                           precision={1}
                           valueStyle={{ color: '#34c759' }}
-                          suffix="/ 5分"
+                          suffix="/ 5"
                           prefix={<ArrowUpOutlined />}
                         />
                       </div>
@@ -1621,73 +1626,73 @@ const SafetyMetrics = () => {
               </Col>
               
               <Col xs={24}>
-                <Card title="乘客安全反馈分析与建议" bordered={false}>
+                <Card title="Passenger Safety Feedback Analysis and Recommendations" bordered={false}>
                   <Row gutter={[24, 24]}>
                     <Col xs={24} md={8}>
                       <Statistic 
-                        title="本月安全反馈总数" 
+                        title="Current month safety feedback count" 
                         value={120} 
                         valueStyle={{ color: '#1890ff' }}
                       />
                       <Paragraph style={{ marginTop: '8px' }}>
-                        <Text type="secondary">较上月减少 15 条，降低率 11.1%</Text>
+                        <Text type="secondary">Decreased by 15, reduction rate 11.1%</Text>
                       </Paragraph>
                     </Col>
                     
                     <Col xs={24} md={8}>
                       <Statistic 
-                        title="严重安全问题（1-2星）" 
+                        title="Serious safety issues (1-2 stars)" 
                         value={28} 
                         valueStyle={{ color: '#ff3b30' }}
                       />
                       <Paragraph style={{ marginTop: '8px' }}>
-                        <Text type="secondary">占总反馈的 23.3%，较上月降低 5.2%</Text>
+                        <Text type="secondary">23.3% of total feedback, decreased by 5.2%</Text>
                       </Paragraph>
                     </Col>
                     
                     <Col xs={24} md={8}>
                       <Statistic 
-                        title="已解决反馈比例" 
+                        title="Resolved feedback ratio" 
                         value={78.3} 
                         suffix="%" 
                         valueStyle={{ color: '#34c759' }}
                       />
                       <Paragraph style={{ marginTop: '8px' }}>
-                        <Text type="secondary">较上月提高 8.7%，响应速度明显改善</Text>
+                        <Text type="secondary">Increased by 8.7%, response speed significantly improved</Text>
                       </Paragraph>
                     </Col>
                   </Row>
                   
                   <Divider />
                   
-                  <Title level={5}>主要发现与改进建议</Title>
+                  <Title level={5}>Main Findings and Improvement Recommendations</Title>
                   
                   <List
                     size="small"
                     bordered
                     dataSource={[
-                      '超速行驶仍是乘客反馈最多的安全问题，建议加强驾驶员速度管理培训和实时监控。',
-                      '急刹车和分心驾驶问题往往相互关联，建议强化防御性驾驶培训和注意力集中度检测。',
-                      '安全满意度趋势持续上升，与驾驶员培训完成率和安全事件处理效率呈正相关。',
-                      '建议对频繁收到安全反馈的驾驶员进行重点关注和个性化指导，并定期跟踪改进情况。',
-                      '建立乘客安全反馈快速响应机制，确保严重安全问题在24小时内得到处理和反馈。',
+                      'Speeding remains the most common safety issue; it is recommended to enhance driver speed management training and real-time monitoring.',
+                      'Sudden braking and distracted driving issues are often interrelated; it is suggested to strengthen defensive driving training and attention concentration testing.',
+                      'Safety satisfaction trends have been steadily improving, positively correlating with driver training completion rate and safety event handling efficiency.',
+                      'It is recommended to focus on drivers receiving frequent safety feedback and provide personalized guidance, regularly tracking improvement progress.',
+                      'Establish a passenger safety feedback quick response mechanism, ensuring that serious safety issues are resolved within 24 hours.',
                     ]}
                     renderItem={(item, index) => (
                       <List.Item>
-                        <Text mark>{`发现 ${index + 1}:`}</Text> {item}
+                        <Text mark>{`Findings ${index + 1}:`}</Text> {item}
                       </List.Item>
                     )}
                   />
                   
                   <Alert
-                    message="安全反馈问题处理流程"
+                    message="Passenger Safety Feedback Processing Flow"
                     description={
                       <Steps size="small" current={4} direction="vertical">
-                        <Steps.Step title="接收反馈" description="系统自动收集乘客安全反馈并分类" />
-                        <Steps.Step title="风险评估" description="根据反馈内容和评分判断问题严重程度" />
-                        <Steps.Step title="问题分配" description="将问题分配给相关负责人进行处理" />
-                        <Steps.Step title="处理与改进" description="采取相应措施解决问题并记录处理结果" />
-                        <Steps.Step title="反馈跟踪" description="定期跟踪驾驶员改进情况并更新安全评分" />
+                        <Steps.Step title="Receive Feedback" description="System automatically collects passenger safety feedback and categorizes it" />
+                        <Steps.Step title="Risk Assessment" description="Judges the severity of the issue based on feedback content and rating" />
+                        <Steps.Step title="Issue Assignment" description="Assigns the issue to the relevant responsible person for processing" />
+                        <Steps.Step title="Processing and Improvement" description="Takes appropriate measures to resolve the issue and records the resolution" />
+                        <Steps.Step title="Feedback Tracking" description="Regularly tracks driver improvement and updates safety scores" />
                       </Steps>
                     }
                     type="info"
@@ -1699,54 +1704,54 @@ const SafetyMetrics = () => {
             </Row>
           </TabPane>
 
-          <TabPane tab="驾驶员安全培训" key="10">
+          <TabPane tab="Driver Safety Training" key="10">
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={16}>
                 <Card 
-                  title="安全培训课程与完成情况" 
+                  title="Safety Training Courses and Completion" 
                   bordered={false}
-                  extra={<Button type="primary" size="small">新增培训</Button>}
+                  extra={<Button type="primary" size="small">Add Training</Button>}
                 >
                   <Table
                     columns={[
                       {
-                        title: '课程名称',
+                        title: 'Course Name',
                         dataIndex: 'name',
                         key: 'name',
                         width: 220,
                       },
                       {
-                        title: '类型',
+                        title: 'Type',
                         dataIndex: 'type',
                         key: 'type',
                         width: 120,
                         render: (type) => {
                           const typeMap = {
-                            'defensive': { color: 'blue', text: '防御性驾驶' },
-                            'emergency': { color: 'red', text: '紧急情况' },
-                            'fatigue': { color: 'orange', text: '疲劳管理' },
-                            'eco': { color: 'green', text: '经济驾驶' },
-                            'passenger': { color: 'purple', text: '乘客服务' },
+                            'defensive': { color: 'blue', text: 'Defensive driving' },
+                            'emergency': { color: 'red', text: 'Emergency' },
+                            'fatigue': { color: 'orange', text: 'Fatigue management' },
+                            'eco': { color: 'green', text: 'Eco driving' },
+                            'passenger': { color: 'purple', text: 'Passenger service' },
                           };
                           return <Tag color={typeMap[type].color}>{typeMap[type].text}</Tag>;
                         },
                         filters: [
-                          { text: '防御性驾驶', value: 'defensive' },
-                          { text: '紧急情况', value: 'emergency' },
-                          { text: '疲劳管理', value: 'fatigue' },
-                          { text: '经济驾驶', value: 'eco' },
-                          { text: '乘客服务', value: 'passenger' },
+                          { text: 'Defensive driving', value: 'defensive' },
+                          { text: 'Emergency', value: 'emergency' },
+                          { text: 'Fatigue management', value: 'fatigue' },
+                          { text: 'Eco driving', value: 'eco' },
+                          { text: 'Passenger service', value: 'passenger' },
                         ],
                         onFilter: (value, record) => record.type === value,
                       },
                       {
-                        title: '目标驾驶员',
+                        title: 'Target Drivers',
                         dataIndex: 'targetDrivers',
                         key: 'targetDrivers',
                         width: 120,
                       },
                       {
-                        title: '完成率',
+                        title: 'Completion Rate',
                         dataIndex: 'completionRate',
                         key: 'completionRate',
                         width: 200,
@@ -1768,7 +1773,7 @@ const SafetyMetrics = () => {
                         },
                       },
                       {
-                        title: '截止日期',
+                        title: 'Deadline',
                         dataIndex: 'deadline',
                         key: 'deadline',
                         width: 120,
@@ -1778,9 +1783,9 @@ const SafetyMetrics = () => {
                           const daysLeft = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
                           
                           if (daysLeft < 0) {
-                            return <Text type="danger">{date} (已过期)</Text>;
+                            return <Text type="danger">{date} (Expired)</Text>;
                           } else if (daysLeft <= 7) {
-                            return <Text type="warning">{date} (剩余 {daysLeft} 天)</Text>;
+                            return <Text type="warning">{date} (Remaining {daysLeft} days)</Text>;
                           } else {
                             return <Text>{date}</Text>;
                           }
@@ -1788,13 +1793,13 @@ const SafetyMetrics = () => {
                         sorter: (a, b) => new Date(a.deadline) - new Date(b.deadline),
                       },
                       {
-                        title: '操作',
+                        title: 'Action',
                         key: 'action',
                         width: 120,
                         render: () => (
                           <Space size="small">
-                            <Button type="link" size="small">详情</Button>
-                            <Button type="link" size="small">提醒</Button>
+                            <Button type="link" size="small">Details</Button>
+                            <Button type="link" size="small">Remind</Button>
                           </Space>
                         ),
                       },
@@ -1802,41 +1807,41 @@ const SafetyMetrics = () => {
                     dataSource={[
                       {
                         key: '1',
-                        name: '防御性驾驶技巧',
+                        name: 'Defensive driving skills',
                         type: 'defensive',
-                        targetDrivers: '全体驾驶员',
+                        targetDrivers: 'All drivers',
                         completionRate: 92,
                         deadline: '2025-07-15',
                       },
                       {
                         key: '2',
-                        name: '紧急情况应对与处理',
+                        name: 'Emergency response and handling',
                         type: 'emergency',
-                        targetDrivers: '全体驾驶员',
+                        targetDrivers: 'All drivers',
                         completionRate: 78,
                         deadline: '2025-07-30',
                       },
                       {
                         key: '3',
-                        name: '疲劳驾驶风险与管理',
+                        name: 'Fatigue driving risk and management',
                         type: 'fatigue',
-                        targetDrivers: '长途驾驶员',
+                        targetDrivers: 'Long-distance drivers',
                         completionRate: 65,
                         deadline: '2025-07-10',
                       },
                       {
                         key: '4',
-                        name: '经济与环保驾驶',
+                        name: 'Eco driving',
                         type: 'eco',
-                        targetDrivers: '全体驾驶员',
+                        targetDrivers: 'All drivers',
                         completionRate: 85,
                         deadline: '2025-08-15',
                       },
                       {
                         key: '5',
-                        name: '乘客安全与服务',
+                        name: 'Passenger safety and service',
                         type: 'passenger',
-                        targetDrivers: '城市出租车',
+                        targetDrivers: 'City taxis',
                         completionRate: 95,
                         deadline: '2025-06-30',
                       },
@@ -1848,9 +1853,9 @@ const SafetyMetrics = () => {
               </Col>
               
               <Col xs={24} lg={8}>
-                <Card title="培训效果分析" bordered={false}>
+                <Card title="Training Effectiveness Analysis" bordered={false}>
                   <Statistic 
-                    title="整体培训完成率" 
+                    title="Overall Training Completion Rate" 
                     value={83} 
                     suffix="%" 
                     valueStyle={{ color: '#34c759' }}
@@ -1859,14 +1864,14 @@ const SafetyMetrics = () => {
                   <Divider />
                   
                   <div style={{ marginBottom: '16px' }}>
-                    <Text strong>培训后安全指标改善情况</Text>
+                    <Text strong>Training Safety Metrics Improvement</Text>
                   </div>
                   
                   <Row gutter={[16, 16]}>
                     <Col span={12}>
                       <Card size="small">
                         <Statistic 
-                          title="事故率降低" 
+                          title="Accident rate reduction" 
                           value={32} 
                           suffix="%" 
                           valueStyle={{ color: '#34c759' }}
@@ -1877,7 +1882,7 @@ const SafetyMetrics = () => {
                     <Col span={12}>
                       <Card size="small">
                         <Statistic 
-                          title="乘客投诉减少" 
+                          title="Passenger Complaint Reduction" 
                           value={28} 
                           suffix="%" 
                           valueStyle={{ color: '#34c759' }}
@@ -1888,7 +1893,7 @@ const SafetyMetrics = () => {
                     <Col span={12}>
                       <Card size="small">
                         <Statistic 
-                          title="安全评分提升" 
+                          title="Safety score improvement" 
                           value={15} 
                           suffix="%" 
                           valueStyle={{ color: '#34c759' }}
@@ -1899,7 +1904,7 @@ const SafetyMetrics = () => {
                     <Col span={12}>
                       <Card size="small">
                         <Statistic 
-                          title="燃油效率提升" 
+                          title="Fuel efficiency improvement" 
                           value={8} 
                           suffix="%" 
                           valueStyle={{ color: '#34c759' }}
@@ -1912,17 +1917,17 @@ const SafetyMetrics = () => {
                   <Divider />
                   
                   <div style={{ marginBottom: '16px' }}>
-                    <Text strong>培训需求预测</Text>
+                    <Text strong>Training Demand Forecast</Text>
                   </div>
                   
                   <List
                     size="small"
                     dataSource={[
-                      { title: '夜间驾驶安全', priority: 'high' },
-                      { title: '恶劣天气驾驶技巧', priority: 'high' },
-                      { title: '道路危险识别', priority: 'medium' },
-                      { title: '车辆安全检查', priority: 'medium' },
-                      { title: '乘客冲突处理', priority: 'low' },
+                      { title: 'Night driving safety', priority: 'high' },
+                      { title: 'Winter driving skills', priority: 'high' },
+                      { title: 'Road danger identification', priority: 'medium' },
+                      { title: 'Vehicle safety inspection', priority: 'medium' },
+                      { title: 'Passenger conflict handling', priority: 'low' },
                     ]}
                     renderItem={(item) => {
                       let tagColor = 'green';
@@ -1933,7 +1938,7 @@ const SafetyMetrics = () => {
                         <List.Item>
                           <Space>
                             {item.title}
-                            <Tag color={tagColor}>{item.priority === 'high' ? '高优先级' : item.priority === 'medium' ? '中优先级' : '低优先级'}</Tag>
+                            <Tag color={tagColor}>{item.priority === 'high' ? 'High priority' : item.priority === 'medium' ? 'Medium priority' : 'Low priority'}</Tag>
                           </Space>
                         </List.Item>
                       );
@@ -1944,21 +1949,21 @@ const SafetyMetrics = () => {
               
               <Col xs={24}>
                 <Alert
-                  message="培训计划建议"
+                  message="Training Plan Recommendations"
                   description={
                     <div>
                       <Paragraph>
-                        基于安全数据分析和驾驶员表现，我们建议以下培训重点：
+                        Based on safety data analysis and driver performance, we recommend the following training priorities:
                       </Paragraph>
                       <ol>
-                        <li><Text strong>针对性培训</Text>：为安全评分低于80分的驾驶员提供个性化培训计划，重点关注其最常见的安全问题。</li>
-                        <li><Text strong>实时反馈</Text>：在驾驶过程中提供即时语音反馈，帮助驾驶员及时纠正不安全驾驶行为。</li>
-                        <li><Text strong>模拟训练</Text>：利用VR技术模拟各种危险驾驶场景，提高驾驶员应对紧急情况的能力。</li>
-                        <li><Text strong>同伴学习</Text>：组织安全评分高的驾驶员与评分低的驾驶员结对，促进经验分享和技能提升。</li>
-                        <li><Text strong>定期复训</Text>：每季度组织一次安全驾驶复训，确保驾驶员持续保持良好的安全意识。</li>
+                        <li><Text strong>Targeted Training</Text>：For drivers with safety scores below 80, provide personalized training plans focusing on their most common safety issues.</li>
+                        <li><Text strong>Real-time Feedback</Text>：Provide instant voice feedback during driving to help drivers correct unsafe driving behaviors.</li>
+                        <li><Text strong>Simulation Training</Text>：Use VR technology to simulate various dangerous driving scenarios, improving drivers' ability to handle emergency situations.</li>
+                        <li><Text strong>Peer Learning</Text>：Organize safety-rated drivers to pair with those with lower scores, promoting experience sharing and skill enhancement.</li>
+                        <li><Text strong>Regular Retraining</Text>：Conduct quarterly safety driving retraining to ensure drivers maintain good safety awareness.</li>
                       </ol>
                       <Paragraph>
-                        通过实施上述培训计划，预计可将安全事故率降低40%，乘客投诉减少35%，并提高整体安全评分20%。
+                        By implementing the above training plans, we expect a 40% reduction in accident rates, a 35% reduction in passenger complaints, and a 20% increase in overall safety scores.
                       </Paragraph>
                     </div>
                   }
