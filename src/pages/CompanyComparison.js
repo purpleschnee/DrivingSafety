@@ -186,9 +186,9 @@ const CompanyComparison = () => {
       render: (_, record) => {
         const diff = record.company - record.industry;
         return diff > 0 ? (
-          <Text type="success">+{diff}</Text>
+          <Text type="success">+{diff.toFixed(1)}</Text>
         ) : (
-          <Text type="danger">{diff}</Text>
+          <Text type="danger">{diff.toFixed(1)}</Text>
         );
       },
     },
@@ -205,9 +205,9 @@ const CompanyComparison = () => {
       render: (_, record) => {
         const diff = record.company - record.competitor;
         return diff > 0 ? (
-          <Text type="success">+{diff}</Text>
+          <Text type="success">+{diff.toFixed(1)}</Text>
         ) : (
-          <Text type="danger">{diff}</Text>
+          <Text type="danger">{diff.toFixed(1)}</Text>
         );
       },
     },
@@ -310,22 +310,26 @@ const CompanyComparison = () => {
       <Card style={{ marginBottom: '24px' }}>
         <Row gutter={[16, 16]} align="middle">
           <Col xs={24} md={8}>
-            <Text strong>Comparison Type:</Text>
-            <Select 
-              style={{ width: '80%', marginLeft: '10px' }} 
-              defaultValue="industry"
-              onChange={(value) => setComparisonType(value)}
-            >
-              <Option value="industry">Industry Average</Option>
-              <Option value="competitor">Main Competitor</Option>
-              <Option value="historical">Historical Data</Option>
-            </Select>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Text strong style={{ whiteSpace: 'nowrap', marginRight: '10px' }}>Comparison Type:</Text>
+              <Select 
+                style={{ width: '100%' }} 
+                defaultValue="industry"
+                onChange={(value) => setComparisonType(value)}
+              >
+                <Option value="industry">Industry Average</Option>
+                <Option value="competitor">Main Competitor</Option>
+                <Option value="historical">Historical Data</Option>
+              </Select>
+            </div>
           </Col>
-          <Col xs={24} md={8}>
-            <Text strong>Date Range:</Text>
-            <RangePicker style={{ width: '80%', marginLeft: '10px' }} />
+          <Col xs={24} md={10}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Text strong style={{ whiteSpace: 'nowrap', marginRight: '10px' }}>Date Range:</Text>
+              <RangePicker style={{ width: '100%' }} />
+            </div>
           </Col>
-          <Col xs={24} md={8} style={{ textAlign: 'right' }}>
+          <Col xs={24} md={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Button icon={<DownloadOutlined />} type="primary">Export Report</Button>
           </Col>
         </Row>

@@ -80,10 +80,10 @@ const DriverAnalytics = () => {
     {
       title: 'Actions',
       key: 'action',
-      render: () => (
+      render: (text, record) => (
         <Space>
-          <Button type="link" size="small">Details</Button>
-          <Button type="link" size="small">Training</Button>
+          <Button type="link" size="small" onClick={() => window.location.href = `/driver-details/${record.id}`}>Details</Button>
+          <Button type="link" size="small" onClick={() => window.location.href = `/driver-training/${record.id}`}>Training</Button>
         </Space>
       ),
     },

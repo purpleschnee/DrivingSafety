@@ -864,25 +864,29 @@ const SafetyMetrics = () => {
       
       {/* 筛选和控制区域 */}
       <Card style={{ marginBottom: '24px' }}>
-        <Row gutter={[16, 16]} align="middle">
+        <Row gutter={[16, 16]} align="middle" justify="space-between">
           <Col xs={24} md={6}>
-            <Text strong>Time Range:</Text>
-            <Select 
-              style={{ width: '80%', marginLeft: '10px' }} 
-              defaultValue="month"
-              onChange={(value) => setTimeRange(value)}
-            >
-              <Option value="week">The past week</Option>
-              <Option value="month">The past month</Option>
-              <Option value="quarter">The past quarter</Option>
-              <Option value="year">The past year</Option>
-            </Select>
+            <Space align="center">
+              <Text strong>Time Range:</Text>
+              <Select 
+                style={{ width: 180 }} 
+                defaultValue="month"
+                onChange={(value) => setTimeRange(value)}
+              >
+                <Option value="week">The past week</Option>
+                <Option value="month">The past month</Option>
+                <Option value="quarter">The past quarter</Option>
+                <Option value="year">The past year</Option>
+              </Select>
+            </Space>
           </Col>
-          <Col xs={24} md={8}>
-            <Text strong>Custom Date Range:</Text>
-            <RangePicker style={{ width: '80%', marginLeft: '10px' }} />
+          <Col xs={24} md={10}>
+            <Space align="center">
+              <Text strong>Custom Date Range:</Text>
+              <RangePicker style={{ width: 280 }} />
+            </Space>
           </Col>
-          <Col xs={24} md={6}>
+          <Col xs={24} md={6} style={{ textAlign: 'right' }}>
             <Button icon={<DownloadOutlined />} type="primary">Export Report</Button>
           </Col>
         </Row>

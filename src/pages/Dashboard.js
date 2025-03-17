@@ -225,7 +225,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Title level={3} style={{ color: 'var(--heading-color)' }}>Safety Driving Data Overview</Title>
+      <Title level={4} style={{ color: 'var(--heading-color)' }}>Safety Driving Data Overview</Title>
       <Text type="secondary" style={{ color: 'var(--text-secondary)' }}>Real-time monitoring of fleet safety performance</Text>
       
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
