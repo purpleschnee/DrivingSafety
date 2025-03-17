@@ -1,70 +1,33 @@
 import React from 'react';
-import { Layout, Avatar, Button, Input } from 'antd';
-import { BellOutlined, UserOutlined, MenuOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { Layout, Input, Badge, Avatar, Space, Typography } from 'antd';
+import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import './Header.css';
 
 const { Header: AntHeader } = Layout;
-const { Search } = Input;
+const { Title } = Typography;
 
-const Header = ({ collapsed, setCollapsed }) => {
+const Header = () => {
   return (
-    <AntHeader style={{ 
-      padding: '0 24px', 
-      height: '64px',
-      lineHeight: '64px',
-      background: 'white',
-      boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 10
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Button 
-            type="text" 
-            icon={collapsed ? <MenuOutlined /> : <MenuFoldOutlined />} 
-            onClick={() => setCollapsed(!collapsed)}
-            style={{ 
-              fontSize: '16px',
-              width: '40px',
-              height: '40px',
-              marginRight: '24px',
-              border: '1px solid var(--border-color)',
-              borderRadius: '6px'
-            }}
+    <AntHeader className="site-header">
+      <div className="header-center">
+        <Title level={4} className="app-title">Driving Safety Monitor</Title>
+      </div>
+      
+      <div className="header-right">
+        <div className="header-search">
+          <Input
+            placeholder="Search..."
+            prefix={<SearchOutlined style={{ color: 'var(--text-secondary)' }} />}
+            className="search-input"
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center',
-            background: 'var(--bg-light)',
-            borderRadius: '4px',
-            padding: '6px 12px',
-            marginRight: '20px'
-          }}>
-            <Search 
-              placeholder="Search..." 
-              style={{ 
-                width: 200,
-                border: 'none',
-                backgroundColor: 'transparent'
-              }} 
-              className="header-search"
-            />
-          </div>
-          
-          <Button 
-            type="text" 
-            icon={<BellOutlined style={{ fontSize: '20px', color: 'var(--text-primary)' }} />} 
-            style={{ marginRight: '20px' }}
-          />
-          
-          <Avatar 
-            size="large"
-            icon={<UserOutlined />} 
-            style={{ backgroundColor: 'var(--primary-color)' }} 
-          />
-        </div>
+        
+        <Space size={16}>
+          <Badge count={5} size="small">
+            <BellOutlined style={{ fontSize: '20px', color: 'var(--text-secondary)' }} />
+          </Badge>
+          <Avatar icon={<UserOutlined />} className="user-avatar" />
+        </Space>
       </div>
     </AntHeader>
   );

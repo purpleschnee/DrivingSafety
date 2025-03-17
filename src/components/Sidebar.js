@@ -1,21 +1,25 @@
 import React from 'react';
-import { Layout, Menu, Typography } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  DashboardOutlined, 
-  CarOutlined, 
-  SafetyOutlined, 
+import {
+  DashboardOutlined,
+  CarOutlined,
+  SafetyOutlined,
   ReadOutlined,
-  BarChartOutlined,
-  SettingOutlined
+  TeamOutlined,
+  SettingOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons';
+import './Sidebar.css';
 
 const { Sider } = Layout;
-const { Title } = Typography;
 
-const Sidebar = ({ collapsed }) => {
+const Sidebar = ({ collapsed, setCollapsed }) => {
   const location = useLocation();
-  
+  const currentPath = location.pathname;
+
+  // Menu items configuration
   const menuItems = [
     {
       key: '/',
@@ -39,7 +43,7 @@ const Sidebar = ({ collapsed }) => {
     },
     {
       key: '/company-comparison',
-      icon: <BarChartOutlined />,
+      icon: <TeamOutlined />,
       label: <Link to="/company-comparison">Company Comparison</Link>,
     },
     {
@@ -51,38 +55,25 @@ const Sidebar = ({ collapsed }) => {
 
   return (
     <Sider
-      collapsible
-      collapsed={collapsed}
-      style={{
-        height: '100vh',
-        position: 'fixed',
-        left: 0
-      }}
       width={240}
       collapsedWidth={80}
-      trigger={null} 
-      theme="light"
+      collapsed={collapsed}
+      className="site-sidebar"
+      trigger={null}
     >
-      <div style={{ 
-        height: '64px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        padding: '16px',
-        borderBottom: '1px solid var(--border-color)'
-      }}>
-        {!collapsed ? (
-          <Title level={4} style={{ margin: 0, color: 'var(--primary-color)' }}>Driving Safety Monitor</Title>
-        ) : (
-          <Title level={4} style={{ margin: 0, color: 'var(--primary-color)' }}>DSM</Title>
-        )}
+      <div className="sidebar-header">
+        <Button 
+          type="text"
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={() => setCollapsed(!collapsed)}
+          className="sidebar-toggle"
+        />
       </div>
       <Menu
-        theme="light"
         mode="inline"
-        selectedKeys={[location.pathname]}
+        selectedKeys={[currentPath]}
         items={menuItems}
-        style={{ borderRight: 0 }}
+        className="sidebar-menu"
       />
     </Sider>
   );

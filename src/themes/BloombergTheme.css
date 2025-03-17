@@ -1,28 +1,28 @@
-/* Bloomberg-inspired Light Theme with Gradients */
+/* Modern Professional Light Theme */
 :root {
-  /* Main colors from Bloomberg */
-  --primary-color: #0064fa; /* Bloomberg blue */
-  --secondary-color: #338736; /* Bloomberg green */
-  --warning-color: #e6b120; /* Bloomberg yellow */
-  --danger-color: #e51503; /* Bloomberg red */
-  --success-color: #338736; /* Bloomberg green */
+  /* Main colors */
+  --primary-color: #0064fa; /* Blue */
+  --secondary-color: #338736; /* Green */
+  --warning-color: #e6b120; /* Yellow */
+  --danger-color: #e51503; /* Red */
+  --success-color: #338736; /* Green */
   
   /* Background colors */
   --bg-light: #ffffff;
-  --bg-gray: #f8f8f8;
+  --bg-gray: #f5f7fa;
   --bg-card: #ffffff;
-  --bg-card-hover: #f2f7ff;
+  --bg-card-hover: #f0f7ff;
   
-  /* Text colors */
-  --text-primary: #262626;
-  --text-secondary: #545454;
-  --text-muted: #767676;
+  /* Text colors - improved contrast */
+  --text-primary: #1a1a1a;
+  --text-secondary: #444444;
+  --text-muted: #666666;
   --text-light: #ffffff;
   
   /* Border and shadow */
-  --border-color: #efefef;
-  --border-color-dark: #ccc;
-  --border-radius: 4px;
+  --border-color: #e0e4e8;
+  --border-color-dark: #c0c4c8;
+  --border-radius: 6px;
   --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   
   /* Gradients */
@@ -30,9 +30,7 @@
   --gradient-success: linear-gradient(135deg, #4db250 0%, #338736 100%);
   --gradient-warning: linear-gradient(135deg, #ffcd1e 0%, #e6b120 100%);
   --gradient-danger: linear-gradient(135deg, #f05143 0%, #e51503 100%);
-  --gradient-light: linear-gradient(to right, #f8f8f8, #ffffff, #f8f8f8);
-  --gradient-sidebar: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
-  --gradient-header: linear-gradient(90deg, #f8f8f8 0%, #ffffff 100%);
+  --gradient-light: linear-gradient(to right, #f5f7fa, #ffffff, #f5f7fa);
   
   /* Chart colors */
   --chart-green: #338736;
@@ -49,45 +47,49 @@
 body {
   background-color: var(--bg-light);
   color: var(--text-primary);
-  font-family: 'BWHaasGroteskWeb', 'Helvetica', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
 /* Layout components */
-.app-container {
-  min-height: 100vh;
-  background-color: var(--bg-light);
+.ant-layout {
+  background: var(--bg-light);
 }
 
-.site-layout {
-  min-height: 100vh;
-  background-color: var(--bg-gray);
-}
-
-/* Header styles */
 .ant-layout-header {
-  background: var(--bg-light) !important;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 24px;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   height: 64px;
   line-height: 64px;
-  box-shadow: var(--box-shadow);
+  padding: 0 24px;
 }
 
-/* Sidebar styles */
 .ant-layout-sider {
-  background: var(--bg-light) !important;
-  border-right: 1px solid var(--border-color);
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.ant-menu,
-.ant-menu-sub {
+.ant-layout-content {
+  background: var(--bg-light);
+}
+
+/* Menu */
+.ant-menu {
   background: transparent;
-  color: var(--text-primary);
+  border-right: none;
+}
+
+.ant-menu-item {
+  border-radius: var(--border-radius);
+  margin: 4px 8px !important;
+  height: 40px !important;
+  line-height: 40px !important;
 }
 
 .ant-menu-item-selected {
-  background: var(--bg-card-hover) !important;
+  background-color: var(--bg-card-hover) !important;
   color: var(--primary-color) !important;
   font-weight: 500;
 }
@@ -96,251 +98,220 @@ body {
   color: var(--primary-color) !important;
 }
 
-.ant-menu-item-selected .ant-menu-title-content a {
+.ant-menu-item-active {
   color: var(--primary-color) !important;
 }
 
-/* Content area */
-.site-content {
-  margin: 24px 16px;
-  padding: 24px;
-  background-color: var(--bg-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
-/* Card styles */
-.ant-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+.ant-typography {
   color: var(--text-primary);
-  margin-bottom: 16px;
+}
+
+/* Cards */
+.ant-card {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: none;
+  overflow: hidden;
 }
 
 .ant-card-head {
   border-bottom: 1px solid var(--border-color);
-  color: var(--text-primary);
-}
-
-/* Statistic styles */
-.ant-statistic-title {
-  color: var(--text-secondary);
-}
-
-.ant-statistic-content {
-  color: var(--text-primary);
-}
-
-/* Table styles */
-.ant-table {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-}
-
-.ant-table-thead > tr > th {
-  background-color: var(--bg-gray) !important;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
   font-weight: 500;
 }
 
-.ant-table-tbody > tr > td {
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-primary);
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
 }
 
-.ant-table-tbody > tr:hover > td {
-  background-color: var(--bg-card-hover) !important;
+/* Buttons */
+.ant-btn {
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  height: 36px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Form styles */
-.ant-form-item-label > label {
-  color: var(--text-primary);
-}
-
-.ant-input,
-.ant-input-number,
-.ant-select-selector,
-.ant-picker,
-.ant-input-affix-wrapper {
-  background-color: var(--bg-light) !important;
-  border: 1px solid var(--border-color-dark) !important;
-  color: var(--text-primary) !important;
-}
-
-.ant-input::placeholder {
-  color: var(--text-muted);
-}
-
-/* Button styles */
 .ant-btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ant-btn-primary:hover {
   background: var(--gradient-primary);
-  border: none;
-  color: var(--text-light);
+  border-color: var(--primary-color);
 }
 
 .ant-btn-success {
-  background: var(--gradient-success);
-  border: none;
-  color: var(--text-light);
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
 }
 
-.ant-btn-warning {
-  background: var(--gradient-warning);
-  border: none;
-  color: var(--text-primary);
+.ant-btn-success:hover {
+  background: var(--gradient-success);
+  border-color: var(--success-color);
+  color: white;
 }
 
 .ant-btn-danger {
-  background: var(--gradient-danger);
-  border: none;
-  color: var(--text-light);
-}
-
-/* Tag styles */
-.ant-tag-green {
-  background: var(--chart-green);
-  border: none;
-  color: var(--text-light);
-}
-
-.ant-tag-red {
-  background: var(--chart-red);
-  border: none;
-  color: var(--text-light);
-}
-
-.ant-tag-blue {
-  background: var(--chart-blue);
-  border: none;
-  color: var(--text-light);
-}
-
-.ant-tag-orange {
-  background: var(--chart-yellow);
-  border: none;
-  color: var(--text-primary);
-}
-
-/* Progress bar styles */
-.ant-progress-bg {
-  background: var(--gradient-primary);
-}
-
-/* Chart styles - for custom charts */
-.custom-chart-container {
-  background-color: var(--bg-card);
-  border-radius: var(--border-radius);
-  padding: 16px;
-  box-shadow: var(--box-shadow);
-}
-
-/* Bloomberg-style chart */
-.bloomberg-chart {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  background-color: var(--bg-light);
-  padding: 16px;
-}
-
-.bloomberg-chart-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
-                    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.2;
-}
-
-.bloomberg-chart-line {
-  stroke: var(--primary-color);
-  stroke-width: 2px;
-  fill: none;
-}
-
-.bloomberg-chart-area {
-  fill: url(#chart-gradient);
-  opacity: 0.2;
-}
-
-/* Dashboard cards with top borders */
-.dashboard-card {
-  position: relative;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-card);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.dashboard-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--primary-color);
-}
-
-.dashboard-card-success::before {
-  background: var(--success-color);
-}
-
-.dashboard-card-warning::before {
-  background: var(--warning-color);
-}
-
-.dashboard-card-danger::before {
   background: var(--danger-color);
+  border-color: var(--danger-color);
+  color: white;
 }
 
-/* Tabs styles */
+.ant-btn-danger:hover {
+  background: var(--gradient-danger);
+  border-color: var(--danger-color);
+  color: white;
+}
+
+/* Forms */
+.ant-input {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+}
+
+.ant-input:hover {
+  border-color: var(--primary-color);
+}
+
+.ant-input:focus, .ant-input-focused {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 100, 250, 0.2);
+}
+
+.ant-input-search .ant-input {
+  border-right: none;
+}
+
+.ant-input-search .ant-input-group-addon {
+  background-color: var(--bg-light);
+}
+
+/* Tables */
+.ant-table {
+  background: white;
+  border-radius: var(--border-radius);
+}
+
+.ant-table-thead > tr > th {
+  background: var(--bg-gray);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: var(--bg-card-hover);
+}
+
+/* Tabs */
 .ant-tabs-tab {
-  color: var(--text-secondary) !important;
+  font-weight: 500;
 }
 
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
   font-weight: 500;
 }
 
 .ant-tabs-ink-bar {
-  background: var(--primary-color) !important;
+  background: var(--primary-color);
 }
 
-/* Badge styles */
-.ant-badge-status-dot {
-  width: 8px;
-  height: 8px;
+/* Badges */
+.ant-badge-count {
+  background: var(--danger-color);
+  box-shadow: none;
 }
 
-/* Tooltip styles */
-.ant-tooltip-inner {
-  background-color: var(--text-primary);
-}
-
-/* Modal styles */
-.ant-modal-content,
-.ant-modal-header {
-  background-color: var(--bg-card);
+/* Tags */
+.ant-tag {
   border-radius: var(--border-radius);
+  padding: 2px 8px;
+  margin-right: 8px;
+  font-weight: 500;
 }
 
-.ant-modal-title,
-.ant-modal-close {
-  color: var(--text-primary);
+.ant-tag-blue {
+  background: rgba(0, 100, 250, 0.1);
+  border: 1px solid rgba(0, 100, 250, 0.2);
+  color: var(--primary-color);
+}
+
+.ant-tag-green {
+  background: rgba(51, 135, 54, 0.1);
+  border: 1px solid rgba(51, 135, 54, 0.2);
+  color: var(--success-color);
+}
+
+.ant-tag-red {
+  background: rgba(229, 21, 3, 0.1);
+  border: 1px solid rgba(229, 21, 3, 0.2);
+  color: var(--danger-color);
+}
+
+.ant-tag-orange {
+  background: rgba(230, 177, 32, 0.1);
+  border: 1px solid rgba(230, 177, 32, 0.2);
+  color: var(--warning-color);
+}
+
+/* Progress */
+.ant-progress-bg {
+  background: var(--gradient-primary);
+}
+
+/* Alerts */
+.ant-alert {
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.ant-alert-success {
+  background-color: rgba(51, 135, 54, 0.1);
+  border: 1px solid rgba(51, 135, 54, 0.2);
+}
+
+.ant-alert-info {
+  background-color: rgba(0, 100, 250, 0.1);
+  border: 1px solid rgba(0, 100, 250, 0.2);
+}
+
+.ant-alert-warning {
+  background-color: rgba(230, 177, 32, 0.1);
+  border: 1px solid rgba(230, 177, 32, 0.2);
+}
+
+.ant-alert-error {
+  background-color: rgba(229, 21, 3, 0.1);
+  border: 1px solid rgba(229, 21, 3, 0.2);
+}
+
+/* Notifications */
+.ant-notification-notice {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Modals */
+.ant-modal-content {
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .ant-modal-header {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -348,138 +319,14 @@ body {
   border-top: 1px solid var(--border-color);
 }
 
-/* Dropdown menu */
+/* Dropdown */
 .ant-dropdown-menu {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .ant-dropdown-menu-item:hover {
   background-color: var(--bg-card-hover);
-}
-
-/* Notification styles */
-.ant-notification-notice {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-}
-
-/* List styles */
-.ant-list-item {
-  border-bottom: 1px solid var(--border-color) !important;
-}
-
-.ant-list-item-meta-title {
-  color: var(--text-primary) !important;
-}
-
-.ant-list-item-meta-description {
-  color: var(--text-secondary) !important;
-}
-
-/* Divider styles */
-.ant-divider {
-  border-top: 1px solid var(--border-color);
-}
-
-.ant-divider-inner-text {
-  color: var(--text-secondary);
-}
-
-/* Typography styles */
-.ant-typography {
-  color: var(--text-primary);
-}
-
-.ant-typography-secondary {
-  color: var(--text-secondary);
-}
-
-/* Bloomberg-style stat cards */
-.stat-card {
-  padding: 20px;
-  border-radius: var(--border-radius);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: var(--box-shadow);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  margin-bottom: 16px;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-}
-
-.stat-card-primary {
-  border-left: 4px solid var(--primary-color);
-}
-
-.stat-card-success {
-  border-left: 4px solid var(--success-color);
-}
-
-.stat-card-warning {
-  border-left: 4px solid var(--warning-color);
-}
-
-.stat-card-danger {
-  border-left: 4px solid var(--danger-color);
-}
-
-.stat-value {
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: var(--text-primary);
-}
-
-.stat-label {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.stat-icon {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  font-size: 24px;
-  opacity: 0.5;
-  color: var(--text-secondary);
-}
-
-/* Bloomberg-style positive/negative values */
-.value-positive {
-  color: var(--success-color);
-}
-
-.value-negative {
-  color: var(--danger-color);
-}
-
-/* Improved form elements for better accessibility */
-.ant-form-item {
-  margin-bottom: 24px;
-}
-
-.ant-select-selection-item {
-  color: var(--text-primary);
-}
-
-.ant-select-arrow {
-  color: var(--text-secondary);
-}
-
-/* Improved header search */
-.header-search input {
-  background-color: var(--bg-gray) !important;
-  border-radius: 4px;
-  padding: 4px 12px;
-}
-
-.header-search .ant-input-suffix {
-  color: var(--text-secondary);
 }
 
 /* Scrollbar styling */
@@ -489,14 +336,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-gray);
+  background: var(--bg-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color-dark);
+  background: #c0c0c0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: #a0a0a0;
 }

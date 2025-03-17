@@ -1,0 +1,78 @@
+/* Modern Sidebar Styles */
+.site-sidebar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  background-color: white;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-toggle {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.sidebar-toggle:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--primary-color);
+}
+
+.sidebar-menu {
+  border-right: none;
+  padding: 12px 0;
+}
+
+/* Improve menu item styles */
+.sidebar-menu .ant-menu-item {
+  margin: 4px 12px !important;
+  padding-left: 12px !important;
+  border-radius: var(--border-radius);
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+.sidebar-menu .ant-menu-item-selected {
+  background-color: var(--bg-card-hover) !important;
+  color: var(--primary-color) !important;
+  font-weight: 500;
+}
+
+.sidebar-menu .ant-menu-item:hover {
+  color: var(--primary-color) !important;
+}
+
+.sidebar-menu .ant-menu-item-active {
+  color: var(--primary-color) !important;
+}
+
+.sidebar-menu .ant-menu-item a {
+  color: inherit;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .site-sidebar {
+    box-shadow: none;
+  }
+  
+  .sidebar-header {
+    padding: 0 16px;
+  }
+}

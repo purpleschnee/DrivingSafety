@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import './App.css';
-import './themes/BloombergTheme.css'; // 导入Bloomberg主题
+import './themes/BloombergTheme.css';
 
 // Components
 import Sidebar from './components/Sidebar';
@@ -21,16 +21,22 @@ const { Content } = Layout;
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   
-  // 计算内容区域的左边距，以适应固定侧边栏
-  const marginLeft = collapsed ? 80 : 240;
-  
   return (
     <Router>
-      <Layout className="app-container">
-        <Sidebar collapsed={collapsed} />
-        <Layout className="site-layout" style={{ marginLeft }}>
-          <Header collapsed={collapsed} setCollapsed={setCollapsed} />
-          <Content className="site-content">
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+        <Layout style={{ 
+          marginLeft: collapsed ? 80 : 240,
+          transition: 'all 0.2s'
+        }}>
+          <Header />
+          <Content style={{ 
+            margin: '0',
+            padding: '24px',
+            background: 'var(--bg-light)',
+            minHeight: 'calc(100vh - 64px)',
+            overflow: 'auto'
+          }}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/driver-analytics" element={<DriverAnalytics />} />
