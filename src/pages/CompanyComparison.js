@@ -159,20 +159,37 @@ const CompanyComparison = () => {
       sorter: (a, b) => a.company - b.company,
       render: (value, record) => {
         return (
-          <Space direction="vertical" size={0}>
-            <Text strong>{value}</Text>
+          <div>
             {record.companyChange > 0 ? (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span className="trend-up"><ArrowUpOutlined /> {record.companyChange}%</span>
-                <span className="trend-text-secondary">compared to last month</span>
+              <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+                <Text strong style={{ 
+                  fontSize: '16px', 
+                  marginRight: '10px', 
+                  display: 'inline-block', 
+                  position: 'relative',
+                  top: '1px'
+                }}>{value}</Text>
+                <span className="trend-up" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <ArrowUpOutlined style={{ marginRight: '4px' }} /> {record.companyChange}%
+                </span>
+                <span className="trend-text-secondary" style={{ marginLeft: '6px' }}>compared to last month</span>
               </div>
             ) : (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span className="trend-down"><ArrowDownOutlined /> {Math.abs(record.companyChange)}%</span>
-                <span className="trend-text-secondary">compared to last month</span>
+              <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+                <Text strong style={{ 
+                  fontSize: '16px', 
+                  marginRight: '10px', 
+                  display: 'inline-block', 
+                  position: 'relative',
+                  top: '1px'
+                }}>{value}</Text>
+                <span className="trend-down" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <ArrowDownOutlined style={{ marginRight: '4px' }} /> {Math.abs(record.companyChange)}%
+                </span>
+                <span className="trend-text-secondary" style={{ marginLeft: '6px' }}>compared to last month</span>
               </div>
             )}
-          </Space>
+          </div>
         );
       },
     },

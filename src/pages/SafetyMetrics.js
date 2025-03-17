@@ -127,10 +127,10 @@ const SafetyMetrics = () => {
   // Gauge chart configuration
   const gaugeConfig = {
     percent: 0.85,
-    height: 500,
-    autoFit: false,
-    width: 500,
-    padding: [30, 30, 120, 30],
+    height: 450,
+    autoFit: true,
+    width: 450,
+    padding: [20, 30, 100, 30],     
     range: {
       color: '#30BF78',
     },
@@ -149,7 +149,15 @@ const SafetyMetrics = () => {
       },
     },
     statistic: {
+      title: {
+        offsetY: 0,
+        style: {
+          fontSize: '16px',
+          color: '#666',
+        },
+      },
       content: {
+        offsetY: 45,
         formatter: () => '85',
         style: {
           fontSize: '64px',

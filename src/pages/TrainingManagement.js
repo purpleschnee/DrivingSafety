@@ -78,7 +78,7 @@ const TrainingManagement = () => {
       title: 'Course Title',
       dataIndex: 'title',
       key: 'title',
-      render: (text) => <a>{text}</a>,
+      render: (text, record) => <a href={`#/training/${record.id}`}>{text}</a>,
     },
     {
       title: 'Type',

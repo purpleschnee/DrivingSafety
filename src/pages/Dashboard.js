@@ -241,7 +241,7 @@ const Dashboard = () => {
               value={85.7}
               precision={1}
               valueStyle={{ color: '#0071e3' }}
-              prefix={<CarOutlined />}
+              prefix={<CarOutlined style={{ marginRight: '8px' }} />}
               suffix="pts"
             />
             <div className="trend-container">
