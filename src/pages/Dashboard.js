@@ -241,7 +241,7 @@ const Dashboard = () => {
             />
             <div className="trend-container">
               <span className="trend-up"><ArrowUpOutlined /> 3.2%</span>
-              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+              <span style={{ color: 'var(--text-secondary)', marginLeft: '4px' }}>from last month</span>
             </div>
           </Card>
         </Col>
@@ -254,7 +254,7 @@ const Dashboard = () => {
             />
             <div className="trend-container">
               <span className="trend-up"><ArrowUpOutlined /> 6.5%</span>
-              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+              <span style={{ color: 'var(--text-secondary)', marginLeft: '4px' }}>from last month</span>
             </div>
           </Card>
         </Col>
@@ -279,7 +279,7 @@ const Dashboard = () => {
             />
             <div className="trend-container">
               <span className="trend-down-positive"><ArrowDownOutlined /> 2</span>
-              <span style={{ color: 'var(--text-secondary)' }}> from last month</span>
+              <span style={{ color: 'var(--text-secondary)', marginLeft: '4px' }}>from last month</span>
             </div>
           </Card>
         </Col>
