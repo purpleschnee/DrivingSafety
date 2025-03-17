@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import './App.css';
 import './themes/BloombergTheme.css';
@@ -30,7 +30,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(false);
   
   return (
-    <Router basename="/SafeDrivingPlatform">
+    <Router>
       <Layout style={{ minHeight: '100vh' }}>
         <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout style={{ 

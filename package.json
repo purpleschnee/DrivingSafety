@@ -2,7 +2,7 @@
   "name": "safe-driving-platform-b2b",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yourusername.github.io/SafeDrivingPlatform",
+  "homepage": "https://purpleschnee.github.io/DrivingSafety",
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^5.0.1",
