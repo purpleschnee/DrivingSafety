@@ -741,3 +741,55 @@
   display: flex;
   align-items: center;
 }
+
+/* 
+ * REAL-TIME ALERTS COMPONENT
+ */
+.real-time-alerts-card {
+  margin-top: var(--space-lg) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+}
+
+.real-time-alerts-card .ant-card-head {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.real-time-alerts-card .ant-card-head-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.real-time-alerts-table {
+  font-size: var(--font-size-base) !important;
+}
+
+.real-time-alerts-table .ant-table-thead > tr > th {
+  background-color: var(--bg-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.real-time-alerts-table .ant-table-tbody > tr > td {
+  font-size: var(--font-size-base);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.real-time-alerts-table .ant-table-row:hover {
+  background-color: var(--bg-accent);
+}
+
+.real-time-alerts-table .ant-tag {
+  font-size: var(--font-size-sm);
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-sm);
+}
+
+.real-time-alerts-table .ant-btn-link {
+  font-size: var(--font-size-sm);
+  padding: var(--space-xxs) var(--space-xs);
+}

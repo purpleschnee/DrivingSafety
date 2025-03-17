@@ -1336,13 +1336,10 @@ const SafetyMetrics = () => {
         </Tabs>
       </Card>
       <Suspense fallback={<div>Loading RealTimeAlerts...</div>}>
-        <RealTimeAlertsComponent />
+        <RealTimeAlertsComponent alerts={realTimeAlerts} />
       </Suspense>
     </div>
   );
 };
 
 export default SafetyMetrics;
-const PassengerFeedback = React.lazy(() => import('./components/PassengerFeedback'));<Suspense fallback={<div>Loading PassengerFeedback...</div>}>
-  <PassengerFeedback />
-</Suspense>
