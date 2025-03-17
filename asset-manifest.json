@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/DrivingSafety/static/css/main.936a6d37.css",
-    "main.js": "/DrivingSafety/static/js/main.65506dc4.js",
+    "main.js": "/DrivingSafety/static/js/main.c8416dbd.js",
     "static/js/453.301da06b.chunk.js": "/DrivingSafety/static/js/453.301da06b.chunk.js",
     "index.html": "/DrivingSafety/index.html",
     "main.936a6d37.css.map": "/DrivingSafety/static/css/main.936a6d37.css.map",
-    "main.65506dc4.js.map": "/DrivingSafety/static/js/main.65506dc4.js.map",
+    "main.c8416dbd.js.map": "/DrivingSafety/static/js/main.c8416dbd.js.map",
     "453.301da06b.chunk.js.map": "/DrivingSafety/static/js/453.301da06b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.936a6d37.css",
-    "static/js/main.65506dc4.js"
+    "static/js/main.c8416dbd.js"
   ]
 }
