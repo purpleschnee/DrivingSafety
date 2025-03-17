@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Tabs, Statistic, Progress, Tag, Space, Alert, Tooltip, Divider, List, Badge, Switch, Input, Timeline, Rate, Steps } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined, DownloadOutlined, InfoCircleOutlined, CarOutlined, MobileOutlined, WarningOutlined, CheckCircleOutlined, RiseOutlined, FallOutlined, ExclamationCircleOutlined, FilterOutlined, ReloadOutlined, SearchOutlined, BellOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { Line, Radar, Gauge, Column, Pie, DualAxes, Heatmap } from '@ant-design/charts';
 import PageHeader from '../components/PageHeader';
+import RealTimeAlerts from '../components/RealTimeAlerts';
 
 const { Title, Text, Paragraph } = Typography;
-const { RangePicker } = DatePicker;
 const { Option } = Select;
 const { TabPane } = Tabs;
 
 const SafetyMetrics = () => {
-  const [timeRange, setTimeRange] = useState('month');
-  const [activeTab, setActiveTab] = useState('1');
-
   // Safety indicator trend data
   const safetyTrendData = [
     { date: '2025-01-01', score: 78, incidents: 42 },
@@ -904,6 +901,8 @@ const SafetyMetrics = () => {
     },
   ];
 
+  const RealTimeAlertsComponent = React.lazy(() => import('../components/RealTimeAlerts'));
+
   return (
     <div className="safety-metrics-container">
       <div className="dashboard-header">
@@ -913,16 +912,7 @@ const SafetyMetrics = () => {
         />
         <div className="dashboard-actions">
           <Space>
-            <Select 
-              defaultValue="month" 
-              style={{ width: 120 }} 
-              onChange={setTimeRange}
-            >
-              <Option value="week">Last Week</Option>
-              <Option value="month">Last Month</Option>
-              <Option value="quarter">Last Quarter</Option>
-              <Option value="year">Last Year</Option>
-            </Select>
+            <Button type="link">Link Button</Button>
             <Button type="primary" icon={<DownloadOutlined />}>Export Report</Button>
           </Space>
         </div>
@@ -987,7 +977,7 @@ const SafetyMetrics = () => {
       </Row>
 
       <Card>
-        <Tabs defaultActiveKey="1" onChange={setActiveTab} type="card">
+        <Tabs defaultActiveKey="1" type="card">
           <TabPane 
             tab={
               <span style={{ display: 'flex', alignItems: 'center' }}>
@@ -1337,8 +1327,14 @@ const SafetyMetrics = () => {
           </TabPane>
         </Tabs>
       </Card>
+      <Suspense fallback={<div>Loading RealTimeAlerts...</div>}>
+        <RealTimeAlertsComponent />
+      </Suspense>
     </div>
   );
 };
 
 export default SafetyMetrics;
+const PassengerFeedback = React.lazy(() => import('./components/PassengerFeedback'));<Suspense fallback={<div>Loading PassengerFeedback...</div>}>
+  <PassengerFeedback />
+</Suspense>
