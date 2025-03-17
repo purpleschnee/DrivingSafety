@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/SafeDrivingPlatform/static/css/main.91998eb2.css",
-    "main.js": "/SafeDrivingPlatform/static/js/main.a21264ef.js",
-    "static/js/453.301da06b.chunk.js": "/SafeDrivingPlatform/static/js/453.301da06b.chunk.js",
-    "index.html": "/SafeDrivingPlatform/index.html",
-    "main.91998eb2.css.map": "/SafeDrivingPlatform/static/css/main.91998eb2.css.map",
-    "main.a21264ef.js.map": "/SafeDrivingPlatform/static/js/main.a21264ef.js.map",
-    "453.301da06b.chunk.js.map": "/SafeDrivingPlatform/static/js/453.301da06b.chunk.js.map"
+    "main.css": "/DrivingSafety/static/css/main.cd5faeab.css",
+    "main.js": "/DrivingSafety/static/js/main.75305995.js",
+    "static/js/453.301da06b.chunk.js": "/DrivingSafety/static/js/453.301da06b.chunk.js",
+    "index.html": "/DrivingSafety/index.html",
+    "main.cd5faeab.css.map": "/DrivingSafety/static/css/main.cd5faeab.css.map",
+    "main.75305995.js.map": "/DrivingSafety/static/js/main.75305995.js.map",
+    "453.301da06b.chunk.js.map": "/DrivingSafety/static/js/453.301da06b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91998eb2.css",
-    "static/js/main.a21264ef.js"
+    "static/css/main.cd5faeab.css",
+    "static/js/main.75305995.js"
   ]
 }
