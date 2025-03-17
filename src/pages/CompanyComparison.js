@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Tabs, Statistic, Progress, Space } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Line, Column, Radar, DualAxes } from '@ant-design/charts';
+import PageHeader from '../components/PageHeader';
 
 const { Title, Text } = Typography;
 const { RangePicker } = DatePicker;
@@ -301,10 +302,10 @@ const CompanyComparison = () => {
 
   return (
     <div className="company-comparison-container">
-      <Title level={4}>Company Comparison</Title>
-      <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        Compare our company's safety metrics with industry averages and competitors
-      </Text>
+      <PageHeader 
+        title="Company Comparison" 
+        description="Compare our company's safety metrics with industry averages and competitors"
+      />
       
       {/* Control Panel */}
       <Card style={{ marginBottom: '24px' }}>

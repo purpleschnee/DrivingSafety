@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Tabs, Statistic, Progress, Tag, Space, Alert, Tooltip, Divider, List, Badge, Switch, Input, Timeline, Rate, Steps } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined, DownloadOutlined, InfoCircleOutlined, CarOutlined, MobileOutlined, WarningOutlined, CheckCircleOutlined, RiseOutlined, FallOutlined, ExclamationCircleOutlined, FilterOutlined, ReloadOutlined, SearchOutlined, BellOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { Line, Radar, Gauge, Column, Pie, DualAxes, Heatmap } from '@ant-design/charts';
+import PageHeader from '../components/PageHeader';
 
 const { Title, Text, Paragraph } = Typography;
 const { RangePicker } = DatePicker;
@@ -367,8 +368,6 @@ const SafetyMetrics = () => {
     meta: {
       correlation: {
         alias: 'Correlation Coefficient',
-        min: 0,
-        max: 1,
       },
     },
   };
@@ -891,7 +890,10 @@ const SafetyMetrics = () => {
   return (
     <div className="safety-metrics-container">
       <div className="dashboard-header">
-        <Title level={4} className="dashboard-title">Driving Safety Monitor</Title>
+        <PageHeader 
+          title="Driving Safety Monitor" 
+          description="Monitor and analyze driving safety metrics and trends"
+        />
         <div className="dashboard-actions">
           <Space>
             <Select 

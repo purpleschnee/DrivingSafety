@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Progress, Tag, Space, Tabs, List, Avatar, Statistic, Timeline, Calendar, Modal, Form, Input, Select, DatePicker, Upload, message } from 'antd';
 import { UserOutlined, CheckCircleOutlined, ClockCircleOutlined, FileOutlined, VideoCameraOutlined, ReadOutlined, PlusOutlined, UploadOutlined, SearchOutlined, FilterOutlined, EditOutlined, DeleteOutlined, EyeOutlined, DownloadOutlined, StarOutlined, StarFilled, CalendarOutlined } from '@ant-design/icons';
+import PageHeader from '../components/PageHeader';
 
 const { Title, Text, Paragraph } = Typography;
 const { TabPane } = Tabs;
@@ -324,10 +325,10 @@ const TrainingManagement = () => {
 
   return (
     <div className="training-management-container">
-      <div className="page-header">
-        <Title level={4}>Training Management</Title>
-        <Text type="secondary">Manage driver training programs, courses, and compliance</Text>
-      </div>
+      <PageHeader 
+        title="Training Management" 
+        description="Manage driver training programs, courses, and compliance"
+      />
 
       <Tabs activeKey={activeTab} onChange={setActiveTab}>
         <TabPane tab="Training Courses" key="1">

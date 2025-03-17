@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col, Card, Statistic, Progress, Typography, Table, Button } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined, CarOutlined, ExclamationCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Line, Pie, Column } from '@ant-design/charts';
+import PageHeader from '../components/PageHeader';
 
 const { Title, Text } = Typography;
 
@@ -227,8 +228,10 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Title level={4} style={{ color: 'var(--heading-color)' }}>Safety Driving Data Overview</Title>
-      <Text type="secondary" style={{ color: 'var(--text-secondary)' }}>Real-time monitoring of fleet safety performance</Text>
+      <PageHeader 
+        title="Safety Driving Data Overview" 
+        description="Real-time monitoring of fleet safety performance"
+      />
       
       <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
         <Col xs={24} sm={12} lg={6}>

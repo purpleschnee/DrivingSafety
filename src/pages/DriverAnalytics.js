@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Input, Tag, Space, Tabs, Avatar, Rate, Statistic, Progress } from 'antd';
 import { SearchOutlined, FilterOutlined, DownloadOutlined, UserOutlined, CarOutlined, ExclamationCircleOutlined, CheckCircleOutlined, StarOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import { Line, Column, Radar, Gauge } from '@ant-design/charts';
+import PageHeader from '../components/PageHeader';
 
 const { Title, Text, Paragraph } = Typography;
 const { RangePicker } = DatePicker;
@@ -328,10 +329,10 @@ const DriverAnalytics = () => {
 
   return (
     <div className="driver-analytics-container">
-      <Title level={4}>Driver Analytics</Title>
-      <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        Analyze driver behavior and safety performance metrics
-      </Text>
+      <PageHeader 
+        title="Driver Analytics" 
+        description="Analyze driver behavior and safety performance metrics"
+      />
 
       {/* Search and filter area */}
       <Card style={{ marginBottom: '24px' }}>

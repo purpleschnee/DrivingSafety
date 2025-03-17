@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Form, Input, Button, Select, Switch, Tabs, Divider, Space, Upload, message } from 'antd';
 import { SaveOutlined, UploadOutlined, UserOutlined, LockOutlined, BellOutlined, ApiOutlined } from '@ant-design/icons';
+import PageHeader from '../components/PageHeader';
 import './Settings.css';
 
 const { Title, Text } = Typography;
@@ -25,10 +26,10 @@ const Settings = () => {
 
   return (
     <div className="settings-container">
-      <Title level={4}>System Settings</Title>
-      <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
-        Configure platform parameters, data sources, and notification settings
-      </Text>
+      <PageHeader 
+        title="System Settings" 
+        description="Configure platform parameters, data sources, and notification settings"
+      />
       
       <Card>
         <Tabs defaultActiveKey="1">
