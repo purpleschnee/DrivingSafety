@@ -147,7 +147,7 @@ const SafetyEventDetails = () => {
           <Card>
             <Row gutter={[24, 24]} align="middle">
               <Col xs={24} md={18}>
-                <Title level={3}>Safety Event {eventData.id}: {eventData.eventType}</Title>
+                <Title level={4}>Safety Event {eventData.id}: {eventData.eventType}</Title>
                 <Space size="large">
                   <Text><UserOutlined /> Driver: {eventData.driverName} ({eventData.driver})</Text>
                   <Text><CarOutlined /> Vehicle: {eventData.vehicleModel} ({eventData.vehicle})</Text>

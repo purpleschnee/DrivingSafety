@@ -328,7 +328,7 @@ const DriverAnalytics = () => {
 
   return (
     <div className="driver-analytics-container">
-      <Title level={3}>Driver Analytics</Title>
+      <Title level={4}>Driver Analytics</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
         Analyze driver behavior and safety performance metrics
       </Text>

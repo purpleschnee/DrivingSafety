@@ -161,11 +161,11 @@ const CompanyComparison = () => {
           <Space direction="vertical" size={0}>
             <Text strong>{value}</Text>
             {record.companyChange > 0 ? (
-              <Text type="success" style={{ fontSize: '12px' }}>
+              <Text type="success">
                 <ArrowUpOutlined /> {record.companyChange}%
               </Text>
             ) : (
-              <Text type="danger" style={{ fontSize: '12px' }}>
+              <Text type="danger">
                 <ArrowDownOutlined /> {Math.abs(record.companyChange)}%
               </Text>
             )}
@@ -301,7 +301,7 @@ const CompanyComparison = () => {
 
   return (
     <div className="company-comparison-container">
-      <Title level={3}>Company Comparison</Title>
+      <Title level={4}>Company Comparison</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
         Compare our company's safety metrics with industry averages and competitors
       </Text>

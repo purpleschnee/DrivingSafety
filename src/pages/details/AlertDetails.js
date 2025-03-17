@@ -148,7 +148,7 @@ const AlertDetails = () => {
           <Card>
             <Row gutter={[24, 24]} align="middle">
               <Col xs={24} md={18}>
-                <Title level={3}>Alert {alertData.id}: {alertData.event}</Title>
+                <Title level={4}>Alert {alertData.id}: {alertData.event}</Title>
                 <Space size="large">
                   <Text><UserOutlined /> Driver: {alertData.driverName} ({alertData.driver})</Text>
                   <Text><CarOutlined /> Vehicle: {alertData.vehicleModel} ({alertData.vehicle})</Text>

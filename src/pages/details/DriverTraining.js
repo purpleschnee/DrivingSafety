@@ -150,7 +150,7 @@ const DriverTraining = () => {
         Back to Driver Details
       </Button>
 
-      <Title level={3}>Training Records: {driverData.name}</Title>
+      <Title level={4}>Training Records: {driverData.name}</Title>
       <Text type="secondary" style={{ marginBottom: 24, display: 'block' }}>
         View and manage training records and progress for this driver
       </Text>

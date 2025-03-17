@@ -325,7 +325,7 @@ const TrainingManagement = () => {
   return (
     <div className="training-management-container">
       <div className="page-header">
-        <Title level={3}>Training Management</Title>
+        <Title level={4}>Training Management</Title>
         <Text type="secondary">Manage driver training programs, courses, and compliance</Text>
       </div>
 

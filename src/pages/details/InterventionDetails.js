@@ -64,7 +64,7 @@ const InterventionDetails = () => {
           <Card>
             <Row gutter={[24, 24]} align="middle">
               <Col xs={24} md={18}>
-                <Title level={3}>Intervention {interventionData.id}: {interventionData.type}</Title>
+                <Title level={4}>Intervention {interventionData.id}: {interventionData.type}</Title>
                 <Space size="large">
                   <Text><UserOutlined /> Driver: {interventionData.driverName} ({interventionData.driverId})</Text>
                   <Text><ClockCircleOutlined /> Created: {interventionData.createdDate}</Text>

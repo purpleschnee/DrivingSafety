@@ -143,7 +143,8 @@ const Dashboard = () => {
     {
       title: 'Action',
       key: 'action',
-      render: () => <Button type="link" size="small">Process</Button>,
+      className: 'action-column',
+      render: () => <Button type="link" size="small" className="action-button">Process</Button>,
     },
   ];
 
@@ -192,6 +193,7 @@ const Dashboard = () => {
     {
       title: 'Action',
       key: 'action',
+      className: 'action-column',
       render: () => <Button type="link" size="small">View Details</Button>,
     },
   ];

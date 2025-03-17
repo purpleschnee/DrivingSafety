@@ -232,7 +232,7 @@ const DriverDetails = () => {
           <Col xs={24} md={6}>
             <div style={{ textAlign: 'center', padding: '20px' }}>
               <Avatar size={100} icon={<UserOutlined />} />
-              <Title level={3} style={{ marginTop: '16px', marginBottom: '4px' }}>{driverData.name}</Title>
+              <Title level={4} style={{ marginTop: '16px', marginBottom: '4px' }}>{driverData.name}</Title>
               <Text type="secondary">ID: {driverData.id}</Text>
               <div style={{ margin: '16px 0' }}>
                 <Tag color="green">Excellent Driver</Tag>

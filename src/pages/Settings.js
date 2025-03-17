@@ -24,7 +24,7 @@ const Settings = () => {
 
   return (
     <div className="settings-container">
-      <Title level={3}>System Settings</Title>
+      <Title level={4}>System Settings</Title>
       <Text type="secondary" style={{ marginBottom: '24px', display: 'block' }}>
         Configure platform parameters, data sources, and notification settings
       </Text>

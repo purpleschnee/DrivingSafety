@@ -1,3 +1,121 @@
+/* Training Effect Details Card */
+.training-effect-card {
+  background-color: #ffffff;
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  margin-top: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.training-effect-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.training-effect-stat {
+  font-size: 16px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background-color: #f5f7fa;
+  border-radius: var(--border-radius-sm);
+  border-left: 4px solid var(--primary-color);
+}
+
+.training-effect-stat strong {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.training-course-ranking {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.training-course-ranking h5 {
+  margin-bottom: 16px !important;
+  font-weight: 600 !important;
+  color: var(--heading-color) !important;
+}
+
+.training-course-item {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: #f9f9f9;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
+}
+
+.training-course-item:hover {
+  background-color: #f0f4fa;
+  transform: translateX(4px);
+}
+
+.training-course-item-number {
+  font-weight: 600;
+  margin-right: 12px;
+  color: var(--heading-color);
+  background-color: var(--primary-color);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.training-course-item-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.training-course-item-improvement {
+  font-weight: 500;
+  color: var(--success-color);
+  background-color: rgba(42, 157, 28, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.training-recommendations {
+  margin-top: 20px;
+  background-color: #f0f7f0;
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+  border-left: 4px solid var(--success-color);
+}
+
+.training-recommendations-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--heading-color);
+  font-size: 16px;
+}
+
+.training-recommendations-title .anticon {
+  margin-right: 8px;
+  color: var(--success-color);
+}
+
+.training-recommendations-content {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +123,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa; /* Lighter background for better contrast */
 }
 
 code {
@@ -176,9 +295,294 @@ code {
 .ant-statistic-title {
   color: var(--heading-color) !important;
   font-weight: 500;
+  font-size: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+.ant-statistic-content {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
+
+.ant-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius-md);
+  transition: all 0.3s ease;
+  margin-bottom: var(--spacing-md);
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 20px;
+  min-height: 48px;
 }
 
 .ant-card-head-title {
   color: var(--heading-color) !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+.ant-card-body {
+  padding: 20px !important;
+}
+
+/* Dashboard Metrics Cards */
+.metric-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-card .ant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+/* Table Alignment Optimization */
+.ant-table-cell {
+  vertical-align: middle;
+  padding: 12px 16px !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: #f5f7fa !important;
+  color: var(--heading-color) !important;
+  font-weight: 600 !important;
+  padding: 14px 16px !important;
+}
+
+.ant-table .action-column {
+  text-align: center;
+}
+
+.ant-table .action-column button {
+  min-width: 80px;
+}
+
+.ant-table-thead th.action-column {
+  text-align: center;
+}
+
+/* Ensure consistent button widths in tables */
+.ant-table .ant-btn-link {
+  padding: 4px 8px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Ensure table cell content is vertically centered */
+.ant-table-tbody > tr > td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+/* Tab Styles */
+.ant-tabs-tab {
+  padding: 12px 16px !important;
+  font-size: 15px !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  font-weight: 600 !important;
+}
+
+.ant-tabs-nav::before {
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* Chart Container Styles */
+.chart-container {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 450px; /* 增加高度以确保图表完全显示 */
+  overflow: visible; /* 确保图表可以溢出容器 */
+  position: relative; /* 为溢出内容提供定位上下文 */
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .ant-card-body {
+    padding: 16px !important;
+  }
+  
+  .metric-value {
+    font-size: 24px;
+  }
+  
+  .metric-label {
+    font-size: 14px;
+  }
+  
+  .ant-statistic-content {
+    font-size: 24px !important;
+  }
+}
+
+/* Improve form element styling */
+.ant-select {
+  min-width: 120px;
+}
+
+.ant-btn {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: var(--border-radius-sm);
   font-weight: 500;
+}
+
+.ant-btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Dashboard header styling */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 0;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.dashboard-actions .ant-select {
+  min-width: 120px;
+  height: 32px;
+}
+
+.dashboard-actions .ant-btn {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-actions .ant-select-selector {
+  height: 32px !important;
+}
+
+.dashboard-actions .ant-select-selection-item {
+  line-height: 30px !important;
+}
+
+/* Summary cards styling */
+.summary-cards {
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  height: 100%;
+}
+
+.summary-card .ant-card-body {
+  padding: 20px !important;
+}
+
+.summary-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.summary-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.summary-trend {
+  margin-top: 8px;
+}
+
+/* List Styles */
+ul, ol {
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+.card-container ul, .card-container ol {
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+/* Card Content Padding */
+.ant-card-body {
+  padding: 24px;
+}
+
+/* Comparison Analysis Styles */
+.advantages-card,
+.disadvantages-card,
+.improvement-card {
+  height: 100%;
+  padding: 16px;
+}
+
+.advantages-card ul,
+.disadvantages-card ul,
+.improvement-card ul {
+  padding-left: 20px;
+  margin: 16px 0;
+}
+
+.advantages-card li,
+.disadvantages-card li,
+.improvement-card li {
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
