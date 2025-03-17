@@ -147,27 +147,27 @@ const SafetyMetrics = () => {
     },
     statistic: {
       title: {
-        offsetY: 0,
+        content: 'Safety Score',
+        offsetY: -10,
         style: {
           fontSize: '16px',
           color: '#666',
         },
       },
       content: {
-        offsetY: 45,
-        formatter: () => '85',
+        formatter: () => '85%',
         style: {
-          fontSize: '64px',
-          lineHeight: '64px',
+          fontSize: '40px',
+          lineHeight: '40px',
           fontWeight: 'bold',
-          color: '#333',
-          marginTop: '20px',
+          color: '#30BF78',
+          marginTop: '10px',
         },
       },
     },
     axis: {
       label: {
-        formatter: (v) => Number(v).toFixed(1),
+        formatter: (v) => Number(v * 100).toFixed(0),
         style: {
           fontSize: 14,
         },
@@ -932,8 +932,8 @@ const SafetyMetrics = () => {
             <Statistic 
               title="Average Safety Score" 
               value={85} 
-              suffix="/ 100" 
-              valueStyle={{ color: '#0070e0' }}
+              suffix="%" 
+              valueStyle={{ color: '#30BF78' }}
             />
             <div className="trend-container">
               <span className="trend-up"><ArrowUpOutlined /> 3.5%</span>
