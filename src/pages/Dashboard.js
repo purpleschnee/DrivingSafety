@@ -24,12 +24,19 @@ const Dashboard = () => {
     xField: 'date',
     yField: 'score',
     point: {
-      size: 5,
-      shape: 'diamond',
+      size: 6,
+      shape: 'circle',
+      style: {
+        fill: '#0071e3',
+        stroke: '#ffffff',
+        lineWidth: 2,
+      },
     },
     label: {
       style: {
-        fill: '#aaa',
+        fill: '#666',
+        opacity: 0.9,
+        fontSize: 12,
       },
     },
     smooth: true,
@@ -37,9 +44,55 @@ const Dashboard = () => {
       stroke: '#0071e3',
       lineWidth: 3,
     },
+    area: false,
+    xAxis: {
+      label: {
+        style: {
+          fontSize: 12,
+          opacity: 0.8,
+        },
+      },
+      line: {
+        style: {
+          opacity: 0.2,
+        },
+      },
+      tickLine: null,
+    },
     yAxis: {
       min: 60,
       max: 100,
+      label: {
+        style: {
+          fontSize: 12,
+          opacity: 0.8,
+        },
+      },
+      line: {
+        style: {
+          opacity: 0.2,
+        },
+      },
+      grid: {
+        line: {
+          style: {
+            stroke: '#f0f0f0',
+            lineWidth: 1,
+            lineDash: [4, 4],
+          },
+        },
+      },
+    },
+    animation: false,
+    interactions: [{ type: 'marker-active' }],
+    state: {
+      active: {
+        style: {
+          shadowBlur: 4,
+          stroke: '#000',
+          fill: 'red',
+        },
+      },
     },
   };
 
@@ -59,11 +112,31 @@ const Dashboard = () => {
     angleField: 'value',
     colorField: 'type',
     radius: 0.8,
+    innerRadius: 0.2, 
     label: {
       type: 'outer',
       content: '{name} {percentage}',
+      style: {
+        fontSize: 12,
+        fontWeight: 'normal',
+        opacity: 0.9,
+      },
+    },
+    color: ['#4096ff', '#36cfc9', '#9254de', '#faad14', '#f759ab'], 
+    statistic: {
+      title: false,
+      content: false,
+    },
+    legend: {
+      layout: 'horizontal',
+      position: 'bottom',
     },
     interactions: [{ type: 'pie-legend-active' }, { type: 'element-active' }],
+    animation: false,
+    pieStyle: {
+      stroke: null, 
+      lineWidth: 0,
+    },
   };
 
   // Safety score distribution data
@@ -79,20 +152,82 @@ const Dashboard = () => {
     data: safetyScoreDistributionData,
     xField: 'score',
     yField: 'count',
+    seriesField: 'score',
+    isStack: false,
+    isGroup: false,
+    columnStyle: {
+      radius: [8, 8, 0, 0], 
+      stroke: null, 
+      lineWidth: 0,
+    },
     color: ({ score }) => {
-      const item = safetyScoreDistributionData.find(d => d.score === score);
-      return item ? item.color : '#5ac8fa';
+      const colorMap = {
+        '60-70': '#ff3b30',
+        '71-80': '#ff9500',
+        '81-90': '#5ac8fa',
+        '91-100': '#34c759'
+      };
+      return colorMap[score] || '#5ac8fa';
     },
     label: {
       position: 'middle',
       style: {
         fill: '#FFFFFF',
-        opacity: 0.8,
+        opacity: 0.9,
+        fontSize: 14,
+        fontWeight: 'bold',
       },
     },
     meta: {
       score: { alias: 'Safety Score Range' },
       count: { alias: 'Number of Drivers' },
+    },
+    animation: false,
+    interactions: [{ type: 'element-active' }],
+    state: {
+      active: {
+        style: {
+          opacity: 0.9,
+          stroke: '#fff',
+          lineWidth: 1,
+        },
+      },
+    },
+    xAxis: {
+      label: {
+        style: {
+          fontSize: 12,
+          opacity: 0.8,
+        },
+      },
+      line: {
+        style: {
+          opacity: 0.2,
+        },
+      },
+      tickLine: null,
+    },
+    yAxis: {
+      label: {
+        style: {
+          fontSize: 12,
+          opacity: 0.8,
+        },
+      },
+      line: {
+        style: {
+          opacity: 0.2,
+        },
+      },
+      grid: {
+        line: {
+          style: {
+            stroke: '#f0f0f0',
+            lineWidth: 1,
+            lineDash: [4, 4],
+          },
+        },
+      },
     },
   };
 
