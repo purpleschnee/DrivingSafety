@@ -16,6 +16,14 @@ import TrainingManagement from './pages/TrainingManagement';
 import CompanyComparison from './pages/CompanyComparison';
 import Settings from './pages/Settings';
 
+// Detail Pages
+import DriverDetails from './pages/details/DriverDetails';
+import DriverTraining from './pages/details/DriverTraining';
+import AlertDetails from './pages/details/AlertDetails';
+import SafetyEventDetails from './pages/details/SafetyEventDetails';
+import TrainingCertificate from './pages/details/TrainingCertificate';
+import InterventionDetails from './pages/details/InterventionDetails';
+
 const { Content } = Layout;
 
 function App() {
@@ -44,6 +52,14 @@ function App() {
               <Route path="/training" element={<TrainingManagement />} />
               <Route path="/company-comparison" element={<CompanyComparison />} />
               <Route path="/settings" element={<Settings />} />
+              
+              {/* Detail Pages */}
+              <Route path="/driver-details/:id" element={<DriverDetails />} />
+              <Route path="/driver-training/:id" element={<DriverTraining />} />
+              <Route path="/alert-details/:id" element={<AlertDetails />} />
+              <Route path="/safety-event/:id" element={<SafetyEventDetails />} />
+              <Route path="/training-certificate/:id" element={<TrainingCertificate />} />
+              <Route path="/intervention/:id" element={<InterventionDetails />} />
             </Routes>
           </Content>
         </Layout>
