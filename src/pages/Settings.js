@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Form, Input, Button, Select, Switch, Tabs, Divider, Space, Upload, message } from 'antd';
 import { SaveOutlined, UploadOutlined, UserOutlined, LockOutlined, BellOutlined, ApiOutlined } from '@ant-design/icons';
+import './Settings.css';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -29,7 +30,7 @@ const Settings = () => {
         Configure platform parameters, data sources, and notification settings
       </Text>
       
-      <Card style={{ marginBottom: '24px' }}>
+      <Card>
         <Tabs defaultActiveKey="1">
           <TabPane 
             tab={
@@ -49,8 +50,8 @@ const Settings = () => {
                 company: 'Safe Driving Technology Co., Ltd.',
                 adminName: 'Administrator',
                 email: 'admin@safedriving.com',
-                language: 'en_US',
-                timezone: 'Asia/Shanghai',
+                language: 'English',
+                timezone: 'GMT+8',
                 theme: 'light',
               }}
             >
@@ -61,7 +62,7 @@ const Settings = () => {
                     label="Company Name"
                     rules={[{ required: true, message: 'Please enter company name' }]}
                   >
-                    <Input placeholder="Please enter company name" style={{ maxWidth: '400px' }} />
+                    <Input placeholder="Please enter company name" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -70,7 +71,7 @@ const Settings = () => {
                     label="Administrator Name"
                     rules={[{ required: true, message: 'Please enter administrator name' }]}
                   >
-                    <Input placeholder="Please enter administrator name" style={{ maxWidth: '400px' }} />
+                    <Input placeholder="Please enter administrator name" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -85,7 +86,7 @@ const Settings = () => {
                       { type: 'email', message: 'Please enter a valid email' }
                     ]}
                   >
-                    <Input placeholder="Please enter email" style={{ maxWidth: '400px' }} />
+                    <Input placeholder="Please enter email" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -93,7 +94,7 @@ const Settings = () => {
                     name="password"
                     label="Change Password"
                   >
-                    <Input.Password placeholder="Leave blank to keep unchanged" style={{ maxWidth: '400px' }} />
+                    <Input.Password placeholder="Leave blank to keep unchanged" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -105,9 +106,8 @@ const Settings = () => {
                     label="System Language"
                     rules={[{ required: true, message: 'Please select system language' }]}
                   >
-                    <Select placeholder="Please select system language" style={{ maxWidth: '300px' }}>
-                      <Option value="zh_CN">Simplified Chinese</Option>
-                      <Option value="en_US">English</Option>
+                    <Select placeholder="Please select system language" style={{ width: '100%' }}>
+                      <Option value="English">English</Option>
                     </Select>
                   </Form.Item>
                 </Col>
@@ -117,10 +117,10 @@ const Settings = () => {
                     label="Time Zone"
                     rules={[{ required: true, message: 'Please select time zone' }]}
                   >
-                    <Select placeholder="Please select time zone" style={{ maxWidth: '300px' }}>
-                      <Option value="Asia/Shanghai">China Standard Time (GMT+8)</Option>
-                      <Option value="America/New_York">Eastern Time (GMT-5)</Option>
-                      <Option value="Europe/London">UK Time (GMT+0)</Option>
+                    <Select placeholder="Please select time zone" style={{ width: '100%' }}>
+                      <Option value="GMT+8">China Standard Time (GMT+8)</Option>
+                      <Option value="GMT-5">Eastern Time (GMT-5)</Option>
+                      <Option value="GMT+0">UK Time (GMT+0)</Option>
                     </Select>
                   </Form.Item>
                 </Col>
@@ -130,7 +130,7 @@ const Settings = () => {
                     label="Interface Theme"
                     rules={[{ required: true, message: 'Please select interface theme' }]}
                   >
-                    <Select placeholder="Please select interface theme" style={{ maxWidth: '300px' }}>
+                    <Select placeholder="Please select interface theme" style={{ width: '100%' }}>
                       <Option value="light">Light Theme</Option>
                       <Option value="dark">Dark Theme</Option>
                     </Select>
@@ -209,7 +209,7 @@ const Settings = () => {
                     label="OBD Device Sampling Rate (Hz)"
                     rules={[{ required: true, message: 'Please enter OBD device sampling rate' }]}
                   >
-                    <Input type="number" min={1} max={1000} style={{ maxWidth: '300px' }} />
+                    <Input type="number" min={1} max={1000} style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -218,7 +218,7 @@ const Settings = () => {
                     label="Mobile Monitoring Sampling Rate (Hz)"
                     rules={[{ required: true, message: 'Please enter mobile monitoring sampling rate' }]}
                   >
-                    <Input type="number" min={1} max={1000} style={{ maxWidth: '300px' }} />
+                    <Input type="number" min={1} max={1000} style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -230,7 +230,7 @@ const Settings = () => {
                     label="Data Retention Period (days)"
                     rules={[{ required: true, message: 'Please enter data retention period' }]}
                   >
-                    <Input type="number" min={1} addonAfter="days" style={{ maxWidth: '300px' }} />
+                    <Input type="number" min={1} addonAfter="days" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -240,7 +240,7 @@ const Settings = () => {
                     rules={[{ required: true, message: 'Please select data backup frequency' }]}
                     initialValue="daily"
                   >
-                    <Select style={{ maxWidth: '300px' }}>
+                    <Select style={{ width: '100%' }}>
                       <Option value="hourly">Hourly</Option>
                       <Option value="daily">Daily</Option>
                       <Option value="weekly">Weekly</Option>
@@ -258,7 +258,7 @@ const Settings = () => {
                     name="companyApiEndpoint"
                     label="Company API Endpoint"
                   >
-                    <Input placeholder="Please enter API endpoint URL" style={{ maxWidth: '400px' }} />
+                    <Input placeholder="Please enter API endpoint URL" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -266,7 +266,7 @@ const Settings = () => {
                     name="companyApiKey"
                     label="API Key"
                   >
-                    <Input.Password placeholder="Please enter API key" style={{ maxWidth: '400px' }} />
+                    <Input.Password placeholder="Please enter API key" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -277,7 +277,7 @@ const Settings = () => {
                     name="dataImportConfig"
                     label="Data Import Configuration"
                   >
-                    <TextArea rows={4} placeholder="Please enter JSON formatted data import configuration" style={{ maxWidth: '800px' }} />
+                    <TextArea rows={4} placeholder="Please enter JSON formatted data import configuration" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -353,40 +353,38 @@ const Settings = () => {
                 </Col>
               </Row>
               
-              <Title level={4} style={{ marginTop: '20px' }}>Notification Triggers</Title>
+              <Title level={4} style={{ marginTop: '20px' }}>Alert Thresholds</Title>
               <Divider />
               
               <Row gutter={24}>
                 <Col xs={24} md={12}>
                   <Form.Item
                     name="safetyScoreThreshold"
-                    label="Safety Score Threshold"
-                    tooltip="Trigger notification when safety score falls below this threshold"
+                    label="Safety Score Alert Threshold"
                     rules={[{ required: true, message: 'Please enter safety score threshold' }]}
                   >
-                    <Input type="number" min={0} max={100} addonAfter="%" style={{ maxWidth: '300px' }} />
+                    <Input type="number" min={0} max={100} addonAfter="points" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
                   <Form.Item
                     name="incidentThreshold"
-                    label="Incident Threshold"
-                    tooltip="Trigger notification when incident count exceeds this threshold"
+                    label="Incident Count Alert Threshold"
                     rules={[{ required: true, message: 'Please enter incident threshold' }]}
                   >
-                    <Input type="number" min={0} addonAfter="times" style={{ maxWidth: '300px' }} />
+                    <Input type="number" min={0} addonAfter="incidents" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>
               
-              <Title level={4} style={{ marginTop: '20px' }}>Report Generation</Title>
+              <Title level={4} style={{ marginTop: '20px' }}>Report Schedule</Title>
               <Divider />
               
               <Row gutter={24}>
                 <Col xs={24} md={8}>
                   <Form.Item
                     name="dailyReportEnabled"
-                    label="Daily Report"
+                    label="Daily Reports"
                     valuePropName="checked"
                   >
                     <Switch />
@@ -395,7 +393,7 @@ const Settings = () => {
                 <Col xs={24} md={8}>
                   <Form.Item
                     name="weeklyReportEnabled"
-                    label="Weekly Report"
+                    label="Weekly Reports"
                     valuePropName="checked"
                   >
                     <Switch />
@@ -404,23 +402,10 @@ const Settings = () => {
                 <Col xs={24} md={8}>
                   <Form.Item
                     name="monthlyReportEnabled"
-                    label="Monthly Report"
+                    label="Monthly Reports"
                     valuePropName="checked"
                   >
                     <Switch />
-                  </Form.Item>
-                </Col>
-              </Row>
-              
-              <Row gutter={24}>
-                <Col xs={24}>
-                  <Form.Item
-                    name="reportRecipients"
-                    label="Report Recipients"
-                    rules={[{ required: true, message: 'Please enter report recipients' }]}
-                    initialValue="admin@safedriving.com"
-                  >
-                    <TextArea rows={2} placeholder="Please enter recipient email addresses, separated by commas" style={{ maxWidth: '800px' }} />
                   </Form.Item>
                 </Col>
               </Row>

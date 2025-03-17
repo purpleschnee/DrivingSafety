@@ -111,10 +111,10 @@ body {
 
 /* Charts */
 .chart-container {
-  height: 450px; /* u589eu52a0u9ad8u5ea6u4ee5u786eu4fddu56feu8868u5b8cu5168u663eu793a */
-  margin-bottom: 40px; /* u589eu52a0u5e95u90e8u8fb9u8ddd */
-  overflow: visible; /* u786eu4fddu56feu8868u53efu4ee5u6ea2u51fau5bb9u5668 */
-  position: relative; /* u4e3au6ea2u51fau5185u5bb9u63d0u4f9bu5b9au4f4du4e0au4e0bu6587 */
+  height: 450px; /* Increased height to ensure charts are fully displayed */
+  margin-bottom: 40px; /* Increased bottom margin */
+  overflow: visible; /* Ensure charts can overflow container */
+  position: relative; /* Provide positioning context for overflow content */
 }
 
 /* Table Styles */
