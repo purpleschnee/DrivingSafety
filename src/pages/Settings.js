@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Form, Input, Button, Select, Switch, Tabs, Divider, Space, Upload, message } from 'antd';
-import { SaveOutlined, UploadOutlined, UserOutlined, LockOutlined, BellOutlined, ApiOutlined } from '@ant-design/icons';
+import { SaveOutlined, UploadOutlined } from '@ant-design/icons';
 import PageHeader from '../components/PageHeader';
 import './Settings.css';
 
@@ -33,15 +33,7 @@ const Settings = () => {
       
       <Card>
         <Tabs defaultActiveKey="1">
-          <TabPane 
-            tab={
-              <span>
-                <UserOutlined />
-                Account Settings
-              </span>
-            } 
-            key="1"
-          >
+          <TabPane tab="Account Settings" key="1">
             <Form
               form={form}
               layout="vertical"
@@ -140,34 +132,26 @@ const Settings = () => {
               </Row>
               
               <Form.Item>
-                <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
-                  Save Settings
+                <Button type="primary" htmlType="submit">
+                  Save
                 </Button>
               </Form.Item>
             </Form>
           </TabPane>
           
-          <TabPane 
-            tab={
-              <span>
-                <ApiOutlined />
-                Data Source Configuration
-              </span>
-            } 
-            key="2"
-          >
+          <TabPane tab="Data Source Configuration" key="2">
             <Form
               form={apiForm}
               layout="vertical"
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               initialValues={{
-                obdEnabled: true,
-                mobileEnabled: true,
-                passengerEnabled: true,
-                obdSamplingRate: 100,
-                mobileSamplingRate: 50,
+                apiEndpoint: 'https://api.safedriving.com/v1',
+                apiKey: '••••••••••••••••',
+                obdSamplingRate: 10,
+                mobileSamplingRate: 5,
                 dataRetentionPeriod: 90,
+                backupFrequency: 'daily',
               }}
             >
               <Title level={4}>Data Collection Configuration</Title>
@@ -284,27 +268,19 @@ const Settings = () => {
               </Row>
               
               <Form.Item>
-                <Space>
-                  <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
-                    Save Configuration
-                  </Button>
+                <Button type="primary" htmlType="submit">
+                  Save
+                </Button>
+                <div style={{ marginTop: '16px' }}>
                   <Upload>
                     <Button icon={<UploadOutlined />}>Upload Configuration File</Button>
                   </Upload>
-                </Space>
+                </div>
               </Form.Item>
             </Form>
           </TabPane>
           
-          <TabPane 
-            tab={
-              <span>
-                <BellOutlined />
-                Notification Settings
-              </span>
-            } 
-            key="3"
-          >
+          <TabPane tab="Notification Settings" key="3">
             <Form
               form={notificationForm}
               layout="vertical"
@@ -412,8 +388,8 @@ const Settings = () => {
               </Row>
               
               <Form.Item>
-                <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
-                  Save Notification Settings
+                <Button type="primary" htmlType="submit">
+                  Save
                 </Button>
               </Form.Item>
             </Form>

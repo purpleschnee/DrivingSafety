@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <AntHeader className="site-header">
       <div className="header-center">
-        <Title level={4} className="app-title">Driving Safety Monitor</Title>
+        <Title level={2} className="app-title">Driving Safety Monitor</Title>
       </div>
       
       <div className="header-right">

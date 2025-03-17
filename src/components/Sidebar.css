@@ -67,7 +67,7 @@
 /* Improve menu item styles */
 .sidebar-menu .ant-menu-item {
   margin: 4px 12px !important;
-  padding-left: 12px !important;
+  padding-left: 8px !important;
   border-radius: var(--border-radius-md) !important;
   height: 44px !important;
   line-height: 44px !important;
@@ -98,6 +98,7 @@
 
 .sidebar-menu .ant-menu-item .anticon {
   font-size: var(--icon-size-md);
+  margin-right: 6px !important; /* u51cfu5c11u56feu6807u548cu6587u5b57u4e4bu95f4u7684u95f4u8dddu4e3a6px */
 }
 
 /* Responsive adjustments */

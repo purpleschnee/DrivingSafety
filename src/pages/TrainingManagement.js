@@ -331,7 +331,15 @@ const TrainingManagement = () => {
       />
 
       <Tabs activeKey={activeTab} onChange={setActiveTab}>
-        <TabPane tab="Training Courses" key="1">
+        <TabPane 
+          tab={
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <FileOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+              <span>Training Courses</span>
+            </span>
+          } 
+          key="1"
+        >
           <Card 
             title="Training Course Catalog" 
             extra={
@@ -405,7 +413,15 @@ const TrainingManagement = () => {
           </Row>
         </TabPane>
 
-        <TabPane tab="Driver Training Status" key="2">
+        <TabPane 
+          tab={
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <UserOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+              <span>Driver Training Status</span>
+            </span>
+          } 
+          key="2"
+        >
           <Card 
             title="Driver Training Compliance" 
             extra={
@@ -460,13 +476,29 @@ const TrainingManagement = () => {
           </Card>
         </TabPane>
 
-        <TabPane tab="Training Schedule" key="3">
+        <TabPane 
+          tab={
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <CalendarOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+              <span>Training Schedule</span>
+            </span>
+          } 
+          key="3"
+        >
           <Card title="Training Calendar">
             <Calendar />
           </Card>
         </TabPane>
 
-        <TabPane tab="Training Resources" key="4">
+        <TabPane 
+          tab={
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <ReadOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+              <span>Training Resources</span>
+            </span>
+          } 
+          key="4"
+        >
           <Card title="Training Materials and Resources">
             <List
               itemLayout="horizontal"

@@ -30,7 +30,10 @@
 .app-title {
   margin: 0 !important;
   color: var(--heading-color) !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  font-size: 28px !important; /* u589eu5927u5b57u4f53u5927u5c0fu4ee5u589eu5f3au89c6u89c9u5c42u7ea7 */
+  letter-spacing: -0.5px !important; /* u589eu52a0u5b57u95f4u8ddd */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05) !important; /* u6dfbu52a0u8f7bu5faeu9634u5f71u589eu5f3au89c6u89c9u6548u679c */
 }
 
 /* Standardized icon styles */

@@ -920,8 +920,9 @@ const SafetyMetrics = () => {
               suffix="/ 100" 
               valueStyle={{ color: '#0070e0' }}
             />
-            <div className="trend-up">
-              <ArrowUpOutlined /> 3.5% compared to last month
+            <div className="trend-container">
+              <span className="trend-up"><ArrowUpOutlined /> 3.5%</span>
+              <span className="trend-text-secondary">compared to last month</span>
             </div>
           </Card>
         </Col>
@@ -932,8 +933,9 @@ const SafetyMetrics = () => {
               value={247} 
               valueStyle={{ color: '#ff9500' }}
             />
-            <div className="trend-down-positive">
-              <ArrowDownOutlined /> 8.5% compared to last month
+            <div className="trend-container">
+              <span className="trend-down-positive"><ArrowDownOutlined /> 8.5%</span>
+              <span className="trend-text-secondary">compared to last month</span>
             </div>
           </Card>
         </Col>
@@ -945,8 +947,9 @@ const SafetyMetrics = () => {
               suffix="%" 
               valueStyle={{ color: '#2a9d1c' }}
             />
-            <div className="trend-up">
-              <ArrowUpOutlined /> 4.2% compared to last month
+            <div className="trend-container">
+              <span className="trend-up"><ArrowUpOutlined /> 4.2%</span>
+              <span className="trend-text-secondary">compared to last month</span>
             </div>
           </Card>
         </Col>
@@ -958,8 +961,9 @@ const SafetyMetrics = () => {
               suffix="%" 
               valueStyle={{ color: '#e09600' }}
             />
-            <div className="trend-up">
-              <ArrowUpOutlined /> 12.3% compared to last month
+            <div className="trend-container">
+              <span className="trend-up"><ArrowUpOutlined /> 12.3%</span>
+              <span className="trend-text-secondary">compared to last month</span>
             </div>
           </Card>
         </Col>
@@ -967,7 +971,15 @@ const SafetyMetrics = () => {
 
       <Card>
         <Tabs defaultActiveKey="1" onChange={setActiveTab} type="card">
-          <TabPane tab="Safety Trend Analysis" key="1">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <RiseOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Safety Trend Analysis</span>
+              </span>
+            } 
+            key="1"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={12}>
                 <Card title="Safety Score Trend" bordered={false} className="chart-container">
@@ -991,7 +1003,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Safety Metrics Details" key="2">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <InfoCircleOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Safety Metrics Details</span>
+              </span>
+            } 
+            key="2"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Card title="Safety Metrics Details" bordered={false}>
@@ -1004,7 +1024,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Data Collection Analysis" key="3">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <CarOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Data Collection Analysis</span>
+              </span>
+            } 
+            key="3"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
@@ -1060,7 +1088,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Passenger Feedback Correlation" key="4">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <MobileOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Passenger Feedback Correlation</span>
+              </span>
+            } 
+            key="4"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
@@ -1104,7 +1140,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Training Effect Analysis" key="5">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <CheckCircleOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Training Effect Analysis</span>
+              </span>
+            } 
+            key="5"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24} lg={12}>
                 <Card title="Safety Training Effect" bordered={false} className="chart-container">
@@ -1195,7 +1239,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Risk Analysis" key="6">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <WarningOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Risk Analysis</span>
+              </span>
+            } 
+            key="6"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert
@@ -1222,7 +1274,15 @@ const SafetyMetrics = () => {
               </Col>
             </Row>
           </TabPane>
-          <TabPane tab="Prediction Analysis" key="7">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <FallOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Prediction Analysis</span>
+              </span>
+            } 
+            key="7"
+          >
             <Row gutter={[24, 24]}>
               <Col xs={24}>
                 <Alert

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Tabs, Statistic, Progress, Space } from 'antd';
-import { ArrowUpOutlined, ArrowDownOutlined, DownloadOutlined } from '@ant-design/icons';
+import { ArrowUpOutlined, ArrowDownOutlined, DownloadOutlined, RiseOutlined, RadarChartOutlined, DollarOutlined } from '@ant-design/icons';
 import { Line, Column, Radar, DualAxes } from '@ant-design/charts';
 import PageHeader from '../components/PageHeader';
 
@@ -162,13 +162,15 @@ const CompanyComparison = () => {
           <Space direction="vertical" size={0}>
             <Text strong>{value}</Text>
             {record.companyChange > 0 ? (
-              <Text type="success">
-                <ArrowUpOutlined /> {record.companyChange}%
-              </Text>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span className="trend-up"><ArrowUpOutlined /> {record.companyChange}%</span>
+                <span className="trend-text-secondary">compared to last month</span>
+              </div>
             ) : (
-              <Text type="danger">
-                <ArrowDownOutlined /> {Math.abs(record.companyChange)}%
-              </Text>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span className="trend-down"><ArrowDownOutlined /> {Math.abs(record.companyChange)}%</span>
+                <span className="trend-text-secondary">compared to last month</span>
+              </div>
             )}
           </Space>
         );
@@ -346,10 +348,9 @@ const CompanyComparison = () => {
               suffix="/ 15"
               valueStyle={{ color: '#0071e3' }}
             />
-            <div style={{ marginTop: '10px' }}>
-              <Text type="success">
-                <ArrowUpOutlined /> Up 1 position from last month
-              </Text>
+            <div className="trend-container" style={{ display: 'flex', alignItems: 'center' }}>
+              <span className="trend-up"><ArrowUpOutlined /> Up 1 position</span>
+              <span className="trend-text-secondary">from last month</span>
             </div>
           </Card>
         </Col>
@@ -390,10 +391,9 @@ const CompanyComparison = () => {
               valueStyle={{ color: '#0071e3' }}
               suffix="%"
             />
-            <div style={{ marginTop: '10px' }}>
-              <Text type="success">
-                <ArrowUpOutlined /> 15% from last quarter
-              </Text>
+            <div className="trend-container" style={{ display: 'flex', alignItems: 'center' }}>
+              <span className="trend-up"><ArrowUpOutlined /> 15%</span>
+              <span className="trend-text-secondary">from last quarter</span>
             </div>
           </Card>
         </Col>
@@ -402,13 +402,37 @@ const CompanyComparison = () => {
       {/* Chart Tabs */}
       <Card style={{ marginBottom: '24px' }}>
         <Tabs defaultActiveKey="1">
-          <TabPane tab="Safety Score Trends" key="1">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <RiseOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Safety Score Trends</span>
+              </span>
+            } 
+            key="1"
+          >
             <Line {...comparisonConfig} />
           </TabPane>
-          <TabPane tab="Safety Metrics Radar Chart" key="2">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <RadarChartOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Safety Metrics Radar Chart</span>
+              </span>
+            } 
+            key="2"
+          >
             <Radar {...radarConfig} />
           </TabPane>
-          <TabPane tab="Safety vs. Cost" key="3">
+          <TabPane 
+            tab={
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <DollarOutlined style={{ fontSize: '18px', marginRight: '8px' }} />
+                <span>Safety vs. Cost</span>
+              </span>
+            } 
+            key="3"
+          >
             <DualAxes {...dualAxesConfig} />
           </TabPane>
         </Tabs>

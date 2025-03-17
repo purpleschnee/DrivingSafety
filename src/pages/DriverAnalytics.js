@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Typography, Table, Button, Select, DatePicker, Input, Tag, Space, Tabs, Avatar, Rate, Statistic, Progress } from 'antd';
-import { SearchOutlined, FilterOutlined, DownloadOutlined, UserOutlined, CarOutlined, ExclamationCircleOutlined, CheckCircleOutlined, StarOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import { SearchOutlined, FilterOutlined, DownloadOutlined, UserOutlined, CarOutlined, ExclamationCircleOutlined, CheckCircleOutlined, StarOutlined, ArrowUpOutlined, ArrowDownOutlined, SafetyOutlined, MessageOutlined, ReadOutlined } from '@ant-design/icons';
 import { Line, Column, Radar, Gauge } from '@ant-design/charts';
 import PageHeader from '../components/PageHeader';
 
@@ -405,7 +405,15 @@ const DriverAnalytics = () => {
       {selectedDriver !== 'all' && (
         <Card style={{ marginBottom: '24px' }}>
           <Tabs defaultActiveKey="1" onChange={setActiveTab}>
-            <TabPane tab="Driver Overview" key="1">
+            <TabPane 
+              tab={
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                  <UserOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+                  <span>Driver Overview</span>
+                </span>
+              } 
+              key="1"
+            >
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={6}>
                   <div style={{ textAlign: 'center', padding: '20px' }}>
@@ -430,7 +438,7 @@ const DriverAnalytics = () => {
                           valueStyle={{ color: '#34c759' }}
                         />
                         <Text type="success">
-                          <ArrowUpOutlined /> Increased by 2 points from last month
+                          <ArrowUpOutlined style={{ marginRight: '8px' }} /> Increased by 2 points from last month
                         </Text>
                       </Card>
                     </Col>
@@ -455,7 +463,7 @@ const DriverAnalytics = () => {
                           prefix={<ExclamationCircleOutlined />}
                         />
                         <Text type="success">
-                          <ArrowDownOutlined /> Decreased by 3 events from last month
+                          <ArrowDownOutlined style={{ marginRight: '8px' }} /> Decreased by 3 events from last month
                         </Text>
                       </Card>
                     </Col>
@@ -470,7 +478,15 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="Safety Score Details" key="2">
+            <TabPane 
+              tab={
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                  <SafetyOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+                  <span>Safety Score Details</span>
+                </span>
+              } 
+              key="2"
+            >
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={8}>
                   <Card bordered={false} title="Safety Score">
@@ -514,7 +530,15 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="Passenger Feedback" key="3">
+            <TabPane 
+              tab={
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                  <MessageOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+                  <span>Passenger Feedback</span>
+                </span>
+              } 
+              key="3"
+            >
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={8}>
                   <Card bordered={false}>
@@ -549,7 +573,15 @@ const DriverAnalytics = () => {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="Training Records" key="4">
+            <TabPane 
+              tab={
+                <span style={{ display: 'flex', alignItems: 'center' }}>
+                  <ReadOutlined style={{ fontSize: '18px', marginRight: '16px' }} />
+                  <span>Training Records</span>
+                </span>
+              } 
+              key="4"
+            >
               <Row gutter={[24, 24]}>
                 <Col xs={24}>
                   <Card bordered={false} title="Training Completion Status">

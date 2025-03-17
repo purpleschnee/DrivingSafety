@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from 'antd';
+import { Typography, Space } from 'antd';
 
 const { Title } = Typography;
 
@@ -13,7 +13,9 @@ const { Title } = Typography;
 const PageHeader = ({ title, description }) => {
   return (
     <div className="page-header mb-lg">
-      <Title level={2} className="mb-xs">{title}</Title>
+      <Title level={2} className="mb-xs page-title">
+        {title}
+      </Title>
       {description && <div className="page-description">{description}</div>}
     </div>
   );
