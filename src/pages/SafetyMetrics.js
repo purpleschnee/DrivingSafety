@@ -156,6 +156,7 @@ const SafetyMetrics = () => {
           lineHeight: '64px',
           fontWeight: 'bold',
           color: '#333',
+          marginTop: '20px',
         },
       },
     },
