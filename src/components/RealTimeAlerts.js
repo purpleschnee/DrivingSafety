@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Table, Tag, Typography, Button, Space, Badge } from 'antd';
+import { Card, Table, Tag, Typography, Button, Space, Badge, Tooltip } from 'antd';
 import { WarningOutlined, ClockCircleOutlined, EnvironmentOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
@@ -66,6 +66,7 @@ const RealTimeAlerts = ({ alerts = [] }) => {
       dataIndex: 'id',
       key: 'id',
       width: 100,
+      render: (id) => <span style={{ fontSize: '14px' }}>{id}</span>,
     },
     {
       title: 'Time',
@@ -73,48 +74,56 @@ const RealTimeAlerts = ({ alerts = [] }) => {
       key: 'time',
       width: 100,
       render: (time) => (
-        <Space>
-          <ClockCircleOutlined style={{ color: '#8c8c8c' }} />
-          <Text>{time}</Text>
-        </Space>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <ClockCircleOutlined style={{ color: '#8c8c8c', marginRight: '4px', fontSize: '14px' }} />
+          <span style={{ fontSize: '14px' }}>{time}</span>
+        </div>
       ),
     },
     {
       title: 'Driver',
       dataIndex: 'driverName',
       key: 'driverName',
-      width: 150,
+      width: 120,
       render: (name, record) => (
-        <Space>
-          <UserOutlined style={{ color: '#8c8c8c' }} />
-          <Text>{name}</Text>
-          <Text type="secondary">({record.driverId})</Text>
-        </Space>
+        <div style={{ lineHeight: '1.3' }}>
+          <div style={{ display: 'flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
+            <UserOutlined style={{ color: '#8c8c8c', marginRight: '4px', fontSize: '14px' }} />
+            <span style={{ fontSize: '14px' }}>{name}</span>
+          </div>
+          <div style={{ marginLeft: '18px', fontSize: '12px', color: 'rgba(0, 0, 0, 0.45)' }}>
+            ({record.driverId})
+          </div>
+        </div>
       ),
     },
     {
       title: 'Event',
       dataIndex: 'event',
       key: 'event',
-      width: 150,
+      width: 120,
     },
     {
       title: 'Location',
       dataIndex: 'location',
       key: 'location',
-      ellipsis: true,
+      ellipsis: {
+        showTitle: false,
+      },
       render: (location) => (
-        <Space>
-          <EnvironmentOutlined style={{ color: '#8c8c8c' }} />
-          <Text>{location}</Text>
-        </Space>
+        <Tooltip placement="topLeft" title={location}>
+          <span className="nowrap-cell">
+            <EnvironmentOutlined style={{ color: '#8c8c8c', marginRight: '4px', fontSize: '14px' }} />
+            <span style={{ fontSize: '14px' }}>{location}</span>
+          </span>
+        </Tooltip>
       ),
     },
     {
       title: 'Severity',
       dataIndex: 'severity',
       key: 'severity',
-      width: 120,
+      width: 100,
       render: (severity) => {
         let color = 'green';
         let text = 'Low';
@@ -134,7 +143,7 @@ const RealTimeAlerts = ({ alerts = [] }) => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      width: 120,
+      width: 100,
       render: (status) => {
         let color = 'green';
         let text = 'Resolved';
@@ -153,14 +162,18 @@ const RealTimeAlerts = ({ alerts = [] }) => {
     {
       title: 'Action',
       key: 'action',
-      width: 120,
+      width: 160,
       render: (_, record) => (
-        <Space>
-          <Button type="link" size="small">View</Button>
-          {record.status !== 'resolved' && (
-            <Button type="link" size="small">Process</Button>
-          )}
-        </Space>
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: '45%', textAlign: 'right', paddingRight: '10px' }}>
+            <Button type="link" size="small">View</Button>
+          </div>
+          <div style={{ width: '55%', textAlign: 'left' }}>
+            {record.status !== 'resolved' && (
+              <Button type="link" size="small">Process</Button>
+            )}
+          </div>
+        </div>
       ),
     },
   ];
@@ -186,14 +199,77 @@ const RealTimeAlerts = ({ alerts = [] }) => {
         borderRadius: '8px'
       }}
     >
+      <style jsx="true">{`
+        .nowrap-cell {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-flex;
+          align-items: center;
+          font-size: 14px;
+        }
+        .real-time-alerts-table {
+          font-size: 14px;
+        }
+        .real-time-alerts-table .ant-table-cell {
+          padding: 12px 8px;
+          vertical-align: middle;
+          font-size: 14px;
+        }
+        .real-time-alerts-table .ant-btn-link {
+          padding: 0;
+          height: 22px;
+          line-height: 22px;
+          font-size: 14px;
+          color: #1890ff;
+        }
+        .real-time-alerts-table .ant-table-container {
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .real-time-alerts-table .ant-table-tbody > tr > td {
+          border-bottom: 1px solid #f0f0f0;
+          font-size: 14px;
+        }
+        .real-time-alerts-table .ant-table-thead > tr > th {
+          background-color: #f5f5f5;
+          font-weight: 500;
+          padding: 16px 8px;
+          border-bottom: 1px solid #f0f0f0;
+          font-size: 14px;
+        }
+        .real-time-alerts-table .ant-tag {
+          margin-right: 0;
+          font-size: 12px;
+        }
+        .nowrap-column {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .alert-table-row {
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        .alert-table-row:hover {
+          background-color: #f5f5f5;
+        }
+      `}</style>
       <Table 
         columns={columns} 
         dataSource={alertsData} 
         rowKey="id"
         pagination={{ pageSize: 5 }}
         size="middle"
+        scroll={{ x: 1100 }}
         className="real-time-alerts-table"
-        style={{ fontSize: '14px' }}
+        rowClassName={() => 'alert-table-row'}
+        bordered={false}
+        onRow={(record) => ({
+          onClick: () => {
+            // Handle row click if needed
+          },
+        })}
       />
     </Card>
   );
